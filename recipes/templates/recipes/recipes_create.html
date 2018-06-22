@@ -1,0 +1,26 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    MasterCook - Recipe Create
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+		<div class="container">
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+
+<h1>Create</h1>
+
+    <form class="site-form" action="{% url 'recipes:create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Create">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    MasterCook - Login
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+		<div class="container">
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+    <h1>Login</h1>
+
+    <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+    <input type="submit" value="Login">
+    </form>
+
+{% endblock %}

@@ -15,7 +15,7 @@ def signup_view(request):
             return redirect('recipes:list')
     else:
         form = UserCreationForm()
-    return render(request, 'accounts/signup.html', {'form': form})
+    return render(request, 'accounts/accounts_signup.html', {'form': form})
 
 
 def login_view(request):
@@ -31,11 +31,10 @@ def login_view(request):
                 return redirect('recipes:list')
     else:
         form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'accounts/accounts_login.html', {'form': form})
 
 
 def logout_view(request):
-    if request.method == 'POST':
         logout(request)
         return redirect('recipes:list')
 

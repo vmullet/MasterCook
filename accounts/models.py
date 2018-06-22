@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 class Country(models.Model):
     name = models.CharField(max_length=100)
 
+    def get_code(self):
+        return self.name.lower()
+
 
 class CookerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

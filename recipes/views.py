@@ -6,8 +6,12 @@ from . import forms
 # Create your views here.
 
 
+def recipe_homepage(request):
+    return render(request, 'recipes/homepage.html')
+
+
 def recipe_list(request):
-    return render(request, 'recipes/index.html')
+    return render(request, 'recipes/recipe_list.html')
 
 
 def recipe_details(request, recipe_id):

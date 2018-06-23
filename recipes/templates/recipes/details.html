@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-
-{% block title %} Details {{ recipe_id }} {% endblock %}
-
-{% block content %}
-    <h1>Recipe {{ recipe_id }}</h1>
-    <a href="{% url 'recipes:details' recipe_id=recipe_id %}">Recipe {{ recipe_id }}</a>
-{% endblock %}

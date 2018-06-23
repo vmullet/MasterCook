@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-23 18:43+0200\n"
+"POT-Creation-Date: 2018-06-23 19:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: .\accounts\templates\accounts\accounts_login.html:7
+msgid "page.title.login"
+msgstr "MasterCook - Se Connecter"
+
 #: .\accounts\templates\accounts\accounts_login.html:22
-msgid "Login"
-msgstr ""
+#: .\accounts\templates\accounts\accounts_login.html:53
+#: .\templates\base_layout.html:78
+msgid "account.login"
+msgstr "Se Connecter"
+
+#: .\accounts\templates\accounts\accounts_login.html:47
+msgid "account.not_member_message"
+msgstr "Pas encore un Cooker ? Inscrivez-vous dès maintenant :)"
+
+#: .\accounts\templates\accounts\accounts_signup.html:7
+msgid "page.title.signup"
+msgstr "MasterCook - S'inscrire"
+
+#: .\recipes\templates\recipes\recipes_create.html:7
+msgid "page.title.create_recipe"
+msgstr "MasterCook - Créer une recette"
+
+#: .\recipes\templates\recipes\recipes_details.html:7
+msgid "page.title.details_recipe"
+msgstr "MasterCook - Se Connecter"
+
+#: .\recipes\templates\recipes\recipes_homepage.html:7
+msgid "page.title.home_recipes"
+msgstr "MasterCook - Accueil"
+
+#: .\recipes\templates\recipes\recipes_list.html:7
+msgid "page.title.list_recipes"
+msgstr "MasterCook - Liste des recettes"
+
+#: .\templates\base_layout.html:64
+msgid "home"
+msgstr "Accueil"
+
+#: .\templates\base_layout.html:65
+msgid "recipe.recipe_list"
+msgstr "Liste des Recettes"
+
+#: .\templates\base_layout.html:73
+msgid "recipe.new_recipe"
+msgstr "Nouvelle Recette"
+
+#: .\templates\base_layout.html:74
+msgid "account.logout"
+msgstr "Se Déconnecter"
+
+#: .\templates\base_layout.html:79
+msgid "account.signup"
+msgstr "S'inscrire"

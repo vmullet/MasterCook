@@ -9,6 +9,11 @@ class Country(models.Model):
 
 
 class UnitMeasure(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=10)
+    symbol = models.CharField(max_length=10)
+
+
+class Currency(models.Model):
+    name = models.CharField(max_length=10)
     symbol = models.CharField(max_length=10)
 

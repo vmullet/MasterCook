@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CookerProfile
+from django.contrib.auth.models import User
 from generic.models import Country, UnitMeasure
 from ingredients.models import Ingredient
 
@@ -40,12 +40,12 @@ class Recipe(models.Model):
     recipe_type = models.ForeignKey(RecipeType, on_delete=models.CASCADE)
     recipe_skill = models.ForeignKey(RecipeSkill, on_delete=models.CASCADE)
     recipe_origin = models.ForeignKey(Country, on_delete=models.CASCADE)
-    author = models.ForeignKey(CookerProfile, on_delete=models.CASCADE, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return '%s - %s by %s'.format(self.name,
                                       self.recipe_skill.name,
-                                      self.author.user.username)
+                                      self.author.username)
 
 
 class RecipeStep(models.Model):

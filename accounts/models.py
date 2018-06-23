@@ -1,12 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from generic.models import Country
 
 # Create your models here.
-
-
-class Country(models.Model):
-    name = models.CharField(max_length=100)
-    css_class = models.CharField(max_length=50)
 
 
 class CookerProfile(models.Model):

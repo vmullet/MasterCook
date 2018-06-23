@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import CookerProfile
+from generic.models import Country
 
 # Create your models here.
 
@@ -21,6 +22,7 @@ class Recipe(models.Model):
     description = models.TextField()
     recipe_skill = models.ForeignKey(RecipeSkill, on_delete=models.CASCADE)
     thumbnail = models.ImageField(default='default.png', blank=True)
+    origin_country = models.ForeignKey(Country, on_delete=models.CASCADE)
     author = models.ForeignKey(CookerProfile, on_delete=models.CASCADE, default=None)
 
     def __str__(self):

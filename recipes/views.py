@@ -6,13 +6,17 @@ from . import forms
 # Create your views here.
 
 
+def recipe_homepage(request):
+    return render(request, 'recipes/recipes_homepage.html')
+
+
 def recipe_list(request):
-    return render(request, 'recipes/index.html')
+    return render(request, 'recipes/recipes_list.html')
 
 
 def recipe_details(request, recipe_id):
     # recipe = Recipe.objects.get(slug=slug)
-    return render(request, 'recipes/details.html', {'recipe_id': recipe_id})
+    return render(request, 'recipes/recipes_details.html', {'recipe_id': recipe_id})
 
 
 @login_required(login_url="/accounts/login/")
@@ -27,6 +31,6 @@ def recipe_create(request):
             return redirect('recipes:list')
     else:
         form = forms.CreateRecipe()
-    return render(request, 'recipes/create.html', {'form': form})
+    return render(request, 'recipes/recipes_create.html', {'form': form})
 
 

@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    MasterCook - Recipe Details {{ recipe_id }}
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+		<div class="container">
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+    <h1>Recipe {{ recipe_id }}</h1>
+    <a href="{% url 'recipes:details' recipe_id=recipe_id %}">Recipe {{ recipe_id }}</a>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from .forms import CookerAuthenticationForm
 
 # Create your views here
 
@@ -15,12 +16,12 @@ def signup_view(request):
             return redirect('recipes:list')
     else:
         form = UserCreationForm()
-    return render(request, 'accounts/signup.html', {'form': form})
+    return render(request, 'accounts/accounts_signup.html', {'form': form})
 
 
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = CookerAuthenticationForm(data=request.POST)
         if form.is_valid():
             # log in the user in
             user = form.get_user()
@@ -30,12 +31,11 @@ def login_view(request):
             else:
                 return redirect('recipes:list')
     else:
-        form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form})
+        form = CookerAuthenticationForm()
+    return render(request, 'accounts/accounts_login.html', {'form': form})
 
 
 def logout_view(request):
-    if request.method == 'POST':
         logout(request)
         return redirect('recipes:list')
 

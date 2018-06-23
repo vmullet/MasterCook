@@ -1,0 +1,44 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    MasterCook - Login
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+        <div class="container">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="typo">
+        <div class="container">
+            <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">Login</h1>
+            <br>
+            <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <form action="{% url 'accounts:login' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="form-group">
+                        {{ form.username.errors }}
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.errors }}
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                    </div>
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
+                    <input type="submit" class="btn btn-default" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

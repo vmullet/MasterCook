@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-23 19:21+0200\n"
+"POT-Creation-Date: 2018-06-23 20:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: .\accounts\templates\accounts\accounts_login.html:22
 #: .\accounts\templates\accounts\accounts_login.html:53
-#: .\templates\base_layout.html:79
+#: .\templates\base_layout.html:78
 msgid "account.login"
 msgstr "Login"
 
@@ -52,22 +52,26 @@ msgstr "MasterCook - Home Recipes"
 msgid "page.title.list_recipes"
 msgstr "MasterCook - Recipes List"
 
-#: .\templates\base_layout.html:65
+#: .\templates\base_layout.html:64
 msgid "home"
 msgstr "Home"
 
-#: .\templates\base_layout.html:66
+#: .\templates\base_layout.html:65
 msgid "recipe.recipe_list"
 msgstr "Recipes List"
 
-#: .\templates\base_layout.html:74
+#: .\templates\base_layout.html:73
 msgid "recipe.new_recipe"
 msgstr "New Recipe"
 
-#: .\templates\base_layout.html:75
+#: .\templates\base_layout.html:74
 msgid "account.logout"
 msgstr "Logout"
 
-#: .\templates\base_layout.html:80
+#: .\templates\base_layout.html:79
 msgid "account.signup"
 msgstr "Signup"
+
+#: .\templates\base_layout.html:84
+msgid "page.languages_menu"
+msgstr "Languages"

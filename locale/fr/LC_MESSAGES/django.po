@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-23 19:06+0200\n"
+"POT-Creation-Date: 2018-06-23 20:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,3 +71,7 @@ msgstr "Se Déconnecter"
 #: .\templates\base_layout.html:79
 msgid "account.signup"
 msgstr "S'inscrire"
+
+#: .\templates\base_layout.html:84
+msgid "page.languages_menu"
+msgstr "Langues"

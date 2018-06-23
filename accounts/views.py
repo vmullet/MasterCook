@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import CookerAuthenticationForm, CookerCreationForm
 
 # Create your views here
@@ -37,5 +38,10 @@ def login_view(request):
 def logout_view(request):
         logout(request)
         return redirect('recipes:list')
+
+
+@login_required(login_url='accounts:login')
+def my_profile_view(request):
+    return render(request, 'accounts/accounts_profile.html', {'logged_user': request.user})
 
 

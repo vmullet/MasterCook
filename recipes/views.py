@@ -19,7 +19,7 @@ def recipe_details(request, recipe):
     return render(request, 'recipes/recipes_details.html', {'recipe': recipe})
 
 
-@login_required(login_url="/accounts/login/")
+@login_required(login_url="accounts:login")
 def recipe_create(request):
     if request.method == 'POST':
         form = forms.CreateRecipe(request.POST, request.FILES)

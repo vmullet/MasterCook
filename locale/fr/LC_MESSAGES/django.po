@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-23 22:08+0200\n"
+"POT-Creation-Date: 2018-06-24 00:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "MasterCook - Se Connecter"
 
 #: .\accounts\templates\accounts\accounts_login.html:22
 #: .\accounts\templates\accounts\accounts_login.html:53
-#: .\templates\base_layout.html:78
+#: .\templates\base_layout.html:79
 msgid "account.login"
 msgstr "Se Connecter"
 
@@ -58,13 +58,23 @@ msgstr "Se Connecter"
 msgid "account.not_member_message"
 msgstr "Pas encore un Cooker ? Inscrivez-vous dès maintenant :)"
 
+#: .\accounts\templates\accounts\accounts_profile.html:7
+#, fuzzy
+#| msgid "page.my_profile_menu"
+msgid "page.title.my_profile"
+msgstr "Mon Profil"
+
+#: .\accounts\templates\accounts\accounts_profile.html:23
+msgid "account.profile"
+msgstr "Profil de"
+
 #: .\accounts\templates\accounts\accounts_signup.html:7
 msgid "page.title.signup"
 msgstr "MasterCook - S'inscrire"
 
 #: .\accounts\templates\accounts\accounts_signup.html:23
 #: .\accounts\templates\accounts\accounts_signup.html:81
-#: .\templates\base_layout.html:79
+#: .\templates\base_layout.html:80
 msgid "account.signup"
 msgstr "S'inscrire"
 
@@ -92,14 +102,22 @@ msgstr "Accueil"
 msgid "recipe.recipe_list"
 msgstr "Liste des Recettes"
 
+#: .\templates\base_layout.html:70
+msgid "page.my_profile_menu"
+msgstr "Mon Profil"
+
 #: .\templates\base_layout.html:73
+msgid "account.see_profile"
+msgstr "Voir Mon Profil"
+
+#: .\templates\base_layout.html:74
 msgid "recipe.new_recipe"
 msgstr "Nouvelle Recette"
 
-#: .\templates\base_layout.html:74
+#: .\templates\base_layout.html:75
 msgid "account.logout"
 msgstr "Se Déconnecter"
 
-#: .\templates\base_layout.html:84
+#: .\templates\base_layout.html:85
 msgid "page.languages_menu"
 msgstr "Langues"

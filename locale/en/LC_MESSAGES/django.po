@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-23 22:08+0200\n"
+"POT-Creation-Date: 2018-06-24 00:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "MasterCook - Login"
 
 #: .\accounts\templates\accounts\accounts_login.html:22
 #: .\accounts\templates\accounts\accounts_login.html:53
-#: .\templates\base_layout.html:78
+#: .\templates\base_layout.html:79
 msgid "account.login"
 msgstr "Login"
 
@@ -58,13 +58,21 @@ msgstr "Login"
 msgid "account.not_member_message"
 msgstr "Not a cooker yet ? Sign Up Now :)"
 
+#: .\accounts\templates\accounts\accounts_profile.html:7
+msgid "page.title.my_profile"
+msgstr "My Profile"
+
+#: .\accounts\templates\accounts\accounts_profile.html:23
+msgid "account.profile"
+msgstr "Profile of"
+
 #: .\accounts\templates\accounts\accounts_signup.html:7
 msgid "page.title.signup"
 msgstr "SignUp"
 
 #: .\accounts\templates\accounts\accounts_signup.html:23
 #: .\accounts\templates\accounts\accounts_signup.html:81
-#: .\templates\base_layout.html:79
+#: .\templates\base_layout.html:80
 msgid "account.signup"
 msgstr "Signup"
 
@@ -92,14 +100,22 @@ msgstr "Home"
 msgid "recipe.recipe_list"
 msgstr "Recipes List"
 
+#: .\templates\base_layout.html:70
+msgid "page.my_profile_menu"
+msgstr "My Profile"
+
 #: .\templates\base_layout.html:73
+msgid "account.see_profile"
+msgstr "See Profile"
+
+#: .\templates\base_layout.html:74
 msgid "recipe.new_recipe"
 msgstr "New Recipe"
 
-#: .\templates\base_layout.html:74
+#: .\templates\base_layout.html:75
 msgid "account.logout"
 msgstr "Logout"
 
-#: .\templates\base_layout.html:84
+#: .\templates\base_layout.html:85
 msgid "page.languages_menu"
 msgstr "Languages"

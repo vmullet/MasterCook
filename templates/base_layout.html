@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load static i18n %}
 
 <!DOCTYPE HTML>
 <html>
@@ -52,7 +53,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="logo">
-                    <a class="navbar-brand" href="index.html">MasterCook</a>
+                    <a class="navbar-brand" href="#">MasterCook</a>
                 </div>
             </div>
 
@@ -60,8 +61,8 @@
             <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                 <nav class="cl-effect-13" id="cl-effect-13">
                     <ul class="nav navbar-nav">
-                        <li><a href="{% url 'recipes:homepage' %}" class="active">Home</a></li>
-                        <li><a href="{% url 'recipes:list' %}">Recipe List</a></li>
+                        <li><a href="{% url 'recipes:homepage' %}" class="active">{% trans "home" %}</a></li>
+                        <li><a href="{% url 'recipes:list' %}">{% trans "recipe.recipe_list" %}</a></li>
                         {% if user.is_authenticated %}
                             <li role="presentation" class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
@@ -69,14 +70,27 @@
                                     User <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{% url 'recipes:create' %}">New recipe</a></li>
-                                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                                    <li><a href="{% url 'recipes:create' %}">{% trans "recipe.new_recipe" %}</a></li>
+                                    <li><a href="{% url 'accounts:logout' %}">{% trans "account.logout" %}</a></li>
                                 </ul>
                             </li>
                         {% else %}
-                            <li><a href="{% url 'accounts:login' %}">Login</a></li>
-                            <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                            <li><a href="{% url 'accounts:login' %}">{% trans "account.login" %}</a></li>
+                            <li><a href="{% url 'accounts:signup' %}">{% trans "account.signup" %}</a></li>
                         {% endif %}
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                {% trans "page.languages_menu" %} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <li><a href="{% url 'generic:switch_language' user_language=language.code %}?next={{ request.path }}">{{ language.name_local }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>

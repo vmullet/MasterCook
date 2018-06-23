@@ -1,9 +1,10 @@
 {% extends 'base_layout.html' %}
 
 {% load static from staticfiles %}
+{% load i18n %}
 
 {% block title %}
-    MasterCook - Recipe List
+    {% trans "page.title.list_recipes" %}
 {% endblock %}
 
 {% block banner %}

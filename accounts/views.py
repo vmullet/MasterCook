@@ -1,21 +1,20 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
-from .forms import CookerAuthenticationForm
+from .forms import CookerAuthenticationForm, CookerCreationForm
 
 # Create your views here
 
 
 def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CookerCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             # log the user in
             login(request, user)
             return redirect('recipes:list')
     else:
-        form = UserCreationForm()
+        form = CookerCreationForm()
     return render(request, 'accounts/accounts_signup.html', {'form': form})
 
 

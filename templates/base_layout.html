@@ -19,6 +19,9 @@
     <!-- Custom Theme files -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'css/flags.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <!-- js -->
     <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
     <!-- //js -->
@@ -59,7 +62,6 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{% url 'recipes:homepage' %}" class="active">Home</a></li>
                         <li><a href="{% url 'recipes:list' %}">Recipe List</a></li>
-                        <li><a href="short-codes.html">Short Codes</a></li>
                         {% if user.is_authenticated %}
                             <li role="presentation" class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"

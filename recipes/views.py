@@ -14,9 +14,9 @@ def recipe_list(request):
     return render(request, 'recipes/recipes_list.html')
 
 
-def recipe_details(request, recipe_id):
+def recipe_details(request, recipe):
     # recipe = Recipe.objects.get(slug=slug)
-    return render(request, 'recipes/recipes_details.html', {'recipe_id': recipe_id})
+    return render(request, 'recipes/recipes_details.html', {'recipe': recipe})
 
 
 @login_required(login_url="/accounts/login/")

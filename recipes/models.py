@@ -46,10 +46,10 @@ class Recipe(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField()
     thumbnail = models.ImageField(default='default.png', blank=True)
-    preparation_time = models.DurationField
-    cooking_time = models.DurationField
-    cooling_time = models.DurationField(default=-1)
-    median_rate = models.FloatField(default=-1)
+    preparation_time = models.DurationField(default=0)
+    cooking_time = models.DurationField(default=0)
+    cooling_time = models.DurationField(default=0)
+    median_rate = models.FloatField(default=0)
     # Foreign Keys
     recipe_type = models.ForeignKey(RecipeType, on_delete=models.CASCADE)
     recipe_skill = models.ForeignKey(RecipeSkill, on_delete=models.CASCADE)

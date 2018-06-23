@@ -30,6 +30,11 @@ python manage.py makemigrations recipes
 python manage.py migrate recipes
 ```
 
+```
+python manage.py migrate
+```
+
+
 ## Start Project
 
 - Once you have done that, simply run the server

@@ -12,7 +12,7 @@ class RecipeType(models.Model):
     Model to represent a recipe type
     """
     name = models.CharField(max_length=100)
-    description = models.TextField
+    description = models.TextField()
 
     def __str__(self):
         return self.name
@@ -23,7 +23,7 @@ class RecipeSkill(models.Model):
     Model to represent the skill needed to cook this recipe
     """
     name = models.CharField(max_length=100)
-    description = models.TextField
+    description = models.TextField()
     value = models.IntegerField(default=0)
 
     def __str__(self):
@@ -34,14 +34,17 @@ class RecipeCost(models.Model):
     cost = models.FloatField
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return '%f %s'.format(self.cost, self.currency.symbol)
+
 
 class Recipe(models.Model):
     """
     Model to represent a recipe
     """
     name = models.CharField(max_length=100)
-    slug = models.SlugField
-    description = models.TextField
+    slug = models.SlugField(unique=True)
+    description = models.TextField()
     thumbnail = models.ImageField(default='default.png', blank=True)
     preparation_time = models.DurationField
     cooking_time = models.DurationField
@@ -68,7 +71,7 @@ class RecipeStep(models.Model):
     Model to represent a recipe preparation step
     """
     name = models.CharField(max_length=100)
-    description = models.TextField
+    description = models.TextField()
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -79,7 +82,7 @@ class RecipeIngredient(models.Model):
     """
     Model to represent a recipe ingredient (see ingredient model in generic app)
     """
-    quantity = models.FloatField
+    quantity = models.FloatField()
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     unit_measure = models.ForeignKey(UnitMeasure, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
@@ -107,11 +110,14 @@ class RecipeComment(models.Model):
     """
     Model to represent a comment written by a user for a recipe
     """
-    comment = models.TextField
+    comment = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'Comment from %s for recipe %s'.format(self.user.username,self.recipe.name)
 
 
 class RecipeRate(models.Model):
@@ -123,3 +129,6 @@ class RecipeRate(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'Rate of %d by %s for recipe %s'.format(self.rate,self.user.username,self.recipe.name)

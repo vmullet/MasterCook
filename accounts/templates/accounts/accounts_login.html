@@ -1,6 +1,7 @@
 {% extends 'base_layout.html' %}
 
 {% load static from staticfiles %}
+{% load i18n %}
 
 {% block title %}
     MasterCook - Login
@@ -18,7 +19,8 @@
         <div class="container">
             <h1 class="title wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="300ms"
                 style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInLeftBig;">
-                Login</h1>
+                {% trans "Login" %}
+            </h1>
             <br>
             <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <form action="{% url 'accounts:login' %}" method="post">
@@ -48,7 +50,8 @@
                         <input type="hidden" name="next" value="{{ request.GET.next }}">
                     {% endif %}
 
-                    <button type="submit" class="btn btn-default btn-lg">Login <i class="fas fa-sign-in-alt"></i></button>
+                    <button type="submit" class="btn btn-default btn-lg">Login <i class="fas fa-sign-in-alt"></i>
+                    </button>
                 </form>
             </div>
         </div>

@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-23 19:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\accounts\templates\accounts\accounts_login.html:7
+msgid "page.title.login"
+msgstr ""
+
+#: .\accounts\templates\accounts\accounts_login.html:22
+#: .\accounts\templates\accounts\accounts_login.html:53
+#: .\templates\base_layout.html:79
+msgid "account.login"
+msgstr "Login"
+
+#: .\accounts\templates\accounts\accounts_login.html:47
+msgid "account.not_member_message"
+msgstr "Not a cooker yet ? Sign Up Now :)"
+
+#: .\accounts\templates\accounts\accounts_signup.html:7
+msgid "page.title.signup"
+msgstr "SignUp"
+
+#: .\recipes\templates\recipes\recipes_create.html:7
+msgid "page.title.create_recipe"
+msgstr "MasterCook - Create New Recipe"
+
+#: .\recipes\templates\recipes\recipes_details.html:7
+msgid "page.title.details_recipe"
+msgstr "MasterCook - Recipe Details"
+
+#: .\recipes\templates\recipes\recipes_homepage.html:7
+msgid "page.title.home_recipes"
+msgstr "MasterCook - Home Recipes"
+
+#: .\recipes\templates\recipes\recipes_list.html:7
+msgid "page.title.list_recipes"
+msgstr "MasterCook - Recipes List"
+
+#: .\templates\base_layout.html:65
+msgid "home"
+msgstr "Home"
+
+#: .\templates\base_layout.html:66
+msgid "recipe.recipe_list"
+msgstr "Recipes List"
+
+#: .\templates\base_layout.html:74
+msgid "recipe.new_recipe"
+msgstr "New Recipe"
+
+#: .\templates\base_layout.html:75
+msgid "account.logout"
+msgstr "Logout"
+
+#: .\templates\base_layout.html:80
+msgid "account.signup"
+msgstr "Signup"

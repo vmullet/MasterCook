@@ -6,9 +6,7 @@ from django.contrib.auth.models import User
 
 class Country(models.Model):
     name = models.CharField(max_length=100)
-
-    def get_code(self):
-        return self.name.lower()
+    css_class = models.CharField(max_length=50)
 
 
 class CookerProfile(models.Model):

@@ -43,6 +43,11 @@ def logout_view(request):
         return redirect('recipes:list')
 
 
+def profile_view(request,username):
+    user = get_object_or_404(User, username=username)
+    return render(request, 'accounts/accounts_profile_view.html', {'user': user})
+
+
 @login_required(login_url='accounts:login')
 def update_profile_view(request):
     if request.method == 'POST':
@@ -62,4 +67,3 @@ def update_profile_view(request):
                    'user_form': user_form,
                    'profile_form': profile_form
                    })
-

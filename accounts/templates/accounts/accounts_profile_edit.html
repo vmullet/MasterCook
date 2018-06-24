@@ -1,0 +1,93 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "page.title.my_profile" %}
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+        <div class="container">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="typo">
+        <div class="container">
+            <h1 class="title wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="300ms"
+                style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInLeftBig;">
+                {% trans "account.profile" %} : {{ user.username }}
+            </h1>
+            <img class="avatar" src="{{ user.profile.avatar.url }}" alt="" />
+            <br><br>
+            <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <form action="{% url 'accounts:update_profile' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if user_form.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ user_form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+                         data-wow-delay="300ms"
+                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                        {{ user_form.first_name.errors }}
+                        <span class="input-group-addon" id="basic-addon1"><i class="fas fa-user-circle"></i></span>
+                        {{ user_form.first_name }}
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+                         data-wow-delay="300ms"
+                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                        {{ user_form.last_name.errors }}
+                        <span class="input-group-addon" id="basic-addon1"><i class="fas fa-user-circle"></i></span>
+                        {{ user_form.last_name }}
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+                         data-wow-delay="300ms"
+                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                        {{ user_form.email.errors }}
+                        <span class="input-group-addon" id="basic-addon1"><i class="fas fa-at"></i></span>
+                        {{ user_form.email }}
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+                         data-wow-delay="300ms"
+                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                        {{ profile_form.date_of_birth.errors }}
+                        <span class="input-group-addon" id="basic-addon1"><i class="fas fa-birthday-cake"></i></span>
+                        {{ profile_form.date_of_birth }}
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+                         data-wow-delay="300ms"
+                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                        {{ profile_form.bio.errors }}
+                        <span class="input-group-addon" id="basic-addon1"><i class="fas fa-address-book"></i></span>
+                        {{ profile_form.bio }}
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+                         data-wow-delay="300ms"
+                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                        {{ profile_form.avatar.errors }}
+                        <span class="input-group-addon" id="basic-addon1"><i class="fas fa-user-astronaut"></i></span>
+                        {{ profile_form.avatar }}
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+                         data-wow-delay="300ms"
+                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                        {{ profile_form.country.errors }}
+                        <span class="input-group-addon" id="basic-addon1"><i class="fas fa-globe-americas"></i></span>
+                        {{ profile_form.country }}
+                    </div>
+
+
+                    <br>
+                    <button class="btn btn-default btn-lg" type="submit">{% trans "form.save" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -21,6 +21,7 @@
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{% static 'css/flags.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <!-- js -->
@@ -70,9 +71,13 @@
                                     {% trans "page.my_profile_menu" %} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{% url 'accounts:my_profile' %}"><i class="fas fa-eye fa-lg"></i> {% trans "account.see_profile" %}</a></li>
-                                    <li><a href="{% url 'recipes:create' %}"><i class="fas fa-plus-circle fa-lg"></i> {% trans "recipe.new_recipe" %}</a></li>
-                                    <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt fa-lg"></i> {% trans "account.logout" %}</a></li>
+                                    <li><a href="{% url 'accounts:update_profile' %}"><i
+                                            class="fas fa-eye fa-lg"></i> {% trans "account.see_profile" %}</a></li>
+                                    <li><a href="{% url 'recipes:create' %}"><i
+                                            class="fas fa-plus-circle fa-lg"></i> {% trans "recipe.new_recipe" %}</a>
+                                    </li>
+                                    <li><a href="{% url 'accounts:logout' %}"><i
+                                            class="fas fa-sign-out-alt fa-lg"></i> {% trans "account.logout" %}</a></li>
                                 </ul>
                             </li>
                         {% else %}
@@ -88,7 +93,10 @@
                                 {% get_available_languages as LANGUAGES %}
                                 {% get_language_info_list for LANGUAGES as languages %}
                                 {% for language in languages %}
-                                    <li><a href="{% url 'generic:switch_language' user_language=language.code %}?next={{ request.path }}"><div class="flag--{{ language.code }}"></div></a></li>
+                                    <li>
+                                        <a href="{% url 'generic:switch_language' user_language=language.code %}?next={{ request.path }}">
+                                            <div class="flag--{{ language.code }}"></div>
+                                        </a></li>
                                 {% endfor %}
                             </ul>
                         </li>

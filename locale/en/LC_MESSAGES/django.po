@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-24 00:50+0200\n"
+"POT-Creation-Date: 2018-06-24 14:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,29 +20,46 @@ msgstr ""
 
 # Forms
 # ##########################
-#: .\accounts\forms.py:10 .\accounts\forms.py:27
+#: .\accounts\forms.py:14 .\accounts\forms.py:38
 msgid "form.username.placeholder"
 msgstr "Username"
 
-#: .\accounts\forms.py:17 .\accounts\forms.py:55
+#: .\accounts\forms.py:21 .\accounts\forms.py:66
 msgid "form.password.placeholder"
 msgstr "Password"
 
-#: .\accounts\forms.py:34
+#: .\accounts\forms.py:45 .\accounts\forms.py:94
 msgid "form.firstname.placeholder"
 msgstr "First Name"
 
-#: .\accounts\forms.py:41
+#: .\accounts\forms.py:52 .\accounts\forms.py:101
 msgid "form.lastname.placeholder"
 msgstr "Last Name"
 
-#: .\accounts\forms.py:48
+#: .\accounts\forms.py:59 .\accounts\forms.py:108
 msgid "form.email.placeholder"
 msgstr "Email Address"
 
-#: .\accounts\forms.py:62
+#: .\accounts\forms.py:73
 msgid "form.password2.placeholder"
 msgstr "Re-enter Password"
+
+#: .\accounts\forms.py:126
+msgid "form.date_birth.placeholder"
+msgstr "Date Of Birth"
+
+#: .\accounts\forms.py:133
+msgid "form.bio.placeholder"
+msgstr "Biography"
+
+#: .\accounts\forms.py:140
+msgid "form.avatar.placeholder"
+msgstr "Avatar"
+
+
+#: .\accounts\forms.py:147
+msgid "form.country.placeholder"
+msgstr "Country"
 
 #: .\accounts\templates\accounts\accounts_login.html:7
 msgid "page.title.login"
@@ -65,6 +82,10 @@ msgstr "My Profile"
 #: .\accounts\templates\accounts\accounts_profile.html:23
 msgid "account.profile"
 msgstr "Profile of"
+
+#: .\accounts\templates\accounts\accounts_profile.html:86
+msgid "form.save"
+msgstr "Save"
 
 #: .\accounts\templates\accounts\accounts_signup.html:7
 msgid "page.title.signup"

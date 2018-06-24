@@ -4,7 +4,9 @@
 
 ```
 pip install django
+pip install python-slugify
 ```
+https://github.com/un33k/python-slugify
 
 ## Set up
 

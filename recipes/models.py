@@ -50,15 +50,17 @@ class Recipe(models.Model):
     cooking_time = models.DurationField(default=0)
     cooling_time = models.DurationField(default=0)
     median_rate = models.FloatField(default=0)
+    published = models.BooleanField(default=False)
     # Foreign Keys
     recipe_type = models.ForeignKey(RecipeType, on_delete=models.CASCADE)
     recipe_skill = models.ForeignKey(RecipeSkill, on_delete=models.CASCADE)
     recipe_cost = models.OneToOneField(RecipeCost, on_delete=models.CASCADE)
     recipe_origin = models.ForeignKey(Country, on_delete=models.CASCADE)
     # MetaData
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(null=True)
+    published_at = models.DateTimeField(null=True)
 
     def __str__(self):
         return '%s - %s by %s'.format(self.name,

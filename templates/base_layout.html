@@ -111,16 +111,18 @@
 
 {% block banner %}
 {% endblock %}
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
 
 <div class="events">
     <div class="container">
+        <!-- Messages Part-->
+        {% if messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% else %}
+                                           class="alert alert-info" {% endif %} role="alert">
+                <h2>{{ message }}</h2>
+            {% endfor %}
+        </div>
+        {% endif %}
         {% block content %}
         {% endblock %}
     </div>

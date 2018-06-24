@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-24 16:31+0200\n"
+"POT-Creation-Date: 2018-06-24 16:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,8 +65,6 @@ msgid "account.not_member_message"
 msgstr "Pas encore un Cooker ? Inscrivez-vous dès maintenant :)"
 
 #: .\accounts\templates\accounts\accounts_profile_edit.html:7
-#, fuzzy
-#| msgid "page.my_profile_menu"
 msgid "page.title.my_profile"
 msgstr "Mon Profil"
 

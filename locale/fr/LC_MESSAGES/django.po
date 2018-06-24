@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-24 14:11+0200\n"
+"POT-Creation-Date: 2018-06-24 17:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-
 #: .\accounts\forms.py:14 .\accounts\forms.py:38
 msgid "form.username.placeholder"
 msgstr "Nom d'utilisateur"
 
-#: .\accounts\forms.py:21 .\accounts\forms.py:66
+#: .\accounts\forms.py:21 .\accounts\forms.py:66 .\accounts\forms.py:133
 msgid "form.password.placeholder"
 msgstr "Mot de passe"
 
@@ -39,62 +38,71 @@ msgstr "Nom"
 msgid "form.email.placeholder"
 msgstr "Adresse E-mail"
 
-#: .\accounts\forms.py:73
+#: .\accounts\forms.py:73 .\accounts\forms.py:140
 msgid "form.password2.placeholder"
 msgstr "Entrez de nouveau le mot de passe"
 
 #: .\accounts\forms.py:126
+msgid "form.old_password.placeholder"
+msgstr "Ancien Mot de passe"
+
+#: .\accounts\forms.py:150
 msgid "form.date_birth.placeholder"
 msgstr "Date d'anniversaire"
 
-#: .\accounts\forms.py:133
+#: .\accounts\forms.py:157
 msgid "form.bio.placeholder"
 msgstr "Biographie"
-
-#: .\accounts\forms.py:140
-msgid "form.avatar.placeholder"
-msgstr "Avatar"
-
-
-#: .\accounts\forms.py:147
-msgid "form.country.placeholder"
-msgstr "Nom d'utilisateur"
 
 #: .\accounts\templates\accounts\accounts_login.html:7
 msgid "page.title.login"
 msgstr "MasterCook - Se Connecter"
 
-#: .\accounts\templates\accounts\accounts_login.html:22
-#: .\accounts\templates\accounts\accounts_login.html:53
-#: .\templates\base_layout.html:79
+#: .\accounts\templates\accounts\accounts_login.html:21
+#: .\accounts\templates\accounts\accounts_login.html:52
+#: .\templates\base_layout.html:86
 msgid "account.login"
 msgstr "Se Connecter"
 
-#: .\accounts\templates\accounts\accounts_login.html:47
+#: .\accounts\templates\accounts\accounts_login.html:46
 msgid "account.not_member_message"
 msgstr "Pas encore un Cooker ? Inscrivez-vous dès maintenant :)"
 
-#: .\accounts\templates\accounts\accounts_profile.html:7
+#: .\accounts\templates\accounts\accounts_password_edit.html:7
 #, fuzzy
-#| msgid "page.my_profile_menu"
+#| msgid "page.title.home_recipes"
+msgid "page.title.change_password"
+msgstr "Modifier mon mot de passe"
+
+#: .\accounts\templates\accounts\accounts_password_edit.html:21
+msgid "account.change_password"
+msgstr "Modifier mon mot de passe"
+
+#: .\accounts\templates\accounts\accounts_password_edit.html:54
+#: .\accounts\templates\accounts\accounts_profile_edit.html:85
+msgid "form.save"
+msgstr "Sauvegarder"
+
+#: .\accounts\templates\accounts\accounts_profile_edit.html:7
 msgid "page.title.my_profile"
 msgstr "Mon Profil"
 
-#: .\accounts\templates\accounts\accounts_profile.html:23
+#: .\accounts\templates\accounts\accounts_profile_edit.html:21
+#: .\accounts\templates\accounts\accounts_profile_view.html:20
 msgid "account.profile"
 msgstr "Profil de"
 
-#: .\accounts\templates\accounts\accounts_profile.html:86
-msgid "form.save"
-msgstr "Sauvegarder"
+#: .\accounts\templates\accounts\accounts_profile_view.html:7
+msgid "page.title.profile_view"
+msgstr "Profil de"
 
 #: .\accounts\templates\accounts\accounts_signup.html:7
 msgid "page.title.signup"
 msgstr "MasterCook - S'inscrire"
 
-#: .\accounts\templates\accounts\accounts_signup.html:23
-#: .\accounts\templates\accounts\accounts_signup.html:81
-#: .\templates\base_layout.html:80
+#: .\accounts\templates\accounts\accounts_signup.html:21
+#: .\accounts\templates\accounts\accounts_signup.html:79
+#: .\templates\base_layout.html:87
 msgid "account.signup"
 msgstr "S'inscrire"
 
@@ -114,30 +122,42 @@ msgstr "MasterCook - Accueil"
 msgid "page.title.list_recipes"
 msgstr "MasterCook - Liste des recettes"
 
-#: .\templates\base_layout.html:64
+#: .\templates\base_layout.html:65
 msgid "home"
 msgstr "Accueil"
 
-#: .\templates\base_layout.html:65
+#: .\templates\base_layout.html:66
 msgid "recipe.recipe_list"
 msgstr "Liste des Recettes"
 
-#: .\templates\base_layout.html:70
+#: .\templates\base_layout.html:71
 msgid "page.my_profile_menu"
 msgstr "Mon Profil"
 
-#: .\templates\base_layout.html:73
+#: .\templates\base_layout.html:75
 msgid "account.see_profile"
 msgstr "Voir Mon Profil"
 
-#: .\templates\base_layout.html:74
+#: .\templates\base_layout.html:77
+#, fuzzy
+#| msgid "account.see_profile"
+msgid "account.edit_password"
+msgstr "Voir Mon Profil"
+
+#: .\templates\base_layout.html:79
 msgid "recipe.new_recipe"
 msgstr "Nouvelle Recette"
 
-#: .\templates\base_layout.html:75
+#: .\templates\base_layout.html:82
 msgid "account.logout"
 msgstr "Se Déconnecter"
 
-#: .\templates\base_layout.html:85
+#: .\templates\base_layout.html:92
 msgid "page.languages_menu"
 msgstr "Langues"
+
+#~ msgid "form.avatar.placeholder"
+#~ msgstr "Avatar"
+
+#~ msgid "form.country.placeholder"
+#~ msgstr "Nom d'utilisateur"

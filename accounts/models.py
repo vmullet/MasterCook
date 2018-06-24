@@ -12,7 +12,7 @@ class CookerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     date_of_birth = models.DateField(null=True, blank=True)
     bio = models.TextField(max_length=1000, blank=True)
-    avatar = models.ImageField(default='images/avatars/default_avatar.png', blank=True,
+    avatar = models.ImageField(default='default/default_avatar.png', blank=True,
                                upload_to='images/avatars')
     country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
 

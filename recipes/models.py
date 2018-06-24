@@ -45,7 +45,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     description = models.TextField()
-    thumbnail = models.ImageField(default='default.png', blank=True)
+    thumbnail = models.ImageField(default='default/default_recipe.png', blank=True)
     preparation_time = models.DurationField(default=0)
     cooking_time = models.DurationField(default=0)
     cooling_time = models.DurationField(default=0)
@@ -99,7 +99,7 @@ class RecipeImage(models.Model):
     Model to represent some pictures added after the creation of the recipe
     """
     name = models.CharField(max_length=100)
-    image = models.ImageField(default='default.png', blank=True)
+    image = models.ImageField(default='default/default_recipe.png', blank=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -131,4 +131,4 @@ class RecipeRate(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Rate of %d by %s for recipe %s'.format(self.rate,self.user.username,self.recipe.name)
+        return 'Rate of %d by %s for recipe %s'.format(self.rate, self.user.username,self.recipe.name)

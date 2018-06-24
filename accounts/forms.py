@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.admin import widgets
 from .models import CookerProfile
@@ -117,6 +117,30 @@ class UserEditForm(forms.ModelForm):
             'last_name',
             'email'
         )
+
+
+class CookerChangePasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': _("form.old_password.placeholder"),
+            'aria-describedby': 'sizing-addon1',
+        },
+    ), localize=True)
+    new_password1 = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': _("form.password.placeholder"),
+            'aria-describedby': 'sizing-addon1',
+        },
+    ), localize=True)
+    new_password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': _("form.password2.placeholder"),
+            'aria-describedby': 'sizing-addon1',
+        },
+    ), localize=True)
 
 
 class CookerProfileForm(forms.ModelForm):

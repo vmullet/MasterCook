@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CookerAuthenticationForm, CookerCreationForm, CookerProfileForm, UserEditForm
+from .forms import CookerAuthenticationForm, CookerCreationForm, CookerProfileForm, UserEditForm, CookerChangePasswordForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import get_object_or_404
+
 
 # Create your views here
 
@@ -39,8 +41,13 @@ def login_view(request):
 
 
 def logout_view(request):
-        logout(request)
-        return redirect('recipes:list')
+    logout(request)
+    return redirect('recipes:list')
+
+
+def profile_view(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, 'accounts/accounts_profile_view.html', {'user': user})
 
 
 @login_required(login_url='accounts:login')
@@ -51,7 +58,7 @@ def update_profile_view(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Profile saved')
+            messages.success(request, 'Profile saved successfully')
         else:
             messages.error(request, 'Please correct the error')
     else:
@@ -63,3 +70,20 @@ def update_profile_view(request):
                    'profile_form': profile_form
                    })
 
+
+@login_required(login_url='accounts:login')
+def update_password_view(request):
+    if request.method == 'POST':
+        password_form = CookerChangePasswordForm(request.user, request.POST)
+        if password_form.is_valid():
+            user = password_form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('accounts:edit_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        password_form = CookerChangePasswordForm(request.user)
+    return render(request, 'accounts/accounts_password_edit.html', {
+        'form': password_form
+    })

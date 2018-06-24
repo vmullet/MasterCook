@@ -16,8 +16,6 @@
 
 {% block content %}
 
-    <div class="typo">
-        <div class="container">
             <h1 class="title wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="300ms"
                 style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInLeftBig;">
                 {% trans "account.profile" %} : {{ user.username }}
@@ -87,7 +85,5 @@
                     <button class="btn btn-default btn-lg" type="submit">{% trans "form.save" %}</button>
                 </form>
             </div>
-        </div>
-    </div>
 
 {% endblock %}

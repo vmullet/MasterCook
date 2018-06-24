@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-24 14:11+0200\n"
+"POT-Creation-Date: 2018-06-24 16:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,48 +52,44 @@ msgstr "Date Of Birth"
 msgid "form.bio.placeholder"
 msgstr "Biography"
 
-#: .\accounts\forms.py:140
-msgid "form.avatar.placeholder"
-msgstr "Avatar"
-
-
-#: .\accounts\forms.py:147
-msgid "form.country.placeholder"
-msgstr "Country"
-
 #: .\accounts\templates\accounts\accounts_login.html:7
 msgid "page.title.login"
 msgstr "MasterCook - Login"
 
-#: .\accounts\templates\accounts\accounts_login.html:22
-#: .\accounts\templates\accounts\accounts_login.html:53
-#: .\templates\base_layout.html:79
+#: .\accounts\templates\accounts\accounts_login.html:21
+#: .\accounts\templates\accounts\accounts_login.html:52
+#: .\templates\base_layout.html:84
 msgid "account.login"
 msgstr "Login"
 
-#: .\accounts\templates\accounts\accounts_login.html:47
+#: .\accounts\templates\accounts\accounts_login.html:46
 msgid "account.not_member_message"
 msgstr "Not a cooker yet ? Sign Up Now :)"
 
-#: .\accounts\templates\accounts\accounts_profile.html:7
+#: .\accounts\templates\accounts\accounts_profile_edit.html:7
 msgid "page.title.my_profile"
 msgstr "My Profile"
 
-#: .\accounts\templates\accounts\accounts_profile.html:23
+#: .\accounts\templates\accounts\accounts_profile_edit.html:21
+#: .\accounts\templates\accounts\accounts_profile_view.html:20
 msgid "account.profile"
 msgstr "Profile of"
 
-#: .\accounts\templates\accounts\accounts_profile.html:86
+#: .\accounts\templates\accounts\accounts_profile_edit.html:85
 msgid "form.save"
 msgstr "Save"
+
+#: .\accounts\templates\accounts\accounts_profile_view.html:7
+msgid "page.title.profile_view"
+msgstr "Profile of"
 
 #: .\accounts\templates\accounts\accounts_signup.html:7
 msgid "page.title.signup"
 msgstr "SignUp"
 
-#: .\accounts\templates\accounts\accounts_signup.html:23
-#: .\accounts\templates\accounts\accounts_signup.html:81
-#: .\templates\base_layout.html:80
+#: .\accounts\templates\accounts\accounts_signup.html:21
+#: .\accounts\templates\accounts\accounts_signup.html:79
+#: .\templates\base_layout.html:85
 msgid "account.signup"
 msgstr "Signup"
 
@@ -113,30 +109,30 @@ msgstr "MasterCook - Home Recipes"
 msgid "page.title.list_recipes"
 msgstr "MasterCook - Recipes List"
 
-#: .\templates\base_layout.html:64
+#: .\templates\base_layout.html:65
 msgid "home"
 msgstr "Home"
 
-#: .\templates\base_layout.html:65
+#: .\templates\base_layout.html:66
 msgid "recipe.recipe_list"
 msgstr "Recipes List"
 
-#: .\templates\base_layout.html:70
+#: .\templates\base_layout.html:71
 msgid "page.my_profile_menu"
 msgstr "My Profile"
 
-#: .\templates\base_layout.html:73
+#: .\templates\base_layout.html:75
 msgid "account.see_profile"
 msgstr "See Profile"
 
-#: .\templates\base_layout.html:74
+#: .\templates\base_layout.html:77
 msgid "recipe.new_recipe"
 msgstr "New Recipe"
 
-#: .\templates\base_layout.html:75
+#: .\templates\base_layout.html:80
 msgid "account.logout"
 msgstr "Logout"
 
-#: .\templates\base_layout.html:85
+#: .\templates\base_layout.html:90
 msgid "page.languages_menu"
 msgstr "Languages"

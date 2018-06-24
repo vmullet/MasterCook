@@ -25,21 +25,19 @@
         <form action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             {% if form.errors %}
-                <div class="alert alert-danger" role="alert">
-                    {{ form.non_field_errors }}
+                    <div class="alert alert-danger" role="alert">
+                    {{ form.errors.as_text }}
                 </div>
             {% endif %}
             <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
                  data-wow-delay="300ms"
                  style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                {{ form.username.errors }}
                 <span class="input-group-addon" id="basic-addon1"><i class="fas fa-user-circle"></i></span>
                 {{ form.username }}
             </div>
             <div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
                  data-wow-delay="300ms"
                  style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                {{ form.password.errors }}
                 <span class="input-group-addon" id="basic-addon1"><i class="fas fa-key"></i></span>
                 {{ form.password }}
             </div>

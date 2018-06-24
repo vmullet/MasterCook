@@ -3,8 +3,8 @@ from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CookerAuthenticationForm, CookerCreationForm, CookerProfileForm, UserEditForm, CookerChangePasswordForm
+from .models import CookerProfile
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import get_object_or_404
 
 
@@ -16,6 +16,7 @@ def signup_view(request):
         form = CookerCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            user.profile = CookerProfile.objects.create(user=user)
             # log the user in
             login(request, user)
             return redirect('recipes:list')

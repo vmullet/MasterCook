@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-24 16:45+0200\n"
+"POT-Creation-Date: 2018-06-24 17:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "form.username.placeholder"
 msgstr "Username"
 
-#: .\accounts\forms.py:21 .\accounts\forms.py:66
+#: .\accounts\forms.py:21 .\accounts\forms.py:66 .\accounts\forms.py:133
 msgid "form.password.placeholder"
 msgstr "Password"
 
@@ -40,15 +40,19 @@ msgstr "Last Name"
 msgid "form.email.placeholder"
 msgstr "Email Address"
 
-#: .\accounts\forms.py:73
+#: .\accounts\forms.py:73 .\accounts\forms.py:140
 msgid "form.password2.placeholder"
 msgstr "Re-enter Password"
 
 #: .\accounts\forms.py:126
+msgid "form.old_password.placeholder"
+msgstr "Old Password"
+
+#: .\accounts\forms.py:150
 msgid "form.date_birth.placeholder"
 msgstr "Date Of Birth"
 
-#: .\accounts\forms.py:133
+#: .\accounts\forms.py:157
 msgid "form.bio.placeholder"
 msgstr "Biography"
 
@@ -58,13 +62,28 @@ msgstr "MasterCook - Login"
 
 #: .\accounts\templates\accounts\accounts_login.html:21
 #: .\accounts\templates\accounts\accounts_login.html:52
-#: .\templates\base_layout.html:84
+#: .\templates\base_layout.html:86
 msgid "account.login"
 msgstr "Login"
 
 #: .\accounts\templates\accounts\accounts_login.html:46
 msgid "account.not_member_message"
 msgstr "Not a cooker yet ? Sign Up Now :)"
+
+#: .\accounts\templates\accounts\accounts_password_edit.html:7
+#, fuzzy
+#| msgid "page.title.home_recipes"
+msgid "page.title.change_password"
+msgstr "Modify Password"
+
+#: .\accounts\templates\accounts\accounts_password_edit.html:21
+msgid "account.change_password"
+msgstr "Modify Password"
+
+#: .\accounts\templates\accounts\accounts_password_edit.html:54
+#: .\accounts\templates\accounts\accounts_profile_edit.html:85
+msgid "form.save"
+msgstr "Save"
 
 #: .\accounts\templates\accounts\accounts_profile_edit.html:7
 msgid "page.title.my_profile"
@@ -74,10 +93,6 @@ msgstr "My Profile"
 #: .\accounts\templates\accounts\accounts_profile_view.html:20
 msgid "account.profile"
 msgstr "Profile of"
-
-#: .\accounts\templates\accounts\accounts_profile_edit.html:85
-msgid "form.save"
-msgstr "Save"
 
 #: .\accounts\templates\accounts\accounts_profile_view.html:7
 msgid "page.title.profile_view"
@@ -89,7 +104,7 @@ msgstr "SignUp"
 
 #: .\accounts\templates\accounts\accounts_signup.html:21
 #: .\accounts\templates\accounts\accounts_signup.html:79
-#: .\templates\base_layout.html:85
+#: .\templates\base_layout.html:87
 msgid "account.signup"
 msgstr "Signup"
 
@@ -126,13 +141,19 @@ msgid "account.see_profile"
 msgstr "See Profile"
 
 #: .\templates\base_layout.html:77
+#, fuzzy
+#| msgid "account.see_profile"
+msgid "account.edit_password"
+msgstr "See Profile"
+
+#: .\templates\base_layout.html:79
 msgid "recipe.new_recipe"
 msgstr "New Recipe"
 
-#: .\templates\base_layout.html:80
+#: .\templates\base_layout.html:82
 msgid "account.logout"
 msgstr "Logout"
 
-#: .\templates\base_layout.html:90
+#: .\templates\base_layout.html:92
 msgid "page.languages_menu"
 msgstr "Languages"

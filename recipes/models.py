@@ -137,8 +137,10 @@ class RecipeRate(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ('user', 'recipe')
+
     def __str__(self):
         return 'Rate of %d by %s for recipe %s' % (self.rate,
                                                    self.user.username,
                                                    self.recipe.name)
-

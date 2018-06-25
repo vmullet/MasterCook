@@ -1,17 +1,36 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from . import models
+from .models import Recipe, RecipeType, RecipeSkill
+from generic.models import Country
 
 
 class CreateRecipe(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(
+    name = forms.CharField(label='toto', widget=forms.TextInput(
         attrs={
             'class': 'form-control',
             'placeholder': _("form.recipe_name.placeholder"),
             'aria-describedby': 'sizing-addon1',
         }
     ), localize=True)
-    description = forms.CharField(widget=forms.TextInput(
+    recipe_type = forms.ModelChoiceField(widget=forms.Select(
+        attrs={
+            'class': 'form-control',
+            'aria-describedby': 'sizing-addon1',
+        }
+    ), localize=True, queryset=RecipeType.objects.all())
+    recipe_origin = forms.ModelChoiceField(widget=forms.Select(
+        attrs={
+            'class': 'form-control',
+            'aria-describedby': 'sizing-addon1',
+        }
+    ), localize=True, queryset=Country.objects.all())
+    recipe_skill = forms.ModelChoiceField(widget=forms.Select(
+        attrs={
+            'class': 'form-control',
+            'aria-describedby': 'sizing-addon1',
+        }
+    ), localize=True, queryset=RecipeSkill.objects.all())
+    description = forms.CharField(widget=forms.Textarea(
         attrs={
             'class': 'form-control',
             'placeholder': _("form.recipe_description.placeholder"),
@@ -24,11 +43,35 @@ class CreateRecipe(forms.ModelForm):
             'aria-describedby': 'sizing-addon1',
         }
     ), required=True)
+    preparation_time = forms.DurationField(widget=forms.TimeInput(
+        attrs={
+            'class': 'form-control',
+            'aria-describedby': 'sizing-addon1',
+        }
+    ))
+    cooking_time = forms.DurationField(widget=forms.TimeInput(
+        attrs={
+            'class': 'form-control',
+            'aria-describedby': 'sizing-addon1',
+        }
+    ))
+    cooling_time = forms.DurationField(widget=forms.TimeInput(
+        attrs={
+            'class': 'form-control',
+            'aria-describedby': 'sizing-addon1',
+        }
+    ))
 
     class Meta:
-        model = models.Recipe
+        model = Recipe
         fields = [
             'name',
+            'recipe_type',
+            'recipe_origin',
+            'recipe_skill',
             'description',
             'thumbnail',
+            'preparation_time',
+            'cooking_time',
+            'cooling_time'
         ]

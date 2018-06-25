@@ -30,14 +30,6 @@ class RecipeSkill(models.Model):
         return '%d - %d'.format(self.name, self.value)
 
 
-class RecipeCost(models.Model):
-    cost = models.FloatField
-    currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return '%f %s'.format(self.cost, self.currency.symbol)
-
-
 class Recipe(models.Model):
     """
     Model to represent a recipe
@@ -54,7 +46,6 @@ class Recipe(models.Model):
     # Foreign Keys
     recipe_type = models.ForeignKey(RecipeType, on_delete=models.CASCADE)
     recipe_skill = models.ForeignKey(RecipeSkill, on_delete=models.CASCADE)
-    recipe_cost = models.OneToOneField(RecipeCost, on_delete=models.CASCADE)
     recipe_origin = models.ForeignKey(Country, on_delete=models.CASCADE)
     # MetaData
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -134,3 +125,12 @@ class RecipeRate(models.Model):
 
     def __str__(self):
         return 'Rate of %d by %s for recipe %s'.format(self.rate, self.user.username,self.recipe.name)
+
+
+class RecipeCost(models.Model):
+    cost = models.FloatField
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return '%f %s for %s'.format(self.cost, self.currency.symbol, self.recipe.name)

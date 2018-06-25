@@ -16,7 +16,7 @@ class RecipeCreateForm(forms.ModelForm):
             'class': 'form-control',
         }
     ), localize=True, queryset=RecipeType.objects.all())
-    recipe_origin = forms.ModelChoiceField(label='form.recipe.country', widget=forms.Select(
+    recipe_origin = forms.ModelChoiceField(label=_('form.recipe.country'), widget=forms.Select(
         attrs={
             'class': 'form-control',
         }
@@ -46,7 +46,7 @@ class RecipeCreateForm(forms.ModelForm):
     cooking_time = forms.DurationField(label=_('form.recipe.cooking_time'), widget=forms.TimeInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe.preparation_time.placeholder"),
+            'placeholder': _("form.recipe.cooking_time.placeholder"),
         }
     ), localize=True)
     cooling_time = forms.DurationField(label=_('form.recipe.cooling_time'), widget=forms.TimeInput(

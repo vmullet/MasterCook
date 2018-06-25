@@ -42,25 +42,25 @@ class CreateRecipe(forms.ModelForm):
             'class': 'form-control',
             'aria-describedby': 'sizing-addon1',
         }
-    ), required=True)
+    ))
     preparation_time = forms.DurationField(widget=forms.TimeInput(
         attrs={
             'class': 'form-control',
             'aria-describedby': 'sizing-addon1',
         }
-    ))
+    ), localize=True)
     cooking_time = forms.DurationField(widget=forms.TimeInput(
         attrs={
             'class': 'form-control',
             'aria-describedby': 'sizing-addon1',
         }
-    ))
+    ), localize=True)
     cooling_time = forms.DurationField(widget=forms.TimeInput(
         attrs={
             'class': 'form-control',
             'aria-describedby': 'sizing-addon1',
         }
-    ))
+    ), localize=True, required=False)
 
     class Meta:
         model = Recipe

@@ -15,11 +15,12 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Recipe {{ recipe.pk}}</h1>
+    <h1>Details of recipe "{{ recipe.name }}"</h1>
+    <br>
     <img src="{{ recipe.thumbnail.url }}" alt="" />
-    <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}">Recipe {{ recipe.pk }}</a>
-    <form class="form-control" action="{% url 'recipes:delete' recipe_pk=recipe.pk %}" method="post">
+    <br><br>
+    <form action="{% url 'recipes:delete' recipe_pk=recipe.pk %}" method="post">
         {% csrf_token %}
-        <button class="btn btn-danger btn-lg" >Remove Recipe {{ recipe.pk }}</button>
+        <button class="btn btn-danger btn-lg" >Remove Recipe "{{ recipe.name }}"</button>
     </form>
 {% endblock %}

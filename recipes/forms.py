@@ -182,10 +182,10 @@ class RecipeIngredientForm(forms.ModelForm):
             'class': 'form-control',
         }
     ), localize=True, queryset=Ingredient.objects.all())
-    cost = forms.IntegerField(label=_('form.recipe_cost.cost'), widget=forms.NumberInput(
+    quantity = forms.IntegerField(widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe_cost.cost.placeholder"),
+            'placeholder': 'Please enter a quantity',
         }
     ), localize=True)
     unit_measure = forms.ModelChoiceField(widget=forms.Select(

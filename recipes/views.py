@@ -51,6 +51,9 @@ def recipe_create(request):
 def recipe_edit(request, recipe_slug):
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
     if recipe.author == request.user:
+        image_form = recipeForms.RecipeImageForm()
+        step_form = recipeForms.RecipeStepForm()
+        ingred_form = recipeForms.RecipeIngredientForm()
         if request.POST:
             edit_form = recipeForms.RecipeEditForm(request.POST, request.FILES, instance=recipe)
             cost_form = recipeForms.RecipeCostForm(request.POST, instance=recipe.recipe_cost)
@@ -72,6 +75,9 @@ def recipe_edit(request, recipe_slug):
                   {
                       'edit_recipe_form': edit_form,
                       'cost_form': cost_form,
+                      'image_form': image_form,
+                      'step_form': step_form,
+                      'ingred_form': ingred_form,
                       'recipe': recipe
                   })
 
@@ -138,7 +144,7 @@ def recipe_add_ingredient(request, recipe_pk):
                 recipe_ingred.save()
                 recipe.updated_at = datetime.now()
                 recipe.save()
-                messages.success(request, 'The step was added successfully')
+                messages.success(request, 'The ingredient was added successfully')
             return redirect('recipes:edit', recipe_slug=recipe.slug)
         else:
             messages.error(request, "You're not the author of this recipe")
@@ -156,6 +162,4 @@ def recipe_add_comment(request, recipe_pk):
                 recipe_comment.save()
                 messages.success(request, 'The comment was added successfully')
         return redirect('recipes:edit', recipe_slug=recipe.slug)
-    else:
-        messages.error(request, "You're not the author of this recipe")
     return redirect('recipes:homepage')

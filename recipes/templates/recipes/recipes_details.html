@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Recipe {{ recipe_id }}</h1>
-    <a href="{% url 'recipes:details' recipe_id=recipe_id %}">Recipe {{ recipe_id }}</a>
+    <h1>Recipe {{ recipe.pk}}</h1>
+    <img src="{{ recipe.thumbnail.url }}" alt="" />
+    <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}">Recipe {{ recipe.pk }}</a>
 {% endblock %}

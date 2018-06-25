@@ -20,7 +20,8 @@
     <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <form class="site-form" action="{% url 'recipes:create' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ recipe_create_form.as_p }}
+            {{ recipe_cost_form.as_p }}
             <br>
             <button type="submit" class="btn btn-default btn-lg">Create</button>
         </form>

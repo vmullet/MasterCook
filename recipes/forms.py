@@ -1,64 +1,58 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Recipe, RecipeType, RecipeSkill
-from generic.models import Country
+from .models import Recipe, RecipeType, RecipeSkill, RecipeCost
+from generic.models import Country, Currency
 
 
-class CreateRecipe(forms.ModelForm):
-    name = forms.CharField(label='toto', widget=forms.TextInput(
+class RecipeCreateForm(forms.ModelForm):
+    name = forms.CharField(label=_('form.recipe.name'), widget=forms.TextInput(
         attrs={
             'class': 'form-control',
             'placeholder': _("form.recipe_name.placeholder"),
-            'aria-describedby': 'sizing-addon1',
         }
     ), localize=True)
-    recipe_type = forms.ModelChoiceField(widget=forms.Select(
+    recipe_type = forms.ModelChoiceField(label=_('form.recipe.type'), widget=forms.Select(
         attrs={
             'class': 'form-control',
-            'aria-describedby': 'sizing-addon1',
         }
     ), localize=True, queryset=RecipeType.objects.all())
-    recipe_origin = forms.ModelChoiceField(widget=forms.Select(
+    recipe_origin = forms.ModelChoiceField(label='form.recipe.country', widget=forms.Select(
         attrs={
             'class': 'form-control',
-            'aria-describedby': 'sizing-addon1',
         }
     ), localize=True, queryset=Country.objects.all())
-    recipe_skill = forms.ModelChoiceField(widget=forms.Select(
+    recipe_skill = forms.ModelChoiceField(label=_('form.recipe.skill'), widget=forms.Select(
         attrs={
             'class': 'form-control',
-            'aria-describedby': 'sizing-addon1',
         }
     ), localize=True, queryset=RecipeSkill.objects.all())
-    description = forms.CharField(widget=forms.Textarea(
+    description = forms.CharField(label=_('form.recipe.description'), widget=forms.Textarea(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe_description.placeholder"),
-            'aria-describedby': 'sizing-addon1',
+            'placeholder': _("form.recipe.description.placeholder"),
         }
     ), localize=True)
-    thumbnail = forms.ImageField(widget=forms.FileInput(
+    thumbnail = forms.ImageField(label=_('form.recipe.thumbnail'), widget=forms.FileInput(
         attrs={
             'class': 'form-control',
-            'aria-describedby': 'sizing-addon1',
         }
     ))
-    preparation_time = forms.DurationField(widget=forms.TimeInput(
+    preparation_time = forms.DurationField(label=_('form.recipe.preparation_time'), widget=forms.TimeInput(
         attrs={
             'class': 'form-control',
-            'aria-describedby': 'sizing-addon1',
+            'placeholder': _("form.recipe.preparation_time.placeholder"),
         }
     ), localize=True)
-    cooking_time = forms.DurationField(widget=forms.TimeInput(
+    cooking_time = forms.DurationField(label=_('form.recipe.cooking_time'), widget=forms.TimeInput(
         attrs={
             'class': 'form-control',
-            'aria-describedby': 'sizing-addon1',
+            'placeholder': _("form.recipe.preparation_time.placeholder"),
         }
     ), localize=True)
-    cooling_time = forms.DurationField(widget=forms.TimeInput(
+    cooling_time = forms.DurationField(label=_('form.recipe.cooling_time'), widget=forms.TimeInput(
         attrs={
             'class': 'form-control',
-            'aria-describedby': 'sizing-addon1',
+            'placeholder': _("form.recipe.cooling_time.placeholder"),
         }
     ), localize=True, required=False)
 
@@ -75,3 +69,24 @@ class CreateRecipe(forms.ModelForm):
             'cooking_time',
             'cooling_time'
         ]
+
+
+class RecipeCostForm(forms.ModelForm):
+    cost = forms.FloatField(label=_('form.recipe_cost.cost'), widget=forms.NumberInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': _("form.recipe_cost.cost.placeholder"),
+        }
+    ), localize=True)
+    currency = forms.ModelChoiceField(label=_('form.recipe_cost.currency'), widget=forms.Select(
+        attrs={
+            'class': 'form-control',
+        }
+    ), localize=True, queryset=Currency.objects.all())
+
+    class Meta:
+        model = RecipeCost
+        fields = (
+            'cost',
+            'currency'
+        )

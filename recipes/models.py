@@ -27,7 +27,7 @@ class RecipeSkill(models.Model):
     value = models.IntegerField(default=0)
 
     def __str__(self):
-        return '%d - %d'.format(self.name, self.value)
+        return '%s' % self.name
 
 
 class Recipe(models.Model):
@@ -54,9 +54,9 @@ class Recipe(models.Model):
     published_at = models.DateTimeField(null=True)
 
     def __str__(self):
-        return '%s - %s by %s'.format(self.name,
-                                      self.recipe_skill.name,
-                                      self.author.username)
+        return '%s - %s by %s' % (self.name,
+                                  self.recipe_skill.name,
+                                  self.author.username)
 
 
 class RecipeStep(models.Model):
@@ -68,7 +68,8 @@ class RecipeStep(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '%s in %s'.format(self.name, self.recipe.name)
+        return '%s in %s' % (self.name,
+                             self.recipe.name)
 
 
 class RecipeIngredient(models.Model):
@@ -81,10 +82,10 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '%s - Quantity : %d %s in %s'.format(self.ingredient.name,
-                                                    self.quantity,
-                                                    self.unit_measure.symbol,
-                                                    self.recipe.name)
+        return '%s - Quantity : %d %s in %s' % (self.ingredient.name,
+                                                self.quantity,
+                                                self.unit_measure.symbol,
+                                                self.recipe.name)
 
 
 class RecipeImage(models.Model):
@@ -96,7 +97,9 @@ class RecipeImage(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '%s (%s) from %s'.format(self.name, self.image.url, self.recipe.name)
+        return '%s (%s) from %s' % (self.name,
+                                    self.image.url,
+                                    self.recipe.name)
 
 
 class RecipeComment(models.Model):
@@ -110,27 +113,32 @@ class RecipeComment(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Comment from %s for recipe %s'.format(self.user.username,self.recipe.name)
+        return 'Comment from %s for recipe %s' % (self.user.username,
+                                                  self.recipe.name)
 
 
 class RecipeRate(models.Model):
     """
     Model to represent a rate done by a user to a recipe
     """
-    rate = models.IntegerField
+    rate = models.IntegerField(default=-1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Rate of %d by %s for recipe %s'.format(self.rate, self.user.username,self.recipe.name)
+        return 'Rate of %d by %s for recipe %s' % (self.rate,
+                                                   self.user.username,
+                                                   self.recipe.name)
 
 
 class RecipeCost(models.Model):
-    cost = models.FloatField
+    cost = models.FloatField(default=0.0)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return '%f %s for %s'.format(self.cost, self.currency.symbol, self.recipe.name)
+        return '%f %s for %s' % (self.cost,
+                                 self.currency.symbol,
+                                 self.recipe.name)

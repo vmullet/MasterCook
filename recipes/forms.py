@@ -1,10 +1,16 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Recipe, RecipeType, RecipeSkill, RecipeCost
-from generic.models import Country, Currency
+from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, RecipeComment
+from generic.models import Country, Currency, UnitMeasure
+from ingredients.models import Ingredient
 
+
+# MAIN FORMS
 
 class RecipeCreateForm(forms.ModelForm):
+    """
+    Form to represent the creation of a recipe (basic informations)
+    """
     name = forms.CharField(label=_('form.recipe.name'), widget=forms.TextInput(
         attrs={
             'class': 'form-control',
@@ -72,6 +78,9 @@ class RecipeCreateForm(forms.ModelForm):
 
 
 class RecipeEditForm(RecipeCreateForm):
+    """
+    Form to represent the edition of a recipe (basic informations)
+    """
     thumbnail = forms.ImageField(label=_('form.recipe.thumbnail'), widget=forms.FileInput(
         attrs={
             'class': 'form-control',
@@ -92,6 +101,8 @@ class RecipeEditForm(RecipeCreateForm):
         ]
 
 
+# SECONDARY FORMS (forms appended to the main forms)
+
 class RecipeCostForm(forms.ModelForm):
     cost = forms.IntegerField(label=_('form.recipe_cost.cost'), widget=forms.NumberInput(
         attrs={
@@ -111,3 +122,100 @@ class RecipeCostForm(forms.ModelForm):
             'cost',
             'currency'
         )
+
+
+class RecipeImageForm(forms.ModelForm):
+    """
+    Form to represent the addition of a new image for the recipe
+    """
+    name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': _("form.recipe_name.placeholder"),
+        }
+    ), localize=True)
+    image = forms.ImageField(widget=forms.FileInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
+
+    class Meta:
+        model = RecipeImage
+        fields = {
+            'name',
+            'image'
+        }
+
+
+class RecipeStepForm(forms.ModelForm):
+    """
+    Form to represent the addition / edition of a RecipeStep
+    """
+    name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter the name of the step',
+        }
+    ), localize=True)
+    description = forms.CharField(widget=forms.Textarea(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter the description of the step',
+        }
+    ), localize=True)
+
+    class Meta:
+        model = RecipeStep
+        fields = {
+            'name',
+            'description'
+        }
+
+
+class RecipeIngredientForm(forms.ModelForm):
+    """
+    Form to represent the addition / edition of a RecipeIngredient
+    """
+    ingredient = forms.ModelChoiceField(widget=forms.Select(
+        attrs={
+            'class': 'form-control',
+        }
+    ), localize=True, queryset=Ingredient.objects.all())
+    cost = forms.IntegerField(label=_('form.recipe_cost.cost'), widget=forms.NumberInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': _("form.recipe_cost.cost.placeholder"),
+        }
+    ), localize=True)
+    unit_measure = forms.ModelChoiceField(widget=forms.Select(
+        attrs={
+            'class': 'form-control',
+        }
+    ), localize=True, queryset=UnitMeasure.objects.all())
+
+    class Meta:
+        model = RecipeIngredient
+        fields = {
+            'ingredient',
+            'quantity',
+            'unit_measure'
+        }
+
+
+class RecipeCommentForm(forms.ModelForm):
+    """
+    Form to represent the addition / edition of a RecipeComment
+    """
+    comment = forms.CharField(widget=forms.Textarea(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your comment',
+        }
+    ), localize=True)
+
+    class Meta:
+        model = RecipeComment
+        fields = {
+            'comment'
+        }

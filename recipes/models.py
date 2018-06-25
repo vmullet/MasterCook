@@ -103,8 +103,9 @@ class RecipeImage(models.Model):
     Model to represent some pictures added after the creation of the recipe
     """
     name = models.CharField(max_length=100)
-    image = models.ImageField(default='default/default_recipe.png', blank=True)
+    image = models.ImageField(default='default/default_recipe.png', upload_to='images/recipes', blank=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    uploaded_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return '%s (%s) from %s' % (self.name,

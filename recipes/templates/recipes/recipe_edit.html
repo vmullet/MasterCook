@@ -15,5 +15,18 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Edit</h1>
+    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'form.edit_recipe' %} "{{ recipe.name }}"</h1>
+    <br>
+    <img src="{{ recipe.thumbnail.url }}" />
+    <br>
+    <br>
+    <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <form class="site-form" action="{% url 'recipes:edit' recipe_slug=recipe.slug %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ edit_recipe_form.as_p }}
+            {{ cost_form.as_p }}
+            <br>
+            <button type="submit" class="btn btn-default btn-lg">Edit</button>
+        </form>
+    </div>
 {% endblock %}

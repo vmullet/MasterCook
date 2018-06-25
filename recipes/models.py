@@ -31,7 +31,7 @@ class RecipeSkill(models.Model):
 
 
 class RecipeCost(models.Model):
-    cost = models.FloatField(default=0.0)
+    cost = models.IntegerField(default=0)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
 
     def __str__(self):

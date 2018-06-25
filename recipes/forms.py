@@ -71,8 +71,29 @@ class RecipeCreateForm(forms.ModelForm):
         ]
 
 
+class RecipeEditForm(RecipeCreateForm):
+    thumbnail = forms.ImageField(label=_('form.recipe.thumbnail'), widget=forms.FileInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ), required=False)
+
+    class Meta:
+        model = Recipe
+        fields = [
+            'recipe_type',
+            'recipe_origin',
+            'recipe_skill',
+            'description',
+            'thumbnail',
+            'preparation_time',
+            'cooking_time',
+            'cooling_time'
+        ]
+
+
 class RecipeCostForm(forms.ModelForm):
-    cost = forms.FloatField(label=_('form.recipe_cost.cost'), widget=forms.NumberInput(
+    cost = forms.IntegerField(label=_('form.recipe_cost.cost'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
             'placeholder': _("form.recipe_cost.cost.placeholder"),

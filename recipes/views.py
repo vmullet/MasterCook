@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Recipe
-from .forms import RecipeCreateForm, RecipeCostForm
+from .forms import RecipeCreateForm, RecipeEditForm, RecipeCostForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from slugify import slugify
+from datetime import datetime
 
 # Create your views here.
 
@@ -51,13 +52,29 @@ def recipe_edit(request, recipe_slug):
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
     if recipe.author == request.user:
         if request.POST:
-            pass
+            edit_form = RecipeEditForm(request.POST, request.FILES, instance=recipe)
+            cost_form = RecipeCostForm(request.POST, instance=recipe.recipe_cost)
+            if edit_form.is_valid() and cost_form.is_valid():
+                # save recipe to db
+                recipe = edit_form.save(commit=False)
+                recipe.updated_at = datetime.now()
+                recipe.save()
+                cost_form.save()
+                messages.success(request, "Recipe updated successfully")
+                return redirect('recipes:edit', recipe_slug=recipe.slug)
         else:
+            edit_form = RecipeEditForm(instance=recipe)
+            cost_form = RecipeCostForm(instance=recipe.recipe_cost)
             pass
     else:
         messages.error(request, "You're not the author of this recipe")
         return redirect('recipes:homepage')
-    return render(request, 'recipes/recipe_edit.html')
+    return render(request, 'recipes/recipe_edit.html',
+                  {
+                      'edit_recipe_form': edit_form,
+                      'cost_form': cost_form,
+                      'recipe': recipe
+                  })
 
 
 @login_required(login_url="accounts:login")

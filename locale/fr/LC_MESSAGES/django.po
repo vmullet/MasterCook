@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 14:49+0200\n"
+"POT-Creation-Date: 2018-06-25 17:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,7 +133,7 @@ msgstr "Description de la recette"
 msgid "form.recipe.description.placeholder"
 msgstr "Veuillez entrer la description de la recette"
 
-#: .\recipes\forms.py:35
+#: .\recipes\forms.py:35 .\recipes\forms.py:75
 msgid "form.recipe.thumbnail"
 msgstr "Image principale"
 
@@ -161,21 +161,25 @@ msgstr "Temps de repos (si nécessaire)"
 msgid "form.recipe.cooling_time.placeholder"
 msgstr "Veuillez entrer le temps de repos"
 
-#: .\recipes\forms.py:75
+#: .\recipes\forms.py:96
 msgid "form.recipe_cost.cost"
 msgstr "Coût de la recette"
 
-#: .\recipes\forms.py:78
+#: .\recipes\forms.py:99
 msgid "form.recipe_cost.cost.placeholder"
 msgstr "Veuillez entrer le coût de la recette"
 
-#: .\recipes\forms.py:81
+#: .\recipes\forms.py:102
 msgid "form.recipe_cost.currency"
 msgstr "Monnaie"
 
 #: .\recipes\templates\recipes\recipe_edit.html:7
 msgid "page.title.edit_recipe"
 msgstr "MasterCook - Editer la recette"
+
+#: .\recipes\templates\recipes\recipe_edit.html:18
+msgid "form.edit_recipe"
+msgstr "Editer la recette"
 
 #: .\recipes\templates\recipes\recipes_create.html:7
 msgid "page.title.create_recipe"

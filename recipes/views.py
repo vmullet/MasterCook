@@ -35,7 +35,7 @@ def recipe_create(request):
             recipe.recipe_cost = recipe_cost
             recipe.author = request.user
             recipe.save()
-            return redirect('recipes:list')
+            return redirect('recipes:edit', recipe_slug=recipe.slug)
     else:
         recipe_form = RecipeCreateForm()
         cost_form = RecipeCostForm()
@@ -47,8 +47,17 @@ def recipe_create(request):
 
 
 @login_required(login_url="accounts:login")
-def recipe_edit(request, recipe_pk):
-    pass
+def recipe_edit(request, recipe_slug):
+    recipe = get_object_or_404(Recipe, slug=recipe_slug)
+    if recipe.author == request.user:
+        if request.POST:
+            pass
+        else:
+            pass
+    else:
+        messages.error(request, "You're not the author of this recipe")
+        return redirect('recipes:homepage')
+    return render(request, 'recipes/recipe_edit.html')
 
 
 @login_required(login_url="accounts:login")

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 14:11+0200\n"
+"POT-Creation-Date: 2018-06-25 14:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,7 +143,7 @@ msgstr "Temps de préparation"
 
 #: .\recipes\forms.py:43
 msgid "form.recipe.preparation_time.placeholder"
-msgstr "Prénom"
+msgstr "Veuillez entrer le temps de préparation"
 
 #: .\recipes\forms.py:46
 msgid "form.recipe.cooking_time"
@@ -173,13 +173,15 @@ msgstr "Veuillez entrer le coût de la recette"
 msgid "form.recipe_cost.currency"
 msgstr "Monnaie"
 
+#: .\recipes\templates\recipes\recipe_edit.html:7
+msgid "page.title.edit_recipe"
+msgstr "MasterCook - Editer la recette"
+
 #: .\recipes\templates\recipes\recipes_create.html:7
 msgid "page.title.create_recipe"
 msgstr "MasterCook - Créer une recette"
 
 #: .\recipes\templates\recipes\recipes_create.html:19
-#, fuzzy
-#| msgid "page.title.create_recipe"
 msgid "form.create_recipe"
 msgstr "Créer une nouvelle recette"
 
@@ -222,11 +224,3 @@ msgstr "Se Déconnecter"
 #: .\templates\base_layout.html:92
 msgid "page.languages_menu"
 msgstr "Langues"
-
-#, fuzzy
-#~| msgid "account.see_profile"
-#~ msgid "account.edit_password"
-#~ msgstr "Voir Mon Profil"
-
-#~ msgid "form.avatar.placeholder"
-#~ msgstr "Avatar"

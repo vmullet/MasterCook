@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 14:11+0200\n"
+"POT-Creation-Date: 2018-06-25 14:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,6 +172,10 @@ msgstr "Please enter recipe cost value"
 #: .\recipes\forms.py:81
 msgid "form.recipe_cost.currency"
 msgstr "Currency"
+
+#: .\recipes\templates\recipes\recipe_edit.html:7
+msgid "page.title.edit_recipe"
+msgstr "MasterCook - Edit Recipe"
 
 #: .\recipes\templates\recipes\recipes_create.html:7
 msgid "page.title.create_recipe"

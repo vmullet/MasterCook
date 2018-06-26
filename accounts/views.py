@@ -48,11 +48,17 @@ def logout_view(request):
 
 def profile_view(request, username):
     user = get_object_or_404(User, username=username)
+    if hasattr(user, 'profile') is False:
+        user.profile = CookerProfile.objects.create(user=user)
+        user.save()
     return render(request, 'accounts/accounts_profile_view.html', {'user': user})
 
 
 @login_required(login_url='accounts:login')
 def update_profile_view(request):
+    if hasattr(request.user, 'profile') is False:
+        request.user.profile = CookerProfile.objects.create(user=request.user)
+        request.user.save()
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, request.FILES, instance=request.user)
         profile_form = CookerProfileForm(request.POST, request.FILES, instance=request.user.profile)

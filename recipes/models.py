@@ -68,6 +68,9 @@ class Recipe(models.Model):
                                   self.recipe_skill.name,
                                   self.author.username)
 
+    def get_short_description(self):
+        return '%s...' % self.description[:100]
+
 
 class RecipeStep(models.Model):
     """

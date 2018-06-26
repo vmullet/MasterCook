@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, RecipeComment
+from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, RecipeComment, RecipeRate
 from generic.models import Country, Currency, UnitMeasure
 from ingredients.models import Ingredient
 
@@ -81,15 +81,20 @@ class RecipeEditForm(RecipeCreateForm):
     """
     Form to represent the edition of a recipe (basic informations)
     """
+
     thumbnail = forms.ImageField(label=_('form.recipe.thumbnail'), widget=forms.FileInput(
         attrs={
             'class': 'form-control',
         }
     ), required=False)
 
+    def __init__(self, *args, **kwargs):
+        super(RecipeEditForm, self).__init__(*args, **kwargs)
+        self.fields.pop('name')
+
     class Meta:
         model = Recipe
-        fields = [
+        fields = (
             'recipe_type',
             'recipe_origin',
             'recipe_skill',
@@ -98,7 +103,7 @@ class RecipeEditForm(RecipeCreateForm):
             'preparation_time',
             'cooking_time',
             'cooling_time'
-        ]
+        )
 
 
 # SECONDARY FORMS (forms appended to the main forms)
@@ -218,4 +223,22 @@ class RecipeCommentForm(forms.ModelForm):
         model = RecipeComment
         fields = {
             'comment'
+        }
+
+
+class RecipeRateForm(forms.ModelForm):
+    """
+    Form to represent the addition / edition of a RecipeComment
+    """
+    rate = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': '',
+            'data-size': 'xs',
+        }
+    ))
+
+    class Meta:
+        model = RecipeRate
+        fields = {
+            'rate'
         }

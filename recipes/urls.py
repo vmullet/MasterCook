@@ -13,5 +13,6 @@ urlpatterns = [
     path('recipes/<int:recipe_pk>/image/add', views.recipe_add_image, name='add_image'),
     path('recipes/<int:recipe_pk>/step/add', views.recipe_add_step, name='add_step'),
     path('recipes/<int:recipe_pk>/ingredient/add', views.recipe_add_step, name='add_ingredient'),
+    path('recipes/<int:recipe_pk>/rate/add', views.recipe_add_rate, name='add_rate'),
     path('recipes/<slug:recipe_slug>/details', views.recipe_details, name='details'),
 ]

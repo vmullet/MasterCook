@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recipe, RecipeComment
+from .models import Recipe, RecipeComment, RecipeRate
 from . import forms as recipeforms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -26,13 +26,19 @@ def recipe_list(request):
 def recipe_details(request, recipe_slug):
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
     comments = RecipeComment.objects.filter(recipe=recipe)
+    recipe_rate = None
+    if request.user.is_authenticated:
+        recipe_rate = RecipeRate.objects.filter(recipe=recipe, user=request.user).first()
+
+    rate_form = recipeforms.RecipeRateForm(instance=recipe_rate)
     comment_form = recipeforms.RecipeCommentForm()
     return render(request, 'recipes/recipes_details.html',
                   {
                       'recipe': recipe,
                       'comments': comments,
                       'comment_form': comment_form,
-                      'request': request
+                      'rate_form': rate_form,
+                      'user': request.user
                   })
 
 
@@ -67,7 +73,7 @@ def recipe_edit(request, recipe_slug):
         image_form = recipeforms.RecipeImageForm()
         step_form = recipeforms.RecipeStepForm()
         ingred_form = recipeforms.RecipeIngredientForm()
-        if request.POST:
+        if request.method == 'POST':
             edit_form = recipeforms.RecipeEditForm(request.POST, request.FILES, instance=recipe)
             cost_form = recipeforms.RecipeCostForm(request.POST, instance=recipe.recipe_cost)
             if edit_form.is_valid() and cost_form.is_valid():
@@ -175,5 +181,25 @@ def recipe_add_comment(request, recipe_pk):
             recipe_comment.user = request.user
             recipe_comment.save()
             messages.success(request, 'The comment was added successfully')
+        return redirect('recipes:details', recipe_slug=recipe.slug)
+    return redirect('recipes:homepage')
+
+
+@login_required(login_url="accounts:login")
+def recipe_add_rate(request, recipe_pk):
+    if request.method == 'POST':
+        recipe = get_object_or_404(Recipe, pk=recipe_pk)
+        recipe_rate = RecipeRate.objects.filter(recipe=recipe,user=request.user).first()
+        if recipe_rate is None:
+            rate_form = recipeforms.RecipeRateForm(request.POST)
+        else:
+            rate_form = recipeforms.RecipeRateForm(request.POST, instance=recipe_rate)
+        if rate_form.is_valid():
+            recipe_rate = rate_form.save(commit=False)
+            recipe_rate.recipe = recipe
+            recipe_rate.user = request.user
+            recipe_rate.save()
+            messages.success(request, 'The recipe was rated successfully')
+            print(recipe_rate.rate)
         return redirect('recipes:details', recipe_slug=recipe.slug)
     return redirect('recipes:homepage')

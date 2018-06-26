@@ -21,27 +21,31 @@
     </h1>
 
     <div class="single-left wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">
-        {% if request.user.is_authenticated and request.user == recipe.author %}
+        {% if user.is_authenticated and user == recipe.author %}
             <a href="" class="btn btn-danger btn-md">Remove</a>
             <a href="{% url 'recipes:edit' recipe_slug=recipe.slug %}" class="btn btn-warning btn-md">Edit</a>
         {% endif %}
         <p>Published on <span>{{ recipe.created_at }}</span></p>
+        {% if user.is_authenticated %}
+            <form action="{% url 'recipes:add_rate' recipe_pk=recipe.pk %}" method="post">
+                {% csrf_token %}
+                <div style="display:inline-block">
+                    {{ rate_form.rate }}
+                </div>
+                <div style="display:inline-block">
+                    <button type="submit" class="btn btn-default btn-xs">Rate</button>
+                </div>
+            </form>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">You must be logged to rate a recipe.</a>
+        {% endif %}
         <img src="{{ recipe.thumbnail.url }}" alt=" " class="img-responsive"/>
     </div>
     <div class="single-right wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
-        <h2>Curabitur aliquet quam id dui posuere blandit</h2>
-        <p>
+        <h2>Level : {{ recipe.recipe_skill.name }} - Origin : {{ recipe.recipe_origin.name }}</h2>
+        <p> Description :
             <span>
             {{ recipe.description }}
-            There are many variations of passages of Lorem Ipsum available,
-			but the majority have suffered alteration in some form,
-			by injected humour, or randomised words which don't look even slightly believable.
-			If you are going to use a passage.
-			Donec rutrum congue leo eget malesuada.Curabitur non nulla sit amet
-			nisl tempus convallis quis ac lactus.Sed porttitor lactus nibh.Proin
-			eget tortor risus.Nulla porttitor accumsan tincidunt.Nulla
-			porttitoraccumsan tincidunt.
-			Curabitur aliquet quam id dui posuere blandit.
             </span>
         </p>
     </div>
@@ -85,7 +89,7 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    {% if request.user.is_authenticated and request.user == recipe.author %}
+    {% if user.is_authenticated %}
         <div class="leave-comment wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h3>Leave your comment</h3>
             <form class="site-form" action="{% url 'recipes:add_comment' recipe_pk=recipe.pk %}" method="post">
@@ -94,6 +98,8 @@
                 <button type="submit" class="btn btn-default btn-lg">Comment</button>
             </form>
         </div>
+    {% else %}
+        <a href="{% url 'accounts:login' %}">You must be logged to post a comment.</a>
     {% endif %}
     <div class="three-com">
         <h3 class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">{{ comments.count }} Comments <span>on</span>
@@ -102,7 +108,7 @@
         {% for comment in comments %}
             <div class="tom-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <div class="tom">
-                    <img src="{{ comment.user.profile.avatar.url }}" alt=" "/>
+                    <img class="avatar" src="{{ comment.user.profile.avatar.url }}" alt=" "/>
                 </div>
                 <div class="tom-right">
                     <div class="Hardy">

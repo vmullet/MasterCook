@@ -19,14 +19,13 @@
     <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">Latest Recipes</h1>
     <div class="event-grids">
         {% for recipe in recipes %}
-        <div class="col-md-4 event-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="col-md-4 event-grid wow flipInY recipe-list" data-wow-duration="1000ms" data-wow-delay="300ms">
             <p class="dte">{{ recipe.created_at }}</p>
-            <img src="{{ recipe.thumbnail.url }}" alt=" " class="img-responsive"/>
+            <img src="{{ recipe.thumbnail.url }}" alt=" " class="recipe-thumbnail"/>
             <div class="nobis">
-                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}">{{ recipe.name }}<span> maxime placeat facere</span></a>
+                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}">{{ recipe.name }}<span>{{ recipe.author.first_name }}  {{ recipe.author.last_name }}</span></a>
             </div>
-            <p class="quod">Nam libero tempore, cum soluta nobis est eligendi optio
-                cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+            <p class="quod">{{ recipe.get_short_description }}</p>
             <div class="more">
                 <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}" class="hvr-curl-bottom-right">Read More</a>
             </div>

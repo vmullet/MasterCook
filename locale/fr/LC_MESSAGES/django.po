@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-24 17:23+0200\n"
+"POT-Creation-Date: 2018-06-25 17:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,27 +59,26 @@ msgid "page.title.login"
 msgstr "MasterCook - Se Connecter"
 
 #: .\accounts\templates\accounts\accounts_login.html:21
-#: .\accounts\templates\accounts\accounts_login.html:52
+#: .\accounts\templates\accounts\accounts_login.html:50
 #: .\templates\base_layout.html:86
 msgid "account.login"
 msgstr "Se Connecter"
 
-#: .\accounts\templates\accounts\accounts_login.html:46
+#: .\accounts\templates\accounts\accounts_login.html:44
 msgid "account.not_member_message"
 msgstr "Pas encore un Cooker ? Inscrivez-vous dès maintenant :)"
 
 #: .\accounts\templates\accounts\accounts_password_edit.html:7
-#, fuzzy
-#| msgid "page.title.home_recipes"
 msgid "page.title.change_password"
 msgstr "Modifier mon mot de passe"
 
 #: .\accounts\templates\accounts\accounts_password_edit.html:21
+#: .\templates\base_layout.html:77
 msgid "account.change_password"
 msgstr "Modifier mon mot de passe"
 
-#: .\accounts\templates\accounts\accounts_password_edit.html:54
-#: .\accounts\templates\accounts\accounts_profile_edit.html:85
+#: .\accounts\templates\accounts\accounts_password_edit.html:51
+#: .\accounts\templates\accounts\accounts_profile_edit.html:78
 msgid "form.save"
 msgstr "Sauvegarder"
 
@@ -101,14 +100,94 @@ msgid "page.title.signup"
 msgstr "MasterCook - S'inscrire"
 
 #: .\accounts\templates\accounts\accounts_signup.html:21
-#: .\accounts\templates\accounts\accounts_signup.html:79
+#: .\accounts\templates\accounts\accounts_signup.html:73
 #: .\templates\base_layout.html:87
 msgid "account.signup"
 msgstr "S'inscrire"
 
+#: .\recipes\forms.py:8
+msgid "form.recipe.name"
+msgstr "Titre de la recette"
+
+#: .\recipes\forms.py:11
+msgid "form.recipe_name.placeholder"
+msgstr "Veuillez entrer le titre de la recette"
+
+#: .\recipes\forms.py:14
+msgid "form.recipe.type"
+msgstr "Type de plat"
+
+#: .\recipes\forms.py:19
+msgid "form.recipe.country"
+msgstr "Pays"
+
+#: .\recipes\forms.py:24
+msgid "form.recipe.skill"
+msgstr "Compétence requise"
+
+#: .\recipes\forms.py:29
+msgid "form.recipe.description"
+msgstr "Description de la recette"
+
+#: .\recipes\forms.py:32
+msgid "form.recipe.description.placeholder"
+msgstr "Veuillez entrer la description de la recette"
+
+#: .\recipes\forms.py:35 .\recipes\forms.py:75
+msgid "form.recipe.thumbnail"
+msgstr "Image principale"
+
+#: .\recipes\forms.py:40
+msgid "form.recipe.preparation_time"
+msgstr "Temps de préparation"
+
+#: .\recipes\forms.py:43
+msgid "form.recipe.preparation_time.placeholder"
+msgstr "Veuillez entrer le temps de préparation"
+
+#: .\recipes\forms.py:46
+msgid "form.recipe.cooking_time"
+msgstr "Temps de cuisson"
+
+#: .\recipes\forms.py:49
+msgid "form.recipe.cooking_time.placeholder"
+msgstr "Veuillez entrer le temps de cuisson"
+
+#: .\recipes\forms.py:52
+msgid "form.recipe.cooling_time"
+msgstr "Temps de repos (si nécessaire)"
+
+#: .\recipes\forms.py:55
+msgid "form.recipe.cooling_time.placeholder"
+msgstr "Veuillez entrer le temps de repos"
+
+#: .\recipes\forms.py:96
+msgid "form.recipe_cost.cost"
+msgstr "Coût de la recette"
+
+#: .\recipes\forms.py:99
+msgid "form.recipe_cost.cost.placeholder"
+msgstr "Veuillez entrer le coût de la recette"
+
+#: .\recipes\forms.py:102
+msgid "form.recipe_cost.currency"
+msgstr "Monnaie"
+
+#: .\recipes\templates\recipes\recipe_edit.html:7
+msgid "page.title.edit_recipe"
+msgstr "MasterCook - Editer la recette"
+
+#: .\recipes\templates\recipes\recipe_edit.html:18
+msgid "form.edit_recipe"
+msgstr "Editer la recette"
+
 #: .\recipes\templates\recipes\recipes_create.html:7
 msgid "page.title.create_recipe"
 msgstr "MasterCook - Créer une recette"
+
+#: .\recipes\templates\recipes\recipes_create.html:19
+msgid "form.create_recipe"
+msgstr "Créer une nouvelle recette"
 
 #: .\recipes\templates\recipes\recipes_details.html:7
 msgid "page.title.details_recipe"
@@ -138,12 +217,6 @@ msgstr "Mon Profil"
 msgid "account.see_profile"
 msgstr "Voir Mon Profil"
 
-#: .\templates\base_layout.html:77
-#, fuzzy
-#| msgid "account.see_profile"
-msgid "account.edit_password"
-msgstr "Voir Mon Profil"
-
 #: .\templates\base_layout.html:79
 msgid "recipe.new_recipe"
 msgstr "Nouvelle Recette"
@@ -155,9 +228,3 @@ msgstr "Se Déconnecter"
 #: .\templates\base_layout.html:92
 msgid "page.languages_menu"
 msgstr "Langues"
-
-#~ msgid "form.avatar.placeholder"
-#~ msgstr "Avatar"
-
-#~ msgid "form.country.placeholder"
-#~ msgstr "Nom d'utilisateur"

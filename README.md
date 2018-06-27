@@ -4,9 +4,14 @@
 
 ```
 pip install django
+pip install Pillow
 pip install python-slugify
 ```
 https://github.com/un33k/python-slugify
+
+- Then, you must have getText installed for translations
+
+https://mlocati.github.io/articles/gettext-iconv-windows.html
 
 ## Set up
 
@@ -42,5 +47,6 @@ python manage.py migrate
 - Once you have done that, simply run the server
 
 ```
+django-admin compilemessages
 python manage.py runserver
 ```

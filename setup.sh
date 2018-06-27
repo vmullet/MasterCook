@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Setup environment
+#pip install django
+pip install Pillow
+pip install python-slugify
+
 # Migrations for generic app
 python manage.py makemigrations generic
 python manage.py migrate generic
@@ -23,5 +28,11 @@ python manage.py migrate
 # Load Initial data
 python manage.py loaddata
 
+# Compile messages for translations (getText must be installed)
+django-admin compilemessages
+
 # Run the server
 python manage.py runserver
+
+# Open project in the web browser
+python -mwebbrowser http://127.0.0.1:8000/

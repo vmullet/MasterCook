@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 # Setup environment
-#pip install django
+
+mkvirtualenv mastercook-env
+workon mastercook-env
+
+# Install pip dependencies
+pip install django
 pip install Pillow
 pip install python-slugify
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recipe, RecipeComment, RecipeRate
+from .models import Recipe, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep
 from . import forms as recipeforms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -16,7 +16,7 @@ def recipe_homepage(request):
 
 
 def recipe_list(request):
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.all().order_by('-created_at')
     return render(request, 'recipes/recipes_list.html',
                   {
                       'recipes': recipes
@@ -25,7 +25,9 @@ def recipe_list(request):
 
 def recipe_details(request, recipe_slug):
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
-    comments = RecipeComment.objects.filter(recipe=recipe)
+    recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
+    recipe_steps = RecipeStep.objects.filter(recipe=recipe)
+    comments = RecipeComment.objects.filter(recipe=recipe).order_by('-created_at')
     recipe_rate = None
     if request.user.is_authenticated:
         recipe_rate = RecipeRate.objects.filter(recipe=recipe, user=request.user).first()
@@ -35,6 +37,8 @@ def recipe_details(request, recipe_slug):
     return render(request, 'recipes/recipes_details.html',
                   {
                       'recipe': recipe,
+                      'recipe_ingredients': recipe_ingredients,
+                      'recipe_steps': recipe_steps,
                       'comments': comments,
                       'comment_form': comment_form,
                       'rate_form': rate_form,

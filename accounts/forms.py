@@ -2,7 +2,6 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
-from django.contrib.admin import widgets
 from .models import CookerProfile
 from generic.models import Country
 
@@ -144,9 +143,10 @@ class CookerChangePasswordForm(PasswordChangeForm):
 
 
 class CookerProfileForm(forms.ModelForm):
-    date_of_birth = forms.DateField(widget=widgets.AdminDateWidget(
+    date_of_birth = forms.DateField(widget=forms.DateInput(
         attrs={
             'class': 'form-control',
+            'type': 'date',
             'placeholder': _("form.date_birth.placeholder"),
             'aria-describedby': 'sizing-addon1',
         }

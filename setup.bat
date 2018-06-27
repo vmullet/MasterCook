@@ -44,4 +44,6 @@ echo Server Starting...
 
 python manage.py runserver
 
+REM Open web browser
+
 start "" http://127.0.0.1:8000/

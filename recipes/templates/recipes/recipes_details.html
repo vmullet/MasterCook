@@ -106,7 +106,8 @@
             <label>{{ recipe.name }}</label>
         </h3>
         {% for comment in comments %}
-            <div class="tom-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            {% if comment.parent is None %}
+                <div class="tom-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <div class="tom">
                     <img class="avatar" src="{{ comment.user.profile.avatar.url }}" alt=" "/>
                 </div>
@@ -120,13 +121,18 @@
                         <p><label>{{ comment.created_at }}</label></p>
                     </div>
                     <div class="reply">
-                        <a href="#">Reply</a>
+                        <a href="{% url 'recipes:reply_to_comment' comment_pk=comment.pk %}">Reply</a>
                     </div>
                     <div class="clearfix"></div>
                     <p class="lorem">{{ comment.comment }}</p>
                 </div>
                 <div class="clearfix"></div>
-            </div>
+                {% if comment.get_children.count == 0 %}
+                    </div>
+                {% else %}
+                    
+                {% endif %}
+            {% endif %}
         {% endfor %}
     </div>
 

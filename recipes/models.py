@@ -125,10 +125,15 @@ class RecipeComment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return 'Comment from %s for recipe %s' % (self.user.username,
-                                                  self.recipe.name)
+        return 'Comment %d from %s for recipe %s' % (self.pk,
+                                                     self.user.username,
+                                                     self.recipe.name)
+
+    def get_children(self):
+        return RecipeComment.objects.filter(parent=self)
 
 
 class RecipeRate(models.Model):

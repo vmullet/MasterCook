@@ -171,21 +171,6 @@ def recipe_add_ingredient(request, recipe_pk):
 
 
 @login_required(login_url="accounts:login")
-def recipe_add_comment(request, recipe_pk):
-    if request.method == 'POST':
-        recipe = get_object_or_404(Recipe, pk=recipe_pk)
-        comment_form = recipeforms.RecipeCommentForm(request.POST)
-        if comment_form.is_valid():
-            recipe_comment = comment_form.save(commit=False)
-            recipe_comment.recipe = recipe
-            recipe_comment.user = request.user
-            recipe_comment.save()
-            messages.success(request, 'The comment was added successfully')
-        return redirect('recipes:details', recipe_slug=recipe.slug)
-    return redirect('recipes:homepage')
-
-
-@login_required(login_url="accounts:login")
 def recipe_add_rate(request, recipe_pk):
     if request.method == 'POST':
         recipe = get_object_or_404(Recipe, pk=recipe_pk)
@@ -203,3 +188,41 @@ def recipe_add_rate(request, recipe_pk):
             print(recipe_rate.rate)
         return redirect('recipes:details', recipe_slug=recipe.slug)
     return redirect('recipes:homepage')
+
+
+@login_required(login_url="accounts:login")
+def recipe_add_comment(request, recipe_pk):
+    if request.method == 'POST':
+        recipe = get_object_or_404(Recipe, pk=recipe_pk)
+        comment_form = recipeforms.RecipeCommentForm(request.POST)
+        if comment_form.is_valid():
+            recipe_comment = comment_form.save(commit=False)
+            recipe_comment.recipe = recipe
+            recipe_comment.user = request.user
+            recipe_comment.save()
+            messages.success(request, 'The comment was added successfully')
+        return redirect('recipes:details', recipe_slug=recipe.slug)
+    return redirect('recipes:homepage')
+
+
+def recipe_reply_comment(request, comment_pk):
+    comment = get_object_or_404(RecipeComment, pk=comment_pk)
+    if request.method == 'POST':
+        comment_form = recipeforms.RecipeCommentForm(request.POST)
+        if comment_form.is_valid():
+            recipe_comment = comment_form.save(commit=False)
+            recipe_comment.recipe = comment.recipe
+            recipe_comment.user = request.user
+            recipe_comment.parent = comment
+            recipe_comment.save()
+            messages.success(request, 'The comment was added successfully')
+            return redirect('recipes:details', recipe_slug=comment.recipe.slug)
+    else:
+        comment_form = recipeforms.RecipeCommentForm
+        return render(request, 'recipes/recipes_reply_to_comment.html',
+                      {
+                          'comment_form': comment_form,
+                          'comment': comment
+                      })
+
+

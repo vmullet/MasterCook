@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-28 14:15+0200\n"
+"POT-Creation-Date: 2018-06-28 14:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -215,6 +215,20 @@ msgstr "Nouvelle recette"
 msgid "Search results"
 msgstr "Résultats de la recherche"
 
+#: .\recipes\templates\recipes\recipe_search.html:18
+msgid "Results"
+msgstr "Résultats"
+
+#: .\recipes\templates\recipes\recipe_search.html:25
+#: .\recipes\templates\recipes\recipes_list.html:26
+msgid "By"
+msgstr "Par"
+
+#: .\recipes\templates\recipes\recipe_search.html:29
+#: .\recipes\templates\recipes\recipes_list.html:30
+msgid "Read More..."
+msgstr "Lire..."
+
 #: .\recipes\templates\recipes\recipes_create.html:7
 msgid "Create Recipe"
 msgstr "Créer une recette"
@@ -299,14 +313,6 @@ msgstr "Liste des recettes"
 #: .\recipes\templates\recipes\recipes_list.html:19
 msgid "Latest Recipes"
 msgstr "Dernières recettes"
-
-#: .\recipes\templates\recipes\recipes_list.html:26
-msgid "By"
-msgstr "Par"
-
-#: .\recipes\templates\recipes\recipes_list.html:30
-msgid "Read More..."
-msgstr "Lire..."
 
 #: .\recipes\templates\recipes\recipes_reply_to_comment.html:7
 #: .\recipes\templates\recipes\recipes_reply_to_comment.html:20

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import User
 from generic.models import Country, UnitMeasure, Currency
 from ingredients.models import Ingredient
@@ -70,6 +71,9 @@ class Recipe(models.Model):
 
     def get_short_description(self):
         return '%s...' % self.description[:100]
+
+    def get_median_rate(self):
+        return str(RecipeRate.objects.filter(recipe=self).aggregate(Avg('rate')).get('rate__avg')).replace(',', '.')
 
 
 class RecipeStep(models.Model):

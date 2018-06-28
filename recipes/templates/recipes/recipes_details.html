@@ -51,6 +51,16 @@
             {{ recipe.description }}
             </span>
         </p>
+    <br>
+        <div class="col-lg-10 footer-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h3 style="color:black">{% trans "Other photos" %}</h3>
+            {% for photo in recipe_photos %}
+                <div class="footer-grd">
+                    <a href="{{ photo.image.url }}"><img src="{{ photo.image.url }}" class="img-responsive" alt=""/></a>
+                </div>
+            {% endfor %}
+            <div class="clearfix"></div>
+        </div>
     </div>
     <div class="clearfix"></div>
     <div class="tags-cate">

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recipe, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep
+from .models import Recipe, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep, RecipeImage
 from . import forms as recipeforms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -11,7 +11,6 @@ from django.conf import settings
 
 
 # Create your views here.
-
 
 def recipe_homepage(request):
     return render(request, 'recipes/recipes_homepage.html')
@@ -29,6 +28,7 @@ def recipe_details(request, recipe_slug):
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
     recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
     recipe_steps = RecipeStep.objects.filter(recipe=recipe)
+    recipe_photos = RecipeImage.objects.filter(recipe=recipe)
     comments = RecipeComment.objects.filter(recipe=recipe).order_by('-created_at')
     if 'num_page' in request.GET:
         num_page = request.GET['num_page']
@@ -46,6 +46,7 @@ def recipe_details(request, recipe_slug):
                       'recipe': recipe,
                       'recipe_ingredients': recipe_ingredients,
                       'recipe_steps': recipe_steps,
+                      'recipe_photos': recipe_photos,
                       'comment_paginator': paginator.page(num_page),
                       'current_page': num_page,
                       'range_page': range(1, paginator.num_pages + 1),
@@ -58,7 +59,12 @@ def recipe_details(request, recipe_slug):
 
 def recipe_search(request):
     if 'search' in request.GET:
-        return render(request, 'recipes/recipe_search.html')
+        keyword = request.GET['search']
+        results = Recipe.objects.filter(name__contains=keyword)
+        return render(request, 'recipes/recipe_search.html', {
+            'results': results,
+            'keyword': keyword
+        })
     return redirect('recipes:list')
 
 

@@ -230,7 +230,7 @@ class RecipeRateForm(forms.ModelForm):
     rate = forms.CharField(widget=forms.TextInput(
         attrs={
             'min': 0,
-            'max': 10,
+            'max': 5,
             'step': 0.5,
             'data-size': 'xs',
         }

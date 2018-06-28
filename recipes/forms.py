@@ -43,19 +43,19 @@ class RecipeCreateForm(forms.ModelForm):
             'class': 'form-control',
         }
     ))
-    preparation_time = forms.DurationField(label=_('form.recipe.preparation_time'), widget=forms.TimeInput(
+    preparation_time = forms.IntegerField(label=_('form.recipe.preparation_time'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
             'placeholder': _("form.recipe.preparation_time.placeholder"),
         }
     ), localize=True)
-    cooking_time = forms.DurationField(label=_('form.recipe.cooking_time'), widget=forms.TimeInput(
+    cooking_time = forms.IntegerField(label=_('form.recipe.cooking_time'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
             'placeholder': _("form.recipe.cooking_time.placeholder"),
         }
     ), localize=True)
-    cooling_time = forms.DurationField(label=_('form.recipe.cooling_time'), widget=forms.TimeInput(
+    cooling_time = forms.IntegerField(label=_('form.recipe.cooling_time'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
             'placeholder': _("form.recipe.cooling_time.placeholder"),

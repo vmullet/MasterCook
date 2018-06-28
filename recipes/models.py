@@ -47,9 +47,9 @@ class Recipe(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField()
     thumbnail = models.ImageField(default='default/default_recipe.png', upload_to='images/recipes', blank=True)
-    preparation_time = models.DurationField(default=0)
-    cooking_time = models.DurationField(default=0)
-    cooling_time = models.DurationField(default=0)
+    preparation_time = models.IntegerField(default=0)
+    cooking_time = models.IntegerField(default=0)
+    cooling_time = models.IntegerField(default=0)
     median_rate = models.FloatField(default=0)
     published = models.BooleanField(default=False)
     # Foreign Keys

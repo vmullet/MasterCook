@@ -102,7 +102,7 @@
     {% else %}
         <a href="{% url 'accounts:login' %}">You must be logged to post a comment.</a>
     {% endif %}
-    <div class="three-com">
+    <div class="three-com" id="block-comment">
         <h3 class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">{{ comment_paginator. }} Comments
             <span>on</span>
             <label>{{ recipe.name }}</label>
@@ -156,19 +156,35 @@
         {% endfor %}
     </div>
     <ul class="pagination pagination-lg">
-        <li class="{% if comment_paginator.has_previous %}active{% else %}disabled{% endif %}">
-            <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ num_page }}"><i
-                    class="fa fa-angle-left">«</i></a>
-        </li>
+        {% if comment_paginator.has_previous %}
+            <li>
+                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ comment_paginator.previous_page_number }}">
+                    <i class="fa fa-angle-left">«</i>
+                </a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <a href="#"><i class="fa fa-angle-left">«</i></a>
+            </li>
+        {% endif %}
         {% for num_page in range_page %}
-            <li><a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ num_page }}">{{ num_page }}</a>
+            <li {% if num_page == current_page|add:"0" %}class="active"{% endif %}>
+                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ num_page }}">{{ num_page }}</a>
             </li>
         {% endfor %}
-        <li class="{% if comment_paginator.has_next %}active{% else %}disabled{% endif %}">
-            <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ next_page }}"><i
-                class="fa fa-angle-right">»</i>
-            </a>
-        </li>
+        {% if comment_paginator.has_next %}
+            <li>
+                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ comment_paginator.next_page_number }}">
+                    <i class=" fa fa-angle-right">»</i>
+                </a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <a href="#block-comment">
+                    <i class="fa fa-angle-right">»</i>
+                </a>
+            </li>
+        {% endif %}
     </ul>
 
 {% endblock %}

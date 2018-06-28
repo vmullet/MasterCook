@@ -1,0 +1,35 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Search Recipe" %}
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+        <div class="container">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Search results" %} ({{ results.count }} {% trans "Results" %})</h1>
+    <div class="event-grids">
+        {% for result in results %}
+        <div class="col-md-4 event-grid wow flipInY recipe-list" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <p class="dte">{{ recipe.created_at }}</p>
+            <img src="{{ recipe.thumbnail.url }}" alt=" " class="recipe-thumbnail"/>
+            <div class="nobis">
+                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}">{{ recipe.name }}<span>{% trans "By" %} {{ recipe.author.first_name }}  {{ recipe.author.last_name }}</span></a>
+            </div>
+            <p class="quod">{{ recipe.get_short_description }}</p>
+            <div class="more">
+                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}" class="hvr-curl-bottom-right">{% trans "Read More..." %}</a>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="clearfix"></div>
+    </div>
+{% endblock %}

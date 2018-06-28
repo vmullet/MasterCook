@@ -56,6 +56,12 @@ def recipe_details(request, recipe_slug):
                   })
 
 
+def recipe_search(request):
+    if 'search' in request.GET:
+        return render(request, 'recipes/recipe_search.html')
+    return redirect('recipes:list')
+
+
 @login_required(login_url="accounts:login")
 def recipe_create(request):
     if request.method == 'POST':
@@ -219,6 +225,7 @@ def recipe_add_comment(request, recipe_pk):
     return redirect('recipes:homepage')
 
 
+@login_required(login_url="accounts:login")
 def recipe_reply_comment(request, comment_pk):
     comment = get_object_or_404(RecipeComment, pk=comment_pk)
     if request.method == 'POST':

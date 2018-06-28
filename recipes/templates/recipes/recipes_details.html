@@ -23,8 +23,10 @@
 
     <div class="single-left wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">
         {% if user.is_authenticated and user == recipe.author %}
-            <a href="{% url 'recipes:delete' recipe_pk=recipe.pk %}" class="btn btn-danger btn-md">{% trans "Remove" %}</a>
-            <a href="{% url 'recipes:edit' recipe_slug=recipe.slug %}" class="btn btn-warning btn-md">{% trans "Edit" %}</a>
+            <a href="{% url 'recipes:delete' recipe_pk=recipe.pk %}" class="btn btn-danger btn-md">{% trans "Remove" %}
+                <i class="fas fa-trash-alt fa-lg"></i></a>
+            <a href="{% url 'recipes:edit' recipe_slug=recipe.slug %}"
+               class="btn btn-warning btn-md">{% trans "Edit" %} <i class="fas fa-edit fa-lg"></i></a>
         {% endif %}
         <p>{% trans "Created On" %} <span>{{ recipe.created_at }}</span></p>
         {% if user.is_authenticated %}
@@ -103,7 +105,8 @@
         <a href="{% url 'accounts:login' %}">{% trans "You must be logged to post a comment." %}</a>
     {% endif %}
     <div class="three-com" id="block-comment">
-        <h3 class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">{{ number_comments }} {% trans "Comments" %}
+        <h3 class="wow fadeInUp" data-wow-duration="1000ms"
+            data-wow-delay="300ms">{{ number_comments }} {% trans "Comments" %}
             <span>{% trans "on" %}</span>
             <label>{{ recipe.name }}</label>
         </h3>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-28 13:28+0200\n"
+"POT-Creation-Date: 2018-06-28 14:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,8 +83,6 @@ msgid "MasterCook - Change Password"
 msgstr "MasterCook - Changer mot de passe"
 
 #: .\accounts\templates\accounts\accounts_password_edit.html:21
-#, fuzzy
-#| msgid "account.change_password"
 msgid "Change Password"
 msgstr "Modifier mon mot de passe"
 
@@ -117,74 +115,70 @@ msgid "Signup"
 msgstr "S'inscrire"
 
 #: .\recipes\forms.py:14
-msgid "form.recipe.name"
-msgstr ""
+msgid "Recipe name"
+msgstr "Recettes"
 
-#: .\recipes\forms.py:17 .\recipes\forms.py:139
-msgid "form.recipe_name.placeholder"
-msgstr ""
+#: .\recipes\forms.py:17
+msgid "Please enter the recipe name"
+msgstr "Veuillez saisir le nom de la recette"
 
 #: .\recipes\forms.py:20
-msgid "form.recipe.type"
-msgstr ""
+msgid "Type of the recipe"
+msgstr "Type de la recette"
 
 #: .\recipes\forms.py:25
-msgid "form.recipe.country"
-msgstr ""
+msgid "Recipe origin country"
+msgstr "Pays d'origine de la recette"
 
 #: .\recipes\forms.py:30
-msgid "form.recipe.skill"
-msgstr ""
+msgid "Recipe skill needed"
+msgstr "Niveau de Compétence nécessaire"
 
 #: .\recipes\forms.py:35
-msgid "form.recipe.description"
-msgstr ""
+#, fuzzy
+#| msgid "Details of Recipe"
+msgid "Description of the recipe"
+msgstr "Détails de la recette"
 
 #: .\recipes\forms.py:38
-msgid "form.recipe.description.placeholder"
-msgstr ""
+msgid "Please enter the description of the recipe"
+msgstr "Veuillez entrer la description de la recette"
 
-#: .\recipes\forms.py:41 .\recipes\forms.py:85
-msgid "form.recipe.thumbnail"
-msgstr ""
+#: .\recipes\forms.py:41 .\recipes\forms.py:82
+msgid "Main picture of the recipe"
+msgstr "Image principale de la recette"
 
 #: .\recipes\forms.py:46
 #, fuzzy
 #| msgid "Preparation time"
-msgid "form.recipe.preparation_time"
+msgid "Preparation time (in minutes)"
 msgstr "Temps de préparation"
 
-#: .\recipes\forms.py:49
-msgid "form.recipe.preparation_time.placeholder"
-msgstr ""
+#: .\recipes\forms.py:51
+#, fuzzy
+#| msgid "Cooking time"
+msgid "Cooking time (in minutes)"
+msgstr "Temps de cuisson"
 
-#: .\recipes\forms.py:52
-msgid "form.recipe.cooking_time"
-msgstr ""
+#: .\recipes\forms.py:56
+msgid "Cooling time (in minutes), if needed"
+msgstr "Temps de repos (en minutes), si nécessaire"
 
-#: .\recipes\forms.py:55
-msgid "form.recipe.cooking_time.placeholder"
-msgstr ""
-
-#: .\recipes\forms.py:58
-msgid "form.recipe.cooling_time"
-msgstr ""
-
-#: .\recipes\forms.py:61
-msgid "form.recipe.cooling_time.placeholder"
-msgstr ""
+#: .\recipes\forms.py:109
+msgid "Cost of the recipe"
+msgstr "Coût de la recette"
 
 #: .\recipes\forms.py:112
-msgid "form.recipe_cost.cost"
-msgstr ""
+msgid "Please enter the cost of the recipe"
+msgstr "Veuillez entrer un coût pour la recette"
 
 #: .\recipes\forms.py:115
-msgid "form.recipe_cost.cost.placeholder"
-msgstr ""
+msgid "Currency (for the cost)"
+msgstr "Monnaie"
 
-#: .\recipes\forms.py:118
-msgid "form.recipe_cost.currency"
-msgstr ""
+#: .\recipes\forms.py:136
+msgid "Title / Description of the picture"
+msgstr "Titre / Description de l'image"
 
 #: .\recipes\templates\recipes\recipe_edit.html:7
 #: .\recipes\templates\recipes\recipe_edit.html:18
@@ -192,7 +186,7 @@ msgid "Edit Recipe"
 msgstr "Editer la recette"
 
 #: .\recipes\templates\recipes\recipe_edit.html:31
-#: .\recipes\templates\recipes\recipes_details.html:27
+#: .\recipes\templates\recipes\recipes_details.html:29
 msgid "Edit"
 msgstr "Editer"
 
@@ -211,9 +205,17 @@ msgstr "Ajouter un ingrédient"
 msgid "Add Step"
 msgstr "Ajouter une étape"
 
-#: .\recipes\templates\recipes\recipes_create.html:7
+#: .\recipes\templates\recipes\recipe_search.html:7
 #, fuzzy
-#| msgid "Create New Recipe"
+#| msgid "New Recipe"
+msgid "Search Recipe"
+msgstr "Nouvelle recette"
+
+#: .\recipes\templates\recipes\recipe_search.html:18
+msgid "Search results"
+msgstr "Résultats de la recherche"
+
+#: .\recipes\templates\recipes\recipes_create.html:7
 msgid "Create Recipe"
 msgstr "Créer une recette"
 
@@ -229,59 +231,59 @@ msgstr "Détails de la recette"
 msgid "Remove"
 msgstr "Supprimer"
 
-#: .\recipes\templates\recipes\recipes_details.html:29
+#: .\recipes\templates\recipes\recipes_details.html:31
 msgid "Created On"
 msgstr "Créé le"
 
-#: .\recipes\templates\recipes\recipes_details.html:37
+#: .\recipes\templates\recipes\recipes_details.html:39
 msgid "Rate"
 msgstr "Noter"
 
-#: .\recipes\templates\recipes\recipes_details.html:41
+#: .\recipes\templates\recipes\recipes_details.html:43
 msgid "You must be logged to create a recipe"
 msgstr "Vous devez être connecté pour créer une recette"
 
-#: .\recipes\templates\recipes\recipes_details.html:47
+#: .\recipes\templates\recipes\recipes_details.html:49
 msgid "Description"
 msgstr "Description"
 
-#: .\recipes\templates\recipes\recipes_details.html:58
+#: .\recipes\templates\recipes\recipes_details.html:60
 msgid "Preparation time"
 msgstr "Temps de préparation"
 
-#: .\recipes\templates\recipes\recipes_details.html:59
+#: .\recipes\templates\recipes\recipes_details.html:61
 msgid "Cooking time"
 msgstr "Temps de cuisson"
 
-#: .\recipes\templates\recipes\recipes_details.html:60
+#: .\recipes\templates\recipes\recipes_details.html:62
 msgid "Cooling time"
 msgstr "Temps de repos"
 
-#: .\recipes\templates\recipes\recipes_details.html:75
+#: .\recipes\templates\recipes\recipes_details.html:77
 msgid "No Ingredients yet"
 msgstr "Aucun ingrédient pour l'instant"
 
-#: .\recipes\templates\recipes\recipes_details.html:87
+#: .\recipes\templates\recipes\recipes_details.html:89
 msgid "No steps yet"
 msgstr "Aucune étape pour l'instant"
 
-#: .\recipes\templates\recipes\recipes_details.html:95
+#: .\recipes\templates\recipes\recipes_details.html:97
 msgid "Leave your comment"
 msgstr "Laisser un commentaire"
 
-#: .\recipes\templates\recipes\recipes_details.html:99
+#: .\recipes\templates\recipes\recipes_details.html:101
 msgid "Comment"
 msgstr "Commenter"
 
-#: .\recipes\templates\recipes\recipes_details.html:103
+#: .\recipes\templates\recipes\recipes_details.html:105
 msgid "You must be logged to post a comment."
 msgstr "Vous devez être connecté pour poster un commentaire"
 
-#: .\recipes\templates\recipes\recipes_details.html:106
+#: .\recipes\templates\recipes\recipes_details.html:109
 msgid "Comments"
 msgstr "Commentaire(s)"
 
-#: .\recipes\templates\recipes\recipes_details.html:107
+#: .\recipes\templates\recipes\recipes_details.html:110
 msgid "on"
 msgstr "sur"
 
@@ -293,6 +295,10 @@ msgstr "Accueil"
 #: .\recipes\templates\recipes\recipes_list.html:7
 msgid "Recipes List"
 msgstr "Liste des recettes"
+
+#: .\recipes\templates\recipes\recipes_list.html:19
+msgid "Latest Recipes"
+msgstr "Dernières recettes"
 
 #: .\recipes\templates\recipes\recipes_list.html:26
 msgid "By"

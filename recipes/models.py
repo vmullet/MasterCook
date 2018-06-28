@@ -143,7 +143,7 @@ class RecipeRate(models.Model):
     """
     Model to represent a rate done by a user to a recipe
     """
-    rate = models.IntegerField(default=-1)
+    rate = models.FloatField(default=-1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

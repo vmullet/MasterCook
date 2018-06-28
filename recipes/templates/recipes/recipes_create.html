@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "page.title.create_recipe" %}
+    {% trans "Create Recipe" %}
 {% endblock %}
 
 {% block banner %}
@@ -16,7 +16,7 @@
 
 {% block content %}
 
-    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'form.create_recipe' %}</h1>
+    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'Create New Recipe' %}</h1>
     <br>
     <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <form class="site-form" action="{% url 'recipes:create' %}" method="post" enctype="multipart/form-data">

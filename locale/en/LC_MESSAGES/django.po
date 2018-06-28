@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 17:52+0200\n"
+"POT-Creation-Date: 2018-06-28 13:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,213 +18,367 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\forms.py:14 .\accounts\forms.py:38
-msgid "form.username.placeholder"
-msgstr "Username"
+#: .\accounts\forms.py:13 .\accounts\forms.py:37
+msgid "Username"
+msgstr ""
 
-#: .\accounts\forms.py:21 .\accounts\forms.py:66 .\accounts\forms.py:133
-msgid "form.password.placeholder"
-msgstr "Password"
+#: .\accounts\forms.py:20 .\accounts\forms.py:65
+#, fuzzy
+#| msgid "account.change_password"
+msgid "Password"
+msgstr "Modify Password"
 
-#: .\accounts\forms.py:45 .\accounts\forms.py:94
-msgid "form.firstname.placeholder"
-msgstr "First Name"
+#: .\accounts\forms.py:44 .\accounts\forms.py:93
+msgid "First Name"
+msgstr ""
 
-#: .\accounts\forms.py:52 .\accounts\forms.py:101
-msgid "form.lastname.placeholder"
-msgstr "Last Name"
+#: .\accounts\forms.py:51 .\accounts\forms.py:100
+msgid "Last Name"
+msgstr ""
 
-#: .\accounts\forms.py:59 .\accounts\forms.py:108
-msgid "form.email.placeholder"
-msgstr "Email Address"
+#: .\accounts\forms.py:58 .\accounts\forms.py:107
+msgid "Email"
+msgstr ""
 
-#: .\accounts\forms.py:73 .\accounts\forms.py:140
-msgid "form.password2.placeholder"
-msgstr "Re-enter Password"
+#: .\accounts\forms.py:72
+msgid "Re-enter your password"
+msgstr ""
 
-#: .\accounts\forms.py:126
-msgid "form.old_password.placeholder"
-msgstr "Old Password"
+#: .\accounts\forms.py:125
+#, fuzzy
+#| msgid "account.change_password"
+msgid "Old Password"
+msgstr "Modify Password"
+
+#: .\accounts\forms.py:132
+#, fuzzy
+#| msgid "account.change_password"
+msgid "New Password"
+msgstr "Modify Password"
+
+#: .\accounts\forms.py:139
+msgid "Re-enter the new password"
+msgstr ""
 
 #: .\accounts\forms.py:150
-msgid "form.date_birth.placeholder"
-msgstr "Date Of Birth"
+msgid "Date of birth"
+msgstr ""
 
 #: .\accounts\forms.py:157
-msgid "form.bio.placeholder"
-msgstr "Biography"
+msgid "Biography"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_login.html:7
-msgid "page.title.login"
-msgstr "MasterCook - Login"
+msgid "MasterCook - Login"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_login.html:21
 #: .\accounts\templates\accounts\accounts_login.html:50
-#: .\templates\base_layout.html:86
-msgid "account.login"
-msgstr "Login"
+#: .\templates\base_layout.html:91
+msgid "Login"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_login.html:44
-msgid "account.not_member_message"
-msgstr "Not a cooker yet ? Sign Up Now :)"
+msgid "Not a Cooker yet ? Please sign up :)"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_password_edit.html:7
-msgid "page.title.change_password"
-msgstr "Modify Password"
+msgid "MasterCook - Change Password"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_password_edit.html:21
-#: .\templates\base_layout.html:77
-msgid "account.change_password"
+#, fuzzy
+#| msgid "account.change_password"
+msgid "Change Password"
 msgstr "Modify Password"
 
 #: .\accounts\templates\accounts\accounts_password_edit.html:51
-#: .\accounts\templates\accounts\accounts_profile_edit.html:78
-msgid "form.save"
-msgstr "Save"
+#: .\accounts\templates\accounts\accounts_profile_edit.html:77
+msgid "Save"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_profile_edit.html:7
-msgid "page.title.my_profile"
-msgstr "My Profile"
+msgid "MasterCook - My Profile"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_profile_edit.html:21
 #: .\accounts\templates\accounts\accounts_profile_view.html:20
-msgid "account.profile"
-msgstr "Profile of"
+msgid "Profile of"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_profile_view.html:7
-msgid "page.title.profile_view"
-msgstr "Profile of"
+msgid "MasterCook - Profile of"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_signup.html:7
-msgid "page.title.signup"
-msgstr "SignUp"
+msgid "MasterCook - Signup"
+msgstr ""
 
 #: .\accounts\templates\accounts\accounts_signup.html:21
 #: .\accounts\templates\accounts\accounts_signup.html:73
-#: .\templates\base_layout.html:87
-msgid "account.signup"
-msgstr "Signup"
-
-#: .\recipes\forms.py:8
-msgid "form.recipe.name"
-msgstr "Recipe Name"
-
-#: .\recipes\forms.py:11
-msgid "form.recipe_name.placeholder"
-msgstr "Please enter a name for the recipe"
+#: .\templates\base_layout.html:92
+msgid "Signup"
+msgstr ""
 
 #: .\recipes\forms.py:14
+msgid "form.recipe.name"
+msgstr ""
+
+#: .\recipes\forms.py:17 .\recipes\forms.py:139
+#, fuzzy
+#| msgid "form.username.placeholder"
+msgid "form.recipe_name.placeholder"
+msgstr "Username"
+
+#: .\recipes\forms.py:20
 msgid "form.recipe.type"
-msgstr "Recipe Type"
+msgstr ""
 
-#: .\recipes\forms.py:19
+#: .\recipes\forms.py:25
 msgid "form.recipe.country"
-msgstr "Country"
+msgstr ""
 
-#: .\recipes\forms.py:24
+#: .\recipes\forms.py:30
 msgid "form.recipe.skill"
-msgstr "Skill level needed"
+msgstr ""
 
-#: .\recipes\forms.py:29
+#: .\recipes\forms.py:35
 msgid "form.recipe.description"
-msgstr "Recipe Description"
+msgstr ""
 
-#: .\recipes\forms.py:32
+#: .\recipes\forms.py:38
+#, fuzzy
+#| msgid "form.bio.placeholder"
 msgid "form.recipe.description.placeholder"
-msgstr "Please enter description"
+msgstr "Biography"
 
-#: .\recipes\forms.py:35 .\recipes\forms.py:75
+#: .\recipes\forms.py:41 .\recipes\forms.py:85
 msgid "form.recipe.thumbnail"
-msgstr "Main Picture for recipe"
+msgstr ""
 
-#: .\recipes\forms.py:40
+#: .\recipes\forms.py:46
+#, fuzzy
+#| msgid "form.recipe.preparation_time"
 msgid "form.recipe.preparation_time"
 msgstr "Preparation time"
 
-#: .\recipes\forms.py:43
-msgid "form.recipe.preparation_time.placeholder"
-msgstr "Please enter preparation time"
-
-#: .\recipes\forms.py:46
-msgid "form.recipe.cooking_time"
-msgstr "Cooking Time"
-
 #: .\recipes\forms.py:49
-msgid "form.recipe.cooking_time.placeholder"
-msgstr "Please enter cooking time"
+#, fuzzy
+#| msgid "form.firstname.placeholder"
+msgid "form.recipe.preparation_time.placeholder"
+msgstr "First Name"
 
 #: .\recipes\forms.py:52
-msgid "form.recipe.cooling_time"
-msgstr "Cooling time"
+msgid "form.recipe.cooking_time"
+msgstr ""
 
 #: .\recipes\forms.py:55
+#, fuzzy
+#| msgid "form.username.placeholder"
+msgid "form.recipe.cooking_time.placeholder"
+msgstr "Username"
+
+#: .\recipes\forms.py:58
+msgid "form.recipe.cooling_time"
+msgstr ""
+
+#: .\recipes\forms.py:61
+#, fuzzy
+#| msgid "form.email.placeholder"
 msgid "form.recipe.cooling_time.placeholder"
-msgstr "Please enter cooling time"
+msgstr "Email Address"
 
-#: .\recipes\forms.py:96
+#: .\recipes\forms.py:112
 msgid "form.recipe_cost.cost"
-msgstr "Recipe cost value"
+msgstr ""
 
-#: .\recipes\forms.py:99
+#: .\recipes\forms.py:115
+#, fuzzy
+#| msgid "form.bio.placeholder"
 msgid "form.recipe_cost.cost.placeholder"
-msgstr "Please enter recipe cost value"
+msgstr "Biography"
 
-#: .\recipes\forms.py:102
+#: .\recipes\forms.py:118
 msgid "form.recipe_cost.currency"
-msgstr "Currency"
+msgstr ""
 
 #: .\recipes\templates\recipes\recipe_edit.html:7
-msgid "page.title.edit_recipe"
-msgstr "MasterCook - Edit Recipe"
-
 #: .\recipes\templates\recipes\recipe_edit.html:18
-msgid "form.edit_recipe"
-msgstr "Edit Recipe"
+msgid "Edit Recipe"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipe_edit.html:31
+#: .\recipes\templates\recipes\recipes_details.html:27
+msgid "Edit"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipe_edit.html:35
+#: .\recipes\templates\recipes\recipe_edit.html:40
+msgid "Add Image"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipe_edit.html:44
+#: .\recipes\templates\recipes\recipe_edit.html:49
+msgid "Add Ingredient"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipe_edit.html:53
+#: .\recipes\templates\recipes\recipe_edit.html:58
+msgid "Add Step"
+msgstr ""
 
 #: .\recipes\templates\recipes\recipes_create.html:7
-msgid "page.title.create_recipe"
-msgstr "MasterCook - Create New Recipe"
-
-#: .\recipes\templates\recipes\recipes_create.html:19
-msgid "form.create_recipe"
+#, fuzzy
+#| msgid "form.create_recipe"
+msgid "Create Recipe"
 msgstr "Create New Recipe"
 
+#: .\recipes\templates\recipes\recipes_create.html:19
+msgid "Create New Recipe"
+msgstr ""
+
 #: .\recipes\templates\recipes\recipes_details.html:7
-msgid "page.title.details_recipe"
-msgstr "MasterCook - Recipe Details"
+msgid "Details of Recipe"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:26
+msgid "Remove"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:29
+msgid "Created On"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:37
+msgid "Rate"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:41
+msgid "You must be logged to create a recipe"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:47
+msgid "Description"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:58
+#, fuzzy
+#| msgid "form.recipe.preparation_time"
+msgid "Preparation time"
+msgstr "Preparation time"
+
+#: .\recipes\templates\recipes\recipes_details.html:59
+msgid "Cooking time"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:60
+msgid "Cooling time"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:75
+msgid "No Ingredients yet"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:87
+msgid "No steps yet"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:95
+msgid "Leave your comment"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:99
+msgid "Comment"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:103
+msgid "You must be logged to post a comment."
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:106
+msgid "Comments"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_details.html:107
+msgid "on"
+msgstr ""
 
 #: .\recipes\templates\recipes\recipes_homepage.html:7
-msgid "page.title.home_recipes"
-msgstr "MasterCook - Home Recipes"
+#: .\templates\base_layout.html:70
+msgid "Home"
+msgstr ""
 
 #: .\recipes\templates\recipes\recipes_list.html:7
-msgid "page.title.list_recipes"
-msgstr "MasterCook - Recipes List"
+msgid "Recipes List"
+msgstr ""
 
-#: .\templates\base_layout.html:65
-msgid "home"
-msgstr "Home"
+#: .\recipes\templates\recipes\recipes_list.html:26
+msgid "By"
+msgstr ""
 
-#: .\templates\base_layout.html:66
-msgid "recipe.recipe_list"
-msgstr "Recipes List"
+#: .\recipes\templates\recipes\recipes_list.html:30
+msgid "Read More..."
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_reply_to_comment.html:7
+#: .\recipes\templates\recipes\recipes_reply_to_comment.html:20
+msgid "Reply to comment of"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipes_reply_to_comment.html:24
+msgid "Reply"
+msgstr ""
+
+#: .\templates\base_layout.html:62
+msgid "MasterCook"
+msgstr ""
 
 #: .\templates\base_layout.html:71
-msgid "page.my_profile_menu"
-msgstr "My Profile"
+msgid "Recipes"
+msgstr ""
 
-#: .\templates\base_layout.html:75
-msgid "account.see_profile"
-msgstr "See Profile"
+#: .\templates\base_layout.html:76
+msgid "My Profile"
+msgstr ""
 
-#: .\templates\base_layout.html:79
-msgid "recipe.new_recipe"
-msgstr "New Recipe"
+#: .\templates\base_layout.html:80
+msgid "See Profile"
+msgstr ""
 
 #: .\templates\base_layout.html:82
-msgid "account.logout"
-msgstr "Logout"
+msgid "Modify Password"
+msgstr ""
 
-#: .\templates\base_layout.html:92
-msgid "page.languages_menu"
-msgstr "Languages"
+#: .\templates\base_layout.html:84
+msgid "New Recipe"
+msgstr ""
+
+#: .\templates\base_layout.html:87
+msgid "Logout"
+msgstr ""
+
+#: .\templates\base_layout.html:97
+msgid "Languages"
+msgstr ""
+
+#: .\templates\base_layout.html:115
+msgid "Search"
+msgstr ""
+
+#~ msgid "account.not_member_message"
+#~ msgstr "Not a cooker yet ? Sign Up Now :)"
+
+#~ msgid "form.password.placeholder"
+#~ msgstr "Password"
+
+#~ msgid "form.lastname.placeholder"
+#~ msgstr "Last Name"
+
+#~ msgid "form.password2.placeholder"
+#~ msgstr "Re-enter Password"
+
+#~ msgid "form.old_password.placeholder"
+#~ msgstr "Old Password"
+
+#~ msgid "form.date_birth.placeholder"
+#~ msgstr "Date Of Birth"

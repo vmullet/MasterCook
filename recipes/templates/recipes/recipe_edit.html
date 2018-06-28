@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "page.title.edit_recipe" %}
+    {% trans "Edit Recipe" %}
 {% endblock %}
 
 {% block banner %}
@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'form.edit_recipe' %}
+    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'Edit Recipe' %}
         "{{ recipe.name }}"</h1>
     <br>
     <img src="{{ recipe.thumbnail.url }}"/>
@@ -28,34 +28,34 @@
             {{ edit_recipe_form.as_p }}
             {{ cost_form.as_p }}
             <br>
-            <button type="submit" class="btn btn-default btn-lg">Edit</button>
+            <button type="submit" class="btn btn-default btn-lg">{% trans "Edit" %}</button>
         </form>
         <br><br>
         <h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-            Add Image</h3>
+            {% trans "Add Image" %}</h3>
         <form class="site-form" action="{% url 'recipes:add_image' recipe_pk=recipe.pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ image_form.as_p }}
             <br>
-            <button type="submit" class="btn btn-info btn-lg">Add Image</button>
+            <button type="submit" class="btn btn-info btn-lg">{% trans "Add Image" %}</button>
         </form>
         <br><br>
         <h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-            Add Ingredient</h3>
+            {% trans "Add Ingredient" %}</h3>
         <form class="site-form" action="{% url 'recipes:add_ingredient' recipe_pk=recipe.pk %}" method="post">
             {% csrf_token %}
             {{ ingred_form.as_p }}
             <br>
-            <button type="submit" class="btn btn-info btn-lg">Add Ingredient</button>
+            <button type="submit" class="btn btn-info btn-lg">{% trans "Add Ingredient" %}</button>
         </form>
         <br><br>
         <h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-            Add Step</h3>
+            {% trans "Add Step" %}</h3>
         <form class="site-form" action="{% url 'recipes:add_step' recipe_pk=recipe.pk %}" method="post">
             {% csrf_token %}
             {{ step_form.as_p }}
             <br>
-            <button type="submit" class="btn btn-info btn-lg">Add Step</button>
+            <button type="submit" class="btn btn-info btn-lg">{% trans "Add Step" %}</button>
         </form>
 
     </div>

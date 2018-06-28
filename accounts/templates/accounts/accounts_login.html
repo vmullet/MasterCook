@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "page.title.login" %}
+    {% trans "MasterCook - Login" %}
 {% endblock %}
 
 {% block banner %}
@@ -18,7 +18,7 @@
 
     <h1 class="title wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="300ms"
         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInLeftBig;">
-        {% trans "account.login" %}
+        {% trans "Login" %}
     </h1>
     <br>
     <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -41,13 +41,13 @@
                 <span class="input-group-addon" id="basic-addon1"><i class="fas fa-key"></i></span>
                 {{ form.password }}
             </div>
-            <a href="{% url 'accounts:signup' %}">{% trans "account.not_member_message" %}</a>
+            <a href="{% url 'accounts:signup' %}">{% trans "Not a Cooker yet ? Please sign up :)" %}</a>
             <br><br>
             {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
             {% endif %}
 
-            <button type="submit" class="btn btn-default btn-lg">{% trans "account.login" %} <i
+            <button type="submit" class="btn btn-default btn-lg">{% trans "Login" %} <i
                     class="fas fa-sign-in-alt"></i>
             </button>
         </form>

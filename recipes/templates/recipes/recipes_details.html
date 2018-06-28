@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "page.title.details_recipe" %}
+    {% trans "Details of Recipe" %} {{ recipe.name }}
 {% endblock %}
 
 {% block banner %}
@@ -23,10 +23,10 @@
 
     <div class="single-left wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">
         {% if user.is_authenticated and user == recipe.author %}
-            <a href="{% url 'recipes:delete' recipe_pk=recipe.pk %}" class="btn btn-danger btn-md">Remove</a>
-            <a href="{% url 'recipes:edit' recipe_slug=recipe.slug %}" class="btn btn-warning btn-md">Edit</a>
+            <a href="{% url 'recipes:delete' recipe_pk=recipe.pk %}" class="btn btn-danger btn-md">{% trans "Remove" %}</a>
+            <a href="{% url 'recipes:edit' recipe_slug=recipe.slug %}" class="btn btn-warning btn-md">{% trans "Edit" %}</a>
         {% endif %}
-        <p>Created on <span>{{ recipe.created_at }}</span></p>
+        <p>{% trans "Created On" %} <span>{{ recipe.created_at }}</span></p>
         {% if user.is_authenticated %}
             <form action="{% url 'recipes:add_rate' recipe_pk=recipe.pk %}" method="post">
                 {% csrf_token %}
@@ -34,17 +34,17 @@
                     {{ rate_form.rate }}
                 </div>
                 <div style="display:inline-block">
-                    <button type="submit" class="btn btn-default btn-xs">Rate</button>
+                    <button type="submit" class="btn btn-default btn-xs">{% trans "Rate" %}</button>
                 </div>
             </form>
         {% else %}
-            <a href="{% url 'accounts:login' %}">You must be logged to rate a recipe.</a>
+            <a href="{% url 'accounts:login' %}">{% trans "You must be logged to create a recipe" %}</a>
         {% endif %}
         <img src="{{ recipe.thumbnail.url }}" alt=" " class="img-responsive"/>
     </div>
     <div class="single-right wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
         <h2>Level : {{ recipe.recipe_skill.name }} - Origin : {{ recipe.recipe_origin.name }}</h2>
-        <p> Description :
+        <p> {% trans "Description" %} :
             <span>
             {{ recipe.description }}
             </span>
@@ -55,9 +55,9 @@
         <div class="cat-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h4><span>T</span>ime <i class="fa fa-clock fa-lg"></i></h4>
             <ul>
-                <li class="list-group-item">Preparation time : {{ recipe.preparation_time }}</li>
-                <li class="list-group-item">Cooking time : {{ recipe.cooking_time }}</li>
-                <li class="list-group-item">Cooling time : {{ recipe.cooling_time }}</li>
+                <li class="list-group-item">{% trans "Preparation time" %} {{ recipe.preparation_time }}</li>
+                <li class="list-group-item">{% trans "Cooking time" %} {{ recipe.cooking_time }}</li>
+                <li class="list-group-item">{% trans "Cooling time" %} {{ recipe.cooling_time }}</li>
             </ul>
         </div>
         <div class="cat-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -72,7 +72,7 @@
                         </li>
                     {% endfor %}
                 {% else %}
-                    <li><a href="#">No ingredients yet</a></li>
+                    <li><a href="#">{% trans "No Ingredients yet" %}</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -84,7 +84,7 @@
                         <li class="list-group-item">{{ step.name }} - {{ step.description }}</li>
                     {% endfor %}
                 {% else %}
-                    <li><a href="#">No steps yet</a></li>
+                    <li><a href="#">{% trans "No steps yet" %}</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -92,19 +92,19 @@
     </div>
     {% if user.is_authenticated %}
         <div class="leave-comment wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <h3>Leave your comment</h3>
+            <h3>{% trans "Leave your comment" %}</h3>
             <form class="site-form" action="{% url 'recipes:add_comment' recipe_pk=recipe.pk %}" method="post">
                 {% csrf_token %}
                 {{ comment_form.as_p }}
-                <button type="submit" class="btn btn-default btn-lg">Comment</button>
+                <button type="submit" class="btn btn-default btn-lg">{% trans "Comment" %}</button>
             </form>
         </div>
     {% else %}
-        <a href="{% url 'accounts:login' %}">You must be logged to post a comment.</a>
+        <a href="{% url 'accounts:login' %}">{% trans "You must be logged to post a comment." %}</a>
     {% endif %}
     <div class="three-com" id="block-comment">
-        <h3 class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">{{ comment_paginator. }} Comments
-            <span>on</span>
+        <h3 class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">{{ number_comments }} {% trans "Comments" %}
+            <span>{% trans "on" %}</span>
             <label>{{ recipe.name }}</label>
         </h3>
         {% for comment in comment_paginator.object_list %}

@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "page.title.profile_view" %} {{ user.username }}
+    {% trans "MasterCook - Profile of" %} {{ user.username }}
 {% endblock %}
 
 {% block banner %}
@@ -17,7 +17,7 @@
 {% block content %}
     <h1 class="title wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="300ms"
         style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInLeftBig;">
-        {% trans "account.profile" %} : {{ user.username }}
+        {% trans "Profile of" %} : {{ user.username }}
     </h1>
     <img class="avatar" src="{{ user.profile.avatar.url }}" alt=""/>
     <br><br>

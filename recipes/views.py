@@ -8,6 +8,7 @@ from slugify import slugify
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.conf import settings
+from django.db.models import Avg
 
 
 # Create your views here.
@@ -30,10 +31,9 @@ def recipe_details(request, recipe_slug):
     recipe_steps = RecipeStep.objects.filter(recipe=recipe)
     recipe_photos = RecipeImage.objects.filter(recipe=recipe)
     comments = RecipeComment.objects.filter(recipe=recipe).order_by('-created_at')
+    num_page = 1
     if 'num_page' in request.GET:
         num_page = request.GET['num_page']
-    else:
-        num_page = 1
     paginator = Paginator(comments, settings.MAX_COMMENT_PAGE)
     recipe_rate = None
     if request.user.is_authenticated:
@@ -60,10 +60,18 @@ def recipe_details(request, recipe_slug):
 def recipe_search(request):
     if 'search' in request.GET:
         keyword = request.GET['search']
-        results = Recipe.objects.filter(name__contains=keyword)
+        if 'filter' in request.GET and 'order' in request.GET:
+            filt = request.GET['filter']
+            order = request.GET['order']
+            if filt == 'recipe_rate':
+                results = RecipeRate.objects.annotate(median=Avg('rate')).order_by('median')
+            else:
+                results = Recipe.objects.filter(name__contains=keyword).order_by(order + filt)
+        else:
+            results = Recipe.objects.filter(name__contains=keyword).order_by('name')
         return render(request, 'recipes/recipe_search.html', {
             'results': results,
-            'keyword': keyword
+            'keyword': keyword,
         })
     return redirect('recipes:list')
 
@@ -78,6 +86,7 @@ def recipe_create(request):
             recipe = recipe_form.save(commit=False)
             recipe.slug = slugify(recipe.name)
             recipe_cost = cost_form.save()
+            recipe.name = recipe.name.title()
             recipe.recipe_cost = recipe_cost
             recipe.author = request.user
             recipe.save()
@@ -200,7 +209,7 @@ def recipe_add_ingredient(request, recipe_pk):
 def recipe_add_rate(request, recipe_pk):
     if request.method == 'POST':
         recipe = get_object_or_404(Recipe, pk=recipe_pk)
-        recipe_rate = RecipeRate.objects.filter(recipe=recipe,user=request.user).first()
+        recipe_rate = RecipeRate.objects.filter(recipe=recipe, user=request.user).first()
         if recipe_rate is None:
             rate_form = recipeforms.RecipeRateForm(request.POST)
         else:
@@ -251,5 +260,3 @@ def recipe_reply_comment(request, comment_pk):
                           'comment_form': comment_form,
                           'comment': comment
                       })
-
-

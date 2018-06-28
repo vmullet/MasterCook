@@ -138,12 +138,6 @@ class RecipeComment(models.Model):
     def is_root(self):
         return self.parent is None
 
-    def is_just_child(self):
-        return self.parent is not None and RecipeComment.objects.filter(parent=self).count() == 0
-
-    def is_child_and_parent(self):
-        return self.parent is not None and RecipeComment.objects.filter(parent=self).count() > 0
-
 
 class RecipeRate(models.Model):
     """

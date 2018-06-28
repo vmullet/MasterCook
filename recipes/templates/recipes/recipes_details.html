@@ -103,10 +103,11 @@
         <a href="{% url 'accounts:login' %}">You must be logged to post a comment.</a>
     {% endif %}
     <div class="three-com">
-        <h3 class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">{{ comments.count }} Comments <span>on</span>
+        <h3 class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">{{ comment_paginator. }} Comments
+            <span>on</span>
             <label>{{ recipe.name }}</label>
         </h3>
-        {% for comment in comments %}
+        {% for comment in comment_paginator.object_list %}
             {% if comment.is_root %}
                 <div class="tom-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <div class="tom">
@@ -154,5 +155,20 @@
             {% endfor %}
         {% endfor %}
     </div>
+    <ul class="pagination pagination-lg">
+        <li class="{% if comment_paginator.has_previous %}active{% else %}disabled{% endif %}">
+            <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ num_page }}"><i
+                    class="fa fa-angle-left">«</i></a>
+        </li>
+        {% for num_page in range_page %}
+            <li><a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ num_page }}">{{ num_page }}</a>
+            </li>
+        {% endfor %}
+        <li class="{% if comment_paginator.has_next %}active{% else %}disabled{% endif %}">
+            <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ next_page }}"><i
+                class="fa fa-angle-right">»</i>
+            </a>
+        </li>
+    </ul>
 
 {% endblock %}

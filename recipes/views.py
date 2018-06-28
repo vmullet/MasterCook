@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from slugify import slugify
 from datetime import datetime
+from django.core.paginator import Paginator
+from django.conf import settings
 
 
 # Create your views here.
@@ -28,6 +30,11 @@ def recipe_details(request, recipe_slug):
     recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
     recipe_steps = RecipeStep.objects.filter(recipe=recipe)
     comments = RecipeComment.objects.filter(recipe=recipe).order_by('-created_at')
+    if 'num_page' in request.GET:
+        num_page = request.GET['num_page']
+    else:
+        num_page = 1
+    paginator = Paginator(comments, settings.MAX_COMMENT_PAGE)
     recipe_rate = None
     if request.user.is_authenticated:
         recipe_rate = RecipeRate.objects.filter(recipe=recipe, user=request.user).first()
@@ -39,7 +46,9 @@ def recipe_details(request, recipe_slug):
                       'recipe': recipe,
                       'recipe_ingredients': recipe_ingredients,
                       'recipe_steps': recipe_steps,
-                      'comments': comments,
+                      'comment_paginator': paginator.page(num_page),
+                      'current_page': num_page,
+                      'range_page': range(1, paginator.num_pages + 1),
                       'comment_form': comment_form,
                       'rate_form': rate_form,
                       'user': request.user

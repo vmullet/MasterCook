@@ -4,6 +4,11 @@ REM ######################################################
 
 @echo off
 
+REM Setup environment
+
+mkvirtualenv mastercook-env
+workon mastercook-env
+
 REM Migrations for generic app
 
 echo Start Migrations...

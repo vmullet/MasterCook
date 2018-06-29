@@ -73,7 +73,8 @@ class Recipe(models.Model):
         return '%s...' % self.description[:100]
 
     def get_median_rate(self):
-        return str(RecipeRate.objects.filter(recipe=self).aggregate(Avg('rate')).get('rate__avg')).replace(',', '.')
+        avg = str(self.rates.aggregate(Avg('rate')).get('rate__avg')).replace(',', '.')
+        return '0' if avg == 'None' else avg
 
 
 class RecipeStep(models.Model):
@@ -151,7 +152,7 @@ class RecipeRate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='rates')
 
     class Meta:
         unique_together = ('user', 'recipe')

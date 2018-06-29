@@ -60,15 +60,16 @@ def recipe_details(request, recipe_slug):
 def recipe_search(request):
     if 'search' in request.GET:
         keyword = request.GET['search']
+        recipes = Recipe.objects.filter(name__contains=keyword)
         if 'filter' in request.GET and 'order' in request.GET:
             filt = request.GET['filter']
             order = request.GET['order']
             if filt == 'recipe_rate':
-                results = RecipeRate.objects.annotate(median=Avg('rate')).order_by('median')
+                results = recipes.annotate(avg_rate=Avg('rates__rate')).order_by(order + 'avg_rate')
             else:
-                results = Recipe.objects.filter(name__contains=keyword).order_by(order + filt)
+                results = recipes.order_by(order + filt)
         else:
-            results = Recipe.objects.filter(name__contains=keyword).order_by('name')
+            results = recipes.order_by('name')
         return render(request, 'recipes/recipe_search.html', {
             'results': results,
             'keyword': keyword,

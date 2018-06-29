@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import Avg
 from django.contrib.auth.models import User
-from generic.models import Country, UnitMeasure, Currency
+from utils.models import Country, UnitMeasure, Currency
 from ingredients.models import Ingredient
 
 

@@ -20,7 +20,7 @@ urlpatterns += i18n_patterns(
 """
 
 urlpatterns += [
-    path('generic/', include('generic.urls')),
+    path('generic/', include('utils.urls')),
     path('', include('recipes.urls')),
     path('accounts/', include('accounts.urls'))
 ]

@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from .models import CookerProfile
-from generic.models import Country
+from utils.models import Country
 
 
 class CookerAuthenticationForm(AuthenticationForm):

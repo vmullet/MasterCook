@@ -1,5 +1,5 @@
 from django.db import models
-from generic.models import UnitMeasure
+from utils.models import UnitMeasure
 
 # Create your models here.
 

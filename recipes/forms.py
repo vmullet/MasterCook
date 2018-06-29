@@ -2,7 +2,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, \
     RecipeComment, RecipeRate
-from generic.models import Country, Currency, UnitMeasure
+from utils.models import Country, Currency, UnitMeasure
 from ingredients.models import Ingredient
 
 

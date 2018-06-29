@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import User
 from generic.models import Country, UnitMeasure, Currency
 from ingredients.models import Ingredient
@@ -70,6 +71,10 @@ class Recipe(models.Model):
 
     def get_short_description(self):
         return '%s...' % self.description[:100]
+
+    def get_median_rate(self):
+        avg = str(self.rates.aggregate(Avg('rate')).get('rate__avg')).replace(',', '.')
+        return '0' if avg == 'None' else avg
 
 
 class RecipeStep(models.Model):
@@ -143,11 +148,11 @@ class RecipeRate(models.Model):
     """
     Model to represent a rate done by a user to a recipe
     """
-    rate = models.IntegerField(default=-1)
+    rate = models.FloatField(default=-1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='rates')
 
     class Meta:
         unique_together = ('user', 'recipe')

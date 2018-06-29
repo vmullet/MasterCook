@@ -45,7 +45,7 @@ body a:hover{
 	font-family: 'Alex Brush', cursive;
 }
 .navbar-nav {
-    margin: 0 0 0 10em;
+    margin: 0 0 0 3em;
 }
 .navbar-default .navbar-nav > li > a {
     color: #fff;

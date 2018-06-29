@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recipe, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep
+from .models import Recipe, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep, RecipeImage
 from . import forms as recipeforms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,10 +8,10 @@ from slugify import slugify
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.conf import settings
+from django.db.models import Avg
 
 
 # Create your views here.
-
 
 def recipe_homepage(request):
     return render(request, 'recipes/recipes_homepage.html')
@@ -29,11 +29,11 @@ def recipe_details(request, recipe_slug):
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
     recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
     recipe_steps = RecipeStep.objects.filter(recipe=recipe)
+    recipe_photos = RecipeImage.objects.filter(recipe=recipe)
     comments = RecipeComment.objects.filter(recipe=recipe).order_by('-created_at')
+    num_page = 1
     if 'num_page' in request.GET:
         num_page = request.GET['num_page']
-    else:
-        num_page = 1
     paginator = Paginator(comments, settings.MAX_COMMENT_PAGE)
     recipe_rate = None
     if request.user.is_authenticated:
@@ -46,13 +46,38 @@ def recipe_details(request, recipe_slug):
                       'recipe': recipe,
                       'recipe_ingredients': recipe_ingredients,
                       'recipe_steps': recipe_steps,
+                      'recipe_photos': recipe_photos,
                       'comment_paginator': paginator.page(num_page),
                       'current_page': num_page,
                       'range_page': range(1, paginator.num_pages + 1),
+                      'number_comments': comments.count,
                       'comment_form': comment_form,
                       'rate_form': rate_form,
                       'user': request.user
                   })
+
+
+def recipe_search(request):
+    if 'search' in request.GET:
+        keyword = request.GET['search']
+        recipes = Recipe.objects.filter(name__contains=keyword)
+        if 'filter' in request.GET and 'order' in request.GET:
+            filt = request.GET['filter']
+            order = request.GET['order']
+            filterform = recipeforms.RecipeFilterForm(keyword, filt, order)
+            if filt == 'recipe_rate':
+                results = recipes.annotate(avg_rate=Avg('rates__rate')).order_by(order + 'avg_rate')
+            else:
+                results = recipes.order_by(order + filt)
+        else:
+            filterform = recipeforms.RecipeFilterForm(keyword, 'name', '')
+            results = recipes.order_by('name')
+        return render(request, 'recipes/recipe_search.html', {
+            'results': results,
+            'keyword': keyword,
+            'filterform': filterform
+        })
+    return redirect('recipes:list')
 
 
 @login_required(login_url="accounts:login")
@@ -65,6 +90,7 @@ def recipe_create(request):
             recipe = recipe_form.save(commit=False)
             recipe.slug = slugify(recipe.name)
             recipe_cost = cost_form.save()
+            recipe.name = recipe.name.title()
             recipe.recipe_cost = recipe_cost
             recipe.author = request.user
             recipe.save()
@@ -187,7 +213,7 @@ def recipe_add_ingredient(request, recipe_pk):
 def recipe_add_rate(request, recipe_pk):
     if request.method == 'POST':
         recipe = get_object_or_404(Recipe, pk=recipe_pk)
-        recipe_rate = RecipeRate.objects.filter(recipe=recipe,user=request.user).first()
+        recipe_rate = RecipeRate.objects.filter(recipe=recipe, user=request.user).first()
         if recipe_rate is None:
             rate_form = recipeforms.RecipeRateForm(request.POST)
         else:
@@ -218,6 +244,7 @@ def recipe_add_comment(request, recipe_pk):
     return redirect('recipes:homepage')
 
 
+@login_required(login_url="accounts:login")
 def recipe_reply_comment(request, comment_pk):
     comment = get_object_or_404(RecipeComment, pk=comment_pk)
     if request.method == 'POST':
@@ -237,5 +264,3 @@ def recipe_reply_comment(request, comment_pk):
                           'comment_form': comment_form,
                           'comment': comment
                       })
-
-

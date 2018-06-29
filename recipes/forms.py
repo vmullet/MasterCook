@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, RecipeComment, RecipeRate
+from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, \
+    RecipeComment, RecipeRate
 from generic.models import Country, Currency, UnitMeasure
 from ingredients.models import Ingredient
 
@@ -11,54 +12,51 @@ class RecipeCreateForm(forms.ModelForm):
     """
     Form to represent the creation of a recipe (basic informations)
     """
-    name = forms.CharField(label=_('form.recipe.name'), widget=forms.TextInput(
+    name = forms.CharField(label=_('Recipe name'), widget=forms.TextInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe_name.placeholder"),
+            'placeholder': _("Please enter the recipe name"),
         }
     ), localize=True)
-    recipe_type = forms.ModelChoiceField(label=_('form.recipe.type'), widget=forms.Select(
+    recipe_type = forms.ModelChoiceField(label=_('Type of the recipe'), widget=forms.Select(
         attrs={
             'class': 'form-control',
         }
     ), localize=True, queryset=RecipeType.objects.all())
-    recipe_origin = forms.ModelChoiceField(label=_('form.recipe.country'), widget=forms.Select(
+    recipe_origin = forms.ModelChoiceField(label=_('Recipe origin country'), widget=forms.Select(
         attrs={
             'class': 'form-control',
         }
     ), localize=True, queryset=Country.objects.all())
-    recipe_skill = forms.ModelChoiceField(label=_('form.recipe.skill'), widget=forms.Select(
+    recipe_skill = forms.ModelChoiceField(label=_('Recipe skill needed'), widget=forms.Select(
         attrs={
             'class': 'form-control',
         }
     ), localize=True, queryset=RecipeSkill.objects.all())
-    description = forms.CharField(label=_('form.recipe.description'), widget=forms.Textarea(
+    description = forms.CharField(label=_('Description of the recipe'), widget=forms.Textarea(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe.description.placeholder"),
+            'placeholder': _("Please enter the description of the recipe"),
         }
     ), localize=True)
-    thumbnail = forms.ImageField(label=_('form.recipe.thumbnail'), widget=forms.FileInput(
+    thumbnail = forms.ImageField(label=_('Main picture of the recipe'), widget=forms.FileInput(
         attrs={
             'class': 'form-control',
         }
     ))
-    preparation_time = forms.IntegerField(label=_('form.recipe.preparation_time'), widget=forms.NumberInput(
+    preparation_time = forms.IntegerField(label=_('Preparation time (in minutes)'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe.preparation_time.placeholder"),
         }
     ), localize=True)
-    cooking_time = forms.IntegerField(label=_('form.recipe.cooking_time'), widget=forms.NumberInput(
+    cooking_time = forms.IntegerField(label=_('Cooking time (in minutes)'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe.cooking_time.placeholder"),
         }
     ), localize=True)
-    cooling_time = forms.IntegerField(label=_('form.recipe.cooling_time'), widget=forms.NumberInput(
+    cooling_time = forms.IntegerField(label=_('Cooling time (in minutes), if needed'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe.cooling_time.placeholder"),
         }
     ), localize=True, required=False)
 
@@ -82,7 +80,7 @@ class RecipeEditForm(RecipeCreateForm):
     Form to represent the edition of a recipe (basic informations)
     """
 
-    thumbnail = forms.ImageField(label=_('form.recipe.thumbnail'), widget=forms.FileInput(
+    thumbnail = forms.ImageField(label=_('Main picture of the recipe'), widget=forms.FileInput(
         attrs={
             'class': 'form-control',
         }
@@ -109,13 +107,13 @@ class RecipeEditForm(RecipeCreateForm):
 # SECONDARY FORMS (forms appended to the main forms)
 
 class RecipeCostForm(forms.ModelForm):
-    cost = forms.IntegerField(label=_('form.recipe_cost.cost'), widget=forms.NumberInput(
+    cost = forms.IntegerField(label=_('Cost of the recipe'), widget=forms.NumberInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe_cost.cost.placeholder"),
+            'placeholder': _("Please enter the cost of the recipe"),
         }
     ), localize=True)
-    currency = forms.ModelChoiceField(label=_('form.recipe_cost.currency'), widget=forms.Select(
+    currency = forms.ModelChoiceField(label=_('Currency (for the cost)'), widget=forms.Select(
         attrs={
             'class': 'form-control',
         }
@@ -136,7 +134,7 @@ class RecipeImageForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control',
-            'placeholder': _("form.recipe_name.placeholder"),
+            'placeholder': _("Title / Description of the picture"),
         }
     ), localize=True)
     image = forms.ImageField(widget=forms.FileInput(
@@ -232,7 +230,9 @@ class RecipeRateForm(forms.ModelForm):
     """
     rate = forms.CharField(widget=forms.TextInput(
         attrs={
-            'class': '',
+            'min': 0,
+            'max': 5,
+            'step': 0.5,
             'data-size': 'xs',
         }
     ))
@@ -242,3 +242,33 @@ class RecipeRateForm(forms.ModelForm):
         fields = {
             'rate'
         }
+
+
+class RecipeFilterForm(forms.Form):
+    search = forms.CharField(widget=forms.HiddenInput(attrs={
+        'name': 'search',
+    }))
+    filter = forms.ChoiceField(label=_('Filter By'), widget=forms.Select(attrs={
+        'class': 'form-control',
+        'name': 'filter'
+    }),
+                               choices=([
+                                   ('name', _('Title')),
+                                   ('recipe_rate', _('Average Rate')),
+                                   ('recipe_skill__value', _('Skill needed')),
+                                   ('preparation_time', _('Preparation Time')),
+                               ]), localize=True)
+    order = forms.ChoiceField(label=_('Order By'), widget=forms.Select(attrs={
+        'class': 'form-control',
+        'name': 'order'
+    }),
+                              choices=([
+                                  ('', _('Ascending')),
+                                  ('-', _('Descending')),
+                              ]), localize=True, required=False)
+
+    def __init__(self, vkeyword, select_filter, select_order, *args, **kwargs):
+        super(RecipeFilterForm, self).__init__(*args, **kwargs)
+        self.fields['search'].initial = vkeyword
+        self.fields['filter'].initial = select_filter
+        self.fields['order'].initial = select_order

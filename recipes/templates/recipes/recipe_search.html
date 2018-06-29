@@ -18,37 +18,29 @@
     <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Search results" %}
         ({{ results.count }} {% trans "Results" %})</h1>
     <br>
-    {{ query }}
-    <form class="form-inline" role="search">
-        <input type="hidden" value="{{ keyword }}" name="search"/>
-        <div style="float:right">
+    <div style="float:right">
+        <form class="form-inline" role="search">
             <div class="form-group">
-                <label for="filter-info">Filtrer par:</label>
-                <select id="filter-info" class="form-control" name="filter">
-                    <option value="name">Titre</option>
-                    <option value="recipe_rate">Note</option>
-                    <option value="recipe_skill__value">Difficulté</option>
-                    <option value="preparation_time">Temps de préparation</option>
-                </select>
+                <label>{{ filterform.filter.label }}</label>
+                {{ filterform.filter }}
             </div>
             <div class="form-group">
-                <label for="filter-order">Trier par:</label>
-                <select id="filter-order" class="form-control" name="order">
-                    <option value="">Ordre Croissant</option>
-                    <option value="-">Ordre Décroissant</option>
-                </select>
+                <label>{{ filterform.order.label }}</label>
+                {{ filterform.order }}
             </div>
+            {{ filterform.search }}
             <button class="btn btn-default btn-md" type="submit">Filtrer</button>
-        </div>
-    </form>
+        </form>
+    </div>
     <div class="event-grids">
         {% for recipe in results %}
             <div class="col-md-4 event-grid wow flipInY recipe-list" data-wow-duration="1000ms"
                  data-wow-delay="300ms">
-                <p class="dte">{{ recipe.created_at }} <input type="text"
-                                                              value="{{ recipe.get_median_rate }}"
-                                                              min="0" step="0.5" data-size="xs"
-                                                              class="rating-disabled">
+                <p class="dte">{{ recipe.created_at }}
+                    <input type="text"
+                           value="{{ recipe.get_median_rate }}"
+                           min="0" step="0.5" data-size="xs"
+                           class="rating-disabled">
                 </p>
                 <img src="{{ recipe.thumbnail.url }}" alt=" " class="recipe-thumbnail"/>
                 <div class="nobis">

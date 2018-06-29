@@ -64,15 +64,18 @@ def recipe_search(request):
         if 'filter' in request.GET and 'order' in request.GET:
             filt = request.GET['filter']
             order = request.GET['order']
+            filterform = recipeforms.RecipeFilterForm(keyword, filt, order)
             if filt == 'recipe_rate':
                 results = recipes.annotate(avg_rate=Avg('rates__rate')).order_by(order + 'avg_rate')
             else:
                 results = recipes.order_by(order + filt)
         else:
+            filterform = recipeforms.RecipeFilterForm(keyword, 'name', '')
             results = recipes.order_by('name')
         return render(request, 'recipes/recipe_search.html', {
             'results': results,
             'keyword': keyword,
+            'filterform': filterform
         })
     return redirect('recipes:list')
 

@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, RecipeComment, RecipeRate
+from .models import Recipe, RecipeType, RecipeSkill, RecipeCost, RecipeImage, RecipeIngredient, RecipeStep, \
+    RecipeComment, RecipeRate
 from generic.models import Country, Currency, UnitMeasure
 from ingredients.models import Ingredient
 
@@ -241,3 +242,33 @@ class RecipeRateForm(forms.ModelForm):
         fields = {
             'rate'
         }
+
+
+class RecipeFilterForm(forms.Form):
+    search = forms.CharField(widget=forms.HiddenInput(attrs={
+        'name': 'search',
+    }))
+    filter = forms.ChoiceField(label=_('Filter By'), widget=forms.Select(attrs={
+        'class': 'form-control',
+        'name': 'filter'
+    }),
+                               choices=([
+                                   ('name', _('Title')),
+                                   ('recipe_rate', _('Average Rate')),
+                                   ('recipe_skill__value', _('Skill needed')),
+                                   ('preparation_time', _('Preparation Time')),
+                               ]), localize=True)
+    order = forms.ChoiceField(label=_('Order By'), widget=forms.Select(attrs={
+        'class': 'form-control',
+        'name': 'order'
+    }),
+                              choices=([
+                                  ('', _('Ascending')),
+                                  ('-', _('Descending')),
+                              ]), localize=True, required=False)
+
+    def __init__(self, vkeyword, select_filter, select_order, *args, **kwargs):
+        super(RecipeFilterForm, self).__init__(*args, **kwargs)
+        self.fields['search'].initial = vkeyword
+        self.fields['filter'].initial = select_filter
+        self.fields['order'].initial = select_order

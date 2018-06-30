@@ -83,7 +83,7 @@ class RecipeStep(models.Model):
     """
     name = models.CharField(max_length=100)
     description = models.TextField()
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='steps')
 
     def __str__(self):
         return '%s in %s' % (self.name,
@@ -97,7 +97,7 @@ class RecipeIngredient(models.Model):
     quantity = models.FloatField()
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     unit_measure = models.ForeignKey(UnitMeasure, on_delete=models.CASCADE)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
 
     def __str__(self):
         return '%s - Quantity : %d %s in %s' % (self.ingredient.name,
@@ -112,7 +112,7 @@ class RecipeImage(models.Model):
     """
     name = models.CharField(max_length=100)
     image = models.ImageField(default='default/default_recipe.png', upload_to='images/recipes', blank=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='images')
     uploaded_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -129,7 +129,7 @@ class RecipeComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
 
     def __str__(self):

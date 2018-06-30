@@ -3,4 +3,5 @@ $(function () {
     $(".rating-disabled").each(function (){
         $(this).rating({showCaption: false, disabled: true})
     })
+    $('[data-toggle="confirmation"]').confirmation();
 });

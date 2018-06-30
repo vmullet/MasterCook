@@ -11,8 +11,8 @@ pip install Pillow
 pip install python-slugify
 
 # Migrations for generic app
-python manage.py makemigrations generic
-python manage.py migrate generic
+python manage.py makemigrations utils
+python manage.py migrate utils
 
 # Migrations for accounts app
 python manage.py makemigrations accounts

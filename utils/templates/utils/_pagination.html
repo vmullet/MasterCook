@@ -11,7 +11,7 @@
         </li>
     {% endif %}
     {% for num_page in range_page %}
-        <li {% if num_page == current_page|add:"0" %}class="active"{% endif %}>
+        <li {% if num_page == paginator.number|add:"0" %}class="active"{% endif %}>
             <a href="{{ base_url }}&num_page={{ num_page }}">{{ num_page }}</a>
         </li>
     {% endfor %}

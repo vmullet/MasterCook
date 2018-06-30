@@ -77,7 +77,7 @@
                 {% url 'recipes:browse_skill' skill_name=skill_name as base_url %}
             {% endif %}
             {% with base_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
-                {% include 'utils/_pagination.html' with paginator=results_paginator current_page=current_page base_url=full_url %}
+                {% include 'utils/_pagination.html' with paginator=results_paginator base_url=full_url %}
             {% endwith %}
         {% else %}
             <br>

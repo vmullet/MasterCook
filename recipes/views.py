@@ -10,7 +10,7 @@ from slugify import slugify
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.conf import settings
-from django.db.models import Avg
+from django.db.models import Avg, Q
 
 
 # Create your views here.
@@ -24,10 +24,7 @@ def recipe_homepage(request):
 
 def recipe_details(request, recipe_slug):
     recipe = get_object_or_404(Recipe, slug=recipe_slug, published=True)
-    recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
-    recipe_steps = RecipeStep.objects.filter(recipe=recipe)
-    recipe_photos = RecipeImage.objects.filter(recipe=recipe)
-    comments = RecipeComment.objects.filter(recipe=recipe).order_by('-created_at')
+    comments = recipe.comments.order_by('-created_at').all()
     num_page = 1
     if 'num_page' in request.GET:
         num_page = request.GET['num_page']
@@ -40,11 +37,7 @@ def recipe_details(request, recipe_slug):
     return render(request, 'recipes/recipes_details.html',
                   {
                       'recipe': recipe,
-                      'recipe_ingredients': recipe_ingredients,
-                      'recipe_steps': recipe_steps,
-                      'recipe_photos': recipe_photos,
                       'comment_paginator': paginator.page(num_page),
-                      'current_page': num_page,
                       'range_page': range(1, paginator.num_pages + 1),
                       'number_comments': comments.count,
                       'comment_form': comment_form,
@@ -56,7 +49,9 @@ def recipe_details(request, recipe_slug):
 def recipe_search(request):
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
-        recipes = Recipe.objects.filter(name__contains=keyword, published=True)
+        recipes = Recipe.objects.filter(published=True)
+        recipes = recipes.filter(
+            Q(name__contains=keyword) | Q(ingredients__ingredient__name__contains=keyword)).distinct()
         if 'filter' in request.GET and 'order' in request.GET:
             filt = request.GET['filter']
             order = request.GET['order']
@@ -92,7 +87,8 @@ def recipe_browse_category(request, category_name):
     keyword = ''
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
-        recipes = recipes.filter(name__contains=keyword)
+        recipes = recipes.filter(
+            Q(name__contains=keyword) | Q(ingredients__ingredient__name__contains=keyword)).distinct()
     if 'filter' in request.GET and 'order' in request.GET:
         filt = request.GET['filter']
         order = request.GET['order']
@@ -113,7 +109,6 @@ def recipe_browse_category(request, category_name):
         'mode': 'category',
         'category_name': category_name,
         'results_paginator': paginator.page(num_page),
-        'current_page': num_page,
         'range_page': range(1, paginator.num_pages + 1),
         'number_results': results.count,
         'keyword': keyword,
@@ -129,7 +124,8 @@ def recipe_browse_skill(request, skill_name):
     keyword = ''
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
-        recipes = recipes.filter(name__contains=keyword)
+        recipes = recipes.filter(
+            Q(name__contains=keyword) | Q(ingredients__ingredient__name__contains=keyword)).distinct()
     if 'filter' in request.GET and 'order' in request.GET:
         filt = request.GET['filter']
         order = request.GET['order']
@@ -150,7 +146,6 @@ def recipe_browse_skill(request, skill_name):
         'mode': 'skill',
         'skill_name': skill_name,
         'results_paginator': paginator.page(num_page),
-        'current_page': num_page,
         'range_page': range(1, paginator.num_pages + 1),
         'number_results': results.count,
         'keyword': keyword,

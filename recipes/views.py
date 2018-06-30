@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import ugettext_lazy as _
 from .models import Recipe, RecipeType, RecipeSkill, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep, \
     RecipeImage
 from . import forms as recipeforms
@@ -200,13 +201,13 @@ def recipe_edit(request, recipe_slug):
                 recipe.updated_at = datetime.now()
                 recipe.save()
                 cost_form.save()
-                messages.success(request, "Recipe updated successfully")
+                messages.success(request, _("Recipe updated successfully"))
                 return redirect('recipes:edit', recipe_slug=recipe.slug)
         else:
             edit_form = recipeforms.RecipeEditForm(instance=recipe)
             cost_form = recipeforms.RecipeCostForm(instance=recipe.recipe_cost)
     else:
-        messages.error(request, "You're not the author of this recipe")
+        messages.error(request, _("You're not the author of this recipe"))
         return redirect('recipes:homepage')
     return render(request, 'recipes/recipe_edit.html',
                   {
@@ -225,9 +226,9 @@ def recipe_delete(request, recipe_pk):
         recipe = get_object_or_404(Recipe, pk=recipe_pk)
         if recipe.author == request.user:
             recipe.delete()
-            messages.success(request, 'Recipe was deleted successfully')
+            messages.success(request, _('The recipe was deleted successfully'))
         else:
-            messages.error(request, "You're not the author of this recipe")
+            messages.error(request, _("You're not the author of this recipe"))
     return redirect('recipes:homepage')
 
 
@@ -243,10 +244,10 @@ def recipe_add_image(request, recipe_pk):
                 recipe_image.save()
                 recipe.updated_at = datetime.now()
                 recipe.save()
-                messages.success(request, 'The image was added successfully')
+                messages.success(request, _('The image was added successfully'))
             return redirect('recipes:edit', recipe_slug=recipe.slug)
         else:
-            messages.error(request, "You're not the author of this recipe")
+            messages.error(request, _("You're not the author of this recipe"))
     return redirect('recipes:homepage')
 
 
@@ -262,10 +263,10 @@ def recipe_add_step(request, recipe_pk):
                 recipe_step.save()
                 recipe.updated_at = datetime.now()
                 recipe.save()
-                messages.success(request, 'The step was added successfully')
+                messages.success(request, _('The step was added successfully'))
             return redirect('recipes:edit', recipe_slug=recipe.slug)
         else:
-            messages.error(request, "You're not the author of this recipe")
+            messages.error(request, _("You're not the author of this recipe"))
     return redirect('recipes:homepage')
 
 
@@ -281,10 +282,10 @@ def recipe_add_ingredient(request, recipe_pk):
                 recipe_ingred.save()
                 recipe.updated_at = datetime.now()
                 recipe.save()
-                messages.success(request, 'The ingredient was added successfully')
+                messages.success(request, _('The ingredient was added successfully'))
             return redirect('recipes:edit', recipe_slug=recipe.slug)
         else:
-            messages.error(request, "You're not the author of this recipe")
+            messages.error(request, _("You're not the author of this recipe"))
     return redirect('recipes:homepage')
 
 
@@ -302,7 +303,7 @@ def recipe_add_rate(request, recipe_pk):
             recipe_rate.recipe = recipe
             recipe_rate.user = request.user
             recipe_rate.save()
-            messages.success(request, 'The recipe was rated successfully')
+            messages.success(request, _('The recipe was rated successfully'))
             print(recipe_rate.rate)
         return redirect('recipes:details', recipe_slug=recipe.slug)
     return redirect('recipes:homepage')
@@ -318,7 +319,7 @@ def recipe_add_comment(request, recipe_pk):
             recipe_comment.recipe = recipe
             recipe_comment.user = request.user
             recipe_comment.save()
-            messages.success(request, 'The comment was added successfully')
+            messages.success(request, _('The comment was added successfully'))
         return redirect('recipes:details', recipe_slug=recipe.slug)
     return redirect('recipes:homepage')
 
@@ -344,3 +345,51 @@ def recipe_reply_comment(request, comment_pk):
                           'comment': comment
                       })
 
+
+@login_required(login_url="accounts:login")
+def recipe_toogle_publish(request, recipe_pk):
+    recipe = get_object_or_404(Recipe, pk=recipe_pk)
+    if request.user == recipe.author:
+        toogle = not recipe.published
+        recipe.published = toogle
+        recipe.save()
+        if toogle:
+            messages.success(request, _('The recipe was published'))
+        else:
+            messages.success(request, _('The recipe was unpublished'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return redirect('recipes:edit', recipe_slug=recipe.slug)
+
+
+@login_required(login_url="accounts:login")
+def recipe_delete_image(request, image_pk):
+    image = get_object_or_404(RecipeImage, pk=image_pk)
+    if request.user == image.recipe.author:
+        image.delete()
+        messages.success(request, _('The picture was deleted successfully'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return redirect('recipes:edit', recipe_slug=image.recipe.slug)
+
+
+@login_required(login_url="accounts:login")
+def recipe_delete_step(request, step_pk):
+    step = get_object_or_404(RecipeStep, pk=step_pk)
+    if request.user == step.recipe.author:
+        step.delete()
+        messages.success(request, _('The step was deleted successfully'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return redirect('recipes:edit', recipe_slug=step.recipe.slug)
+
+
+@login_required(login_url="accounts:login")
+def recipe_delete_ingredient(request, ingredient_pk):
+    ingredient = get_object_or_404(RecipeIngredient, pk=ingredient_pk)
+    if request.user == ingredient.recipe.author:
+        ingredient.delete()
+        messages.success(request, _('The ingredient was deleted successfully'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return redirect('recipes:edit', recipe_slug=ingredient.recipe.slug)

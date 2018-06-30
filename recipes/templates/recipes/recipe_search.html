@@ -62,17 +62,17 @@
                     </div>
                 </div>
             {% endfor %}
+            <div class="clearfix"></div>
+            <br>
+            {% url 'recipes:search' as search_url %}
+            {% with search_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
+                {% include 'utils/_pagination.html' with paginator=results_paginator current_page=current_page base_url=full_url %}
+            {% endwith %}
         {% else %}
             <br>
             <div class="alert alert-info" role="alert">
                 <strong>{% trans "Sorry, we have no results for this research :(" %}</strong>
             </div>
         {% endif %}
-        <div class="clearfix"></div>
-        <br>
-        {% url 'recipes:search' as search_url %}
-        {% with search_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
-            {% include 'utils/_pagination.html' with paginator=results_paginator current_page=current_page base_url=full_url %}
-        {% endwith %}
     </div>
 {% endblock %}

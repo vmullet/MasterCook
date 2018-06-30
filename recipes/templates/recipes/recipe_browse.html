@@ -16,11 +16,13 @@
 
 {% block content %}
     {% if mode == 'category' %}
-        <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Category" %} {{ category_name }}
-        ({{ number_results }} {% trans "Results" %})</h1>
+        <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Category" %}
+            "{{ category_name }}"
+            ({{ number_results }} {% trans "Results" %})</h1>
     {% else %}
-        <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Skill" %} {{ skill_name }}
-        ({{ number_results }} {% trans "Results" %})</h1>
+        <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Skill" %}
+            "{{ skill_name }}"
+            ({{ number_results }} {% trans "Results" %})</h1>
     {% endif %}
     <br>
     <div style="float:right">
@@ -67,21 +69,21 @@
                     </div>
                 </div>
             {% endfor %}
+            <div class="clearfix"></div>
+            <br>
+            {% if mode == 'category' %}
+                {% url 'recipes:browse_category' category_name=category_name as base_url %}
+            {% else %}
+                {% url 'recipes:browse_skill' skill_name=skill_name as base_url %}
+            {% endif %}
+            {% with base_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
+                {% include 'utils/_pagination.html' with paginator=results_paginator current_page=current_page base_url=full_url %}
+            {% endwith %}
         {% else %}
             <br>
             <div class="alert alert-info" role="alert">
                 <strong>{% trans "Sorry, we have no results for this research :(" %}</strong>
             </div>
         {% endif %}
-        <div class="clearfix"></div>
-        <br>
-        {% if mode == 'category' %}
-            {% url 'recipes:browse_category' category_name=category_name as base_url %}
-        {% else %}
-            {% url 'recipes:browse_skill' skill_name=skill_name as base_url %}
-        {% endif %}
-        {% with base_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
-            {% include 'utils/_pagination.html' with paginator=results_paginator current_page=current_page base_url=full_url %}
-        {% endwith %}
     </div>
 {% endblock %}

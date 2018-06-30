@@ -22,7 +22,7 @@ def recipe_homepage(request):
 
 
 def recipe_details(request, recipe_slug):
-    recipe = get_object_or_404(Recipe, slug=recipe_slug)
+    recipe = get_object_or_404(Recipe, slug=recipe_slug, published=True)
     recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
     recipe_steps = RecipeStep.objects.filter(recipe=recipe)
     recipe_photos = RecipeImage.objects.filter(recipe=recipe)
@@ -55,7 +55,7 @@ def recipe_details(request, recipe_slug):
 def recipe_search(request):
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
-        recipes = Recipe.objects.filter(name__contains=keyword)
+        recipes = Recipe.objects.filter(name__contains=keyword, published=True)
         if 'filter' in request.GET and 'order' in request.GET:
             filt = request.GET['filter']
             order = request.GET['order']
@@ -87,7 +87,7 @@ def recipe_search(request):
 
 def recipe_browse_category(request, category_name):
     category = get_object_or_404(RecipeType, name=category_name)
-    recipes = Recipe.objects.filter(recipe_type=category)
+    recipes = Recipe.objects.filter(recipe_type=category, published=True)
     keyword = ''
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
@@ -124,7 +124,7 @@ def recipe_browse_category(request, category_name):
 
 def recipe_browse_skill(request, skill_name):
     skill = get_object_or_404(RecipeSkill, name=skill_name)
-    recipes = Recipe.objects.filter(recipe_skill=skill)
+    recipes = Recipe.objects.filter(recipe_skill=skill, published=True)
     keyword = ''
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
@@ -343,3 +343,4 @@ def recipe_reply_comment(request, comment_pk):
                           'comment_form': comment_form,
                           'comment': comment
                       })
+

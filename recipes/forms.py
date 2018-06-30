@@ -245,9 +245,10 @@ class RecipeRateForm(forms.ModelForm):
 
 
 class RecipeFilterForm(forms.Form):
-    search = forms.CharField(widget=forms.HiddenInput(attrs={
-        'name': 'search',
-    }))
+    keyword = forms.CharField(label=_('Keyword'), widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'name': 'keyword',
+    }), localize=True, required=False)
     filter = forms.ChoiceField(label=_('Filter By'), widget=forms.Select(attrs={
         'class': 'form-control',
         'name': 'filter'
@@ -257,6 +258,7 @@ class RecipeFilterForm(forms.Form):
                                    ('recipe_rate', _('Average Rate')),
                                    ('recipe_skill__value', _('Skill needed')),
                                    ('preparation_time', _('Preparation Time')),
+                                   ('published_at', _('Publication Date'))
                                ]), localize=True)
     order = forms.ChoiceField(label=_('Order By'), widget=forms.Select(attrs={
         'class': 'form-control',
@@ -269,6 +271,6 @@ class RecipeFilterForm(forms.Form):
 
     def __init__(self, vkeyword, select_filter, select_order, *args, **kwargs):
         super(RecipeFilterForm, self).__init__(*args, **kwargs)
-        self.fields['search'].initial = vkeyword
+        self.fields['keyword'].initial = vkeyword
         self.fields['filter'].initial = select_filter
         self.fields['order'].initial = select_order

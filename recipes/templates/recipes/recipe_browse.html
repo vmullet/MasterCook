@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "Search Recipe" %}
+    {% trans "Browse Recipes" %}
 {% endblock %}
 
 {% block banner %}
@@ -15,8 +15,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Search results" %}
-        ({{ number_results }} {% trans "Results" %})</h1>
+    {% if mode == 'category' %}
+        <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Category" %}
+            "{{ category_name }}"
+            ({{ number_results }} {% trans "Results" %})</h1>
+    {% else %}
+        <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Skill" %}
+            "{{ skill_name }}"
+            ({{ number_results }} {% trans "Results" %})</h1>
+    {% endif %}
     <br>
     <div style="float:right">
         <form class="form-inline" role="search">
@@ -64,8 +71,12 @@
             {% endfor %}
             <div class="clearfix"></div>
             <br>
-            {% url 'recipes:search' as search_url %}
-            {% with search_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
+            {% if mode == 'category' %}
+                {% url 'recipes:browse_category' category_name=category_name as base_url %}
+            {% else %}
+                {% url 'recipes:browse_skill' skill_name=skill_name as base_url %}
+            {% endif %}
+            {% with base_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
                 {% include 'utils/_pagination.html' with paginator=results_paginator current_page=current_page base_url=full_url %}
             {% endwith %}
         {% else %}

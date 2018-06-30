@@ -6,15 +6,15 @@ REM ######################################################
 
 REM Setup environment
 
-mkvirtualenv mastercook-env
-workon mastercook-env
+REM mkvirtualenv mastercook-env
+REM workon mastercook-env
 
 REM Migrations for generic app
 
 echo Start Migrations...
 
-python manage.py makemigrations generic
-python manage.py migrate generic
+python manage.py makemigrations utils
+python manage.py migrate utils
 
 REM Migrations for accounts app
 
@@ -41,14 +41,14 @@ REM python manage.py loaddata
 
 REM Compile messages for translations (getText must be installed)
 
-django-admin compilemessages
+REM django-admin compilemessages
 
 REM Run the server
 
 echo Server Starting...
 
-python manage.py runserver
+REM python manage.py runserver
 
 REM Open web browser
 
-start "" http://127.0.0.1:8000/
+REM start "" http://127.0.0.1:8000/

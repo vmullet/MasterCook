@@ -54,7 +54,7 @@
     <br>
         <div class="col-lg-10 footer-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h3 style="color:black">{% trans "Other photos" %}</h3>
-            {% for photo in recipe_photos %}
+            {% for photo in recipe.images.all %}
                 <div class="footer-grd">
                     <a href="{{ photo.image.url }}"><img src="{{ photo.image.url }}" class="img-responsive" alt=""/></a>
                 </div>
@@ -76,8 +76,8 @@
             <h4><span>I</span>ngredients <i class="fas fa-utensils fa-lg"></i></h4>
             <ul class="list-group wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms"
                 style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                {% if recipe_ingredients.count > 0 %}
-                    {% for ingredient in recipe_ingredients %}
+                {% if recipe.steps.count > 0 %}
+                    {% for ingredient in recipe.ingredients.all %}
                         <li class="list-group-item">
                             {{ ingredient.quantity }}{{ ingredient.unit_measure.symbol }}
                             - {{ ingredient.ingredient.name }}
@@ -91,8 +91,8 @@
         <div class="cat-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h4><span>S</span>teps <i class="fas fa-step-forward fa-lg"></i></h4>
             <ul>
-                {% if recipe_steps.count > 0 %}
-                    {% for step in recipe_steps %}
+                {% if recipe.steps.count > 0 %}
+                    {% for step in recipe.steps.all %}
                         <li class="list-group-item">{{ step.name }} - {{ step.description }}</li>
                     {% endfor %}
                 {% else %}
@@ -114,6 +114,7 @@
     {% else %}
         <a href="{% url 'accounts:login' %}">{% trans "You must be logged to post a comment." %}</a>
     {% endif %}
+    {% if recipe.comments.count > 0 %}
     <div class="three-com" id="block-comment">
         <h3 class="wow fadeInUp" data-wow-duration="1000ms"
             data-wow-delay="300ms">{{ number_comments }} {% trans "Comments" %}
@@ -199,5 +200,11 @@
             </li>
         {% endif %}
     </ul>
+    {% else %}
+        <br>
+        <div class="alert alert-info">
+            <strong>{% trans "This recipe has no comments yet :(" %}</strong>
+        </div>
+    {% endif %}
 
 {% endblock %}

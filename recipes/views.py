@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recipe, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep, RecipeImage
+from .models import Recipe, RecipeType, RecipeSkill, RecipeComment, RecipeRate, RecipeIngredient, RecipeStep, RecipeImage
 from . import forms as recipeforms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -58,8 +58,8 @@ def recipe_details(request, recipe_slug):
 
 
 def recipe_search(request):
-    if 'search' in request.GET:
-        keyword = request.GET['search']
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
         recipes = Recipe.objects.filter(name__contains=keyword)
         if 'filter' in request.GET and 'order' in request.GET:
             filt = request.GET['filter']
@@ -78,6 +78,56 @@ def recipe_search(request):
             'filterform': filterform
         })
     return redirect('recipes:list')
+
+
+def recipe_browse_category(request, category_name):
+    category = get_object_or_404(RecipeType, name=category_name)
+    recipes = Recipe.objects.filter(recipe_type=category)
+    keyword = ''
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        recipes = recipes.filter(name__contains=keyword)
+    if 'filter' in request.GET and 'order' in request.GET:
+        filt = request.GET['filter']
+        order = request.GET['order']
+        filterform = recipeforms.RecipeFilterForm(keyword, filt, order)
+        if filt == 'recipe_rate':
+            results = recipes.annotate(avg_rate=Avg('rates__rate')).order_by(order + 'avg_rate')
+        else:
+            results = recipes.order_by(order + filt)
+    else:
+        filterform = recipeforms.RecipeFilterForm('', 'name', '')
+        results = recipes.order_by('name')
+    return render(request, 'recipes/recipe_search.html', {
+        'results': results,
+        'keyword': keyword,
+        'filterform': filterform
+    })
+
+
+def recipe_browse_skill(request, skill_name):
+    skill = get_object_or_404(RecipeSkill, name=skill_name)
+    recipes = Recipe.objects.filter(recipe_skill=skill)
+    keyword = ''
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        recipes = recipes.filter(name__contains=keyword)
+    if 'filter' in request.GET and 'order' in request.GET:
+        filt = request.GET['filter']
+        order = request.GET['order']
+        filterform = recipeforms.RecipeFilterForm(keyword, filt, order)
+        if filt == 'recipe_rate':
+            results = recipes.annotate(avg_rate=Avg('rates__rate')).order_by(order + 'avg_rate')
+        else:
+            results = recipes.order_by(order + filt)
+    else:
+        filterform = recipeforms.RecipeFilterForm('', 'name', '')
+        results = recipes.order_by('name')
+    return render(request, 'recipes/recipe_search.html', {
+        'results': results,
+        'keyword': keyword,
+        'filterform': filterform
+    })
 
 
 @login_required(login_url="accounts:login")

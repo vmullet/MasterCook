@@ -73,8 +73,8 @@ class Recipe(models.Model):
         return '%s...' % self.description[:100]
 
     def get_median_rate(self):
-        avg = str(self.rates.aggregate(Avg('rate')).get('rate__avg')).replace(',', '.')
-        return '0' if avg == 'None' else avg
+        avg = self.rates.aggregate(Avg('rate')).get('rate__avg')
+        return '0' if avg is None else str(avg).replace(',', '.')
 
 
 class RecipeStep(models.Model):

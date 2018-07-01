@@ -21,11 +21,14 @@
                         {% for recipe in latest_recipes %}
                             <li>
                                 <div class="banner-info1-grid">
-                                    <img src="{{ recipe.thumbnail.url }}" alt="" class="img-responsive"/>
-                                    <h3>{{ recipe.name }}</h3>
+                                    <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}"><img
+                                            src="{{ recipe.thumbnail.url }}" alt="" class="img-responsive"/></a>
+                                    <h3>
+                                        {{ recipe.name }}
+                                    </h3>
                                     <p>{{ recipe.get_short_description }}</p>
                                     <a class="btn btn-default btn-md"
-                                           href="{% url 'recipes:details' recipe_slug=recipe.slug %}">{% trans "Read More" %}</a>
+                                       href="{% url 'recipes:details' recipe_slug=recipe.slug %}">{% trans "Read More" %}</a>
                                     <div class="more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                                     </div>
                                 </div>

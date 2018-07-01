@@ -59,7 +59,7 @@ class Recipe(models.Model):
     recipe_origin = models.ForeignKey(Country, on_delete=models.CASCADE)
     recipe_cost = models.OneToOneField(RecipeCost, on_delete=models.CASCADE, null=True)
     # MetaData
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipes')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True)
     published_at = models.DateTimeField(null=True)

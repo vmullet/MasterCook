@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CookerAuthenticationForm, CookerCreationForm, CookerProfileForm, UserEditForm, CookerChangePasswordForm
+from .forms import CookerAuthenticationForm, CookerCreationForm, CookerProfileForm, UserEditForm, \
+    CookerChangePasswordForm
 from .models import CookerProfile
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from recipes.models import Recipe
 
 
 # Create your views here
@@ -93,4 +95,12 @@ def update_password_view(request):
         password_form = CookerChangePasswordForm(request.user)
     return render(request, 'accounts/accounts_password_edit.html', {
         'form': password_form
+    })
+
+
+@login_required(login_url='accounts:login')
+def user_dashboard_view(request):
+    recipes = request.user.recipes.all
+    return render(request, 'accounts/accounts_user_dashboard.html', {
+        'recipes': recipes,
     })

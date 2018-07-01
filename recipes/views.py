@@ -39,7 +39,6 @@ def recipe_details(request, recipe_slug):
                       'recipe': recipe,
                       'comment_paginator': paginator.page(num_page),
                       'range_page': range(1, paginator.num_pages + 1),
-                      'number_comments': comments.count,
                       'comment_form': comment_form,
                       'rate_form': rate_form,
                       'user': request.user

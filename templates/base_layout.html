@@ -81,6 +81,8 @@
                                             class="fas fa-eye fa-lg"></i> {% trans "Edit Profile" %}</a></li>
                                     <li><a href="{% url 'accounts:edit_password' %}"><i
                                             class="fas fa-key fa-lg"></i> {% trans "Modify Password" %}</a></li>
+                                    <li><a href="{% url 'accounts:my_dashboard' %}"><i
+                                            class="fas fa-clipboard-list fa-lg"></i> {% trans "My Dashboard" %}</a></li>
                                     <li><a href="{% url 'recipes:create' %}"><i
                                             class="fas fa-plus-circle fa-lg"></i> {% trans "New Recipe" %}</a>
                                     </li>
@@ -221,15 +223,15 @@
 </div>
 <!-- //footer -->
 <!-- for bootstrap working -->
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-    <script src="{% static 'js/star-rating.min.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/star-rating.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 
-    <!-- //js -->
-    <script src="{% static 'js/wow.min.js' %}"></script>
-    <script>
-        new WOW().init();
-    </script>
+<!-- //js -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script>
+    new WOW().init();
+</script>
 
 <!-- //for bootstrap working -->
 </body>

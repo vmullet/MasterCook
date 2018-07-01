@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-01 19:03+0200\n"
+"POT-Creation-Date: 2018-07-01 19:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +22,6 @@ msgid "Username"
 msgstr "Nom d'utilisateur"
 
 #: .\accounts\forms.py:20 .\accounts\forms.py:65
-#, fuzzy
-#| msgid "account.change_password"
 msgid "Password"
 msgstr "Modifier mon mot de passe"
 
@@ -123,16 +120,12 @@ msgid "Signup"
 msgstr "S'inscrire"
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:5
-#, fuzzy
-#| msgid "Recipes"
 msgid "My Recipes"
-msgstr "Recettes"
+msgstr "Mes Recettes"
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:7
-#, fuzzy
-#| msgid "New Recipe"
 msgid "Show My Recipes"
-msgstr "Nouvelle recette"
+msgstr "Afficher Mes Recettes"
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:14
 msgid "Thumbnail"
@@ -506,7 +499,9 @@ msgstr "Editer la recette"
 msgid ""
 "This recipe is not published yet. To make it visible by other cookers, "
 "please click on this button"
-msgstr "Cette recette n'est pas encore publiée. Pour la rendre visible aux autres cookers, cliquez sur ce bouton"
+msgstr ""
+"Cette recette n'est pas encore publiée. Pour la rendre visible aux autres "
+"cookers, cliquez sur ce bouton"
 
 #: .\recipes\templates\recipes\recipe_search.html:7
 msgid "Search Recipe"
@@ -684,6 +679,14 @@ msgstr "Langues"
 #: .\templates\base_layout.html:118
 msgid "Search"
 msgstr "Rechercher"
+
+#: .\utils\templates\utils\_browse_menu.html:4
+msgid "By Types"
+msgstr "Par Types"
+
+#: .\utils\templates\utils\_browse_menu.html:8
+msgid "By Skills"
+msgstr "Par Difficulté"
 
 #: .\utils\templates\utils\_modal_confirmation.html:14
 msgid "Yes"

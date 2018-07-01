@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<ul>
+    {% for type in types %}
+        <li><a href="{% url 'recipes:browse_category' category_name=type.name %}">{{ type.name }}</a></li>
+    {% endfor %}
+</ul>

@@ -254,6 +254,7 @@ def recipe_add_step(request, recipe_pk):
             step_form = recipeforms.RecipeStepForm(request.POST)
             if step_form.is_valid():
                 recipe_step = step_form.save(commit=False)
+                recipe_step.order = recipe.steps.count() + 1
                 recipe_step.recipe = recipe
                 recipe_step.save()
                 recipe.updated_at = datetime.now()
@@ -263,6 +264,54 @@ def recipe_add_step(request, recipe_pk):
         else:
             messages.error(request, _("You're not the author of this recipe"))
     return redirect('recipes:homepage')
+
+
+@login_required(login_url="accounts:login")
+def recipe_delete_step(request, step_pk):
+    step = get_object_or_404(RecipeStep, pk=step_pk)
+    if request.user == step.recipe.author:
+        step.delete()
+        messages.success(request, _('The step was deleted successfully'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return redirect('recipes:edit', recipe_slug=step.recipe.slug)
+
+
+@login_required(login_url="accounts:login")
+def recipe_up_step(request, step_pk):
+    step = get_object_or_404(RecipeStep, pk=step_pk)
+    if request.user == step.recipe.author:
+        if step.order > 1:
+            step.order -= 1
+            step.save()
+            previous_step = step.recipe.steps.filter(order=step.order).exclude(pk=step_pk).first()
+            previous_step.order += 1
+            previous_step.save()
+            messages.success(request, _('The step was updated successfully'))
+        else:
+            messages.warning(request, _('The step is already the first one'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return redirect('recipes:edit', recipe_slug=step.recipe.slug)
+
+
+@login_required(login_url="accounts:login")
+def recipe_down_step(request, step_pk):
+    step = get_object_or_404(RecipeStep, pk=step_pk)
+    steps = step.recipe.steps
+    if request.user == step.recipe.author:
+        if step.order < steps.count():
+            step.order += 1
+            step.save()
+            next_step = steps.filter(order=step.order).exclude(pk=step_pk).first()
+            next_step.order -= 1
+            next_step.save()
+            messages.success(request, _('The step was updated successfully'))
+        else:
+            messages.warning(request, _('The step is already the last one'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return redirect('recipes:edit', recipe_slug=step.recipe.slug)
 
 
 @login_required(login_url="accounts:login")
@@ -368,15 +417,7 @@ def recipe_delete_image(request, image_pk):
     return redirect('recipes:edit', recipe_slug=image.recipe.slug)
 
 
-@login_required(login_url="accounts:login")
-def recipe_delete_step(request, step_pk):
-    step = get_object_or_404(RecipeStep, pk=step_pk)
-    if request.user == step.recipe.author:
-        step.delete()
-        messages.success(request, _('The step was deleted successfully'))
-    else:
-        messages.error(request, _("You're not the author of this recipe"))
-    return redirect('recipes:edit', recipe_slug=step.recipe.slug)
+
 
 
 @login_required(login_url="accounts:login")

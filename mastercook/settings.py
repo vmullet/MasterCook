@@ -143,6 +143,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Custom settings
 
-MAX_COMMENT_PAGE = 10
+MAX_COMMENT_PAGE = 5
 MAX_LATEST_RECIPES = 5
 MAX_SEARCH_RESULTS = 2

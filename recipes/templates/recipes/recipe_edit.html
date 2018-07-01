@@ -18,9 +18,16 @@
     <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'Edit Recipe' %}
         "{{ recipe.name }}"</h1>
     <br>
+    {% if not recipe.published %}
+        <div class="alert alert-warning">
+            <strong>{% trans "This recipe is not published yet. To make it visible by other cookers, please click on this button" %}
+                <a class="btn btn-warning btn-md"
+                   href="{% url 'recipes:publish_toogle' recipe_pk=recipe.pk %}">Publish</a></strong>
+        </div>
+    {% endif %}
+
     <img src="{{ recipe.thumbnail.url }}"/>
-    <br>
-    <br>
+    <br><br>
     <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <form class="site-form" action="{% url 'recipes:edit' recipe_slug=recipe.slug %}" method="post"
               enctype="multipart/form-data">
@@ -31,32 +38,11 @@
             <button type="submit" class="btn btn-default btn-lg">{% trans "Edit" %}</button>
         </form>
         <br><br>
-        <h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-            {% trans "Add Image" %}</h3>
-        <form class="site-form" action="{% url 'recipes:add_image' recipe_pk=recipe.pk %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ image_form.as_p }}
-            <br>
-            <button type="submit" class="btn btn-info btn-lg">{% trans "Add Image" %}</button>
-        </form>
-        <br><br>
-        <h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-            {% trans "Add Ingredient" %}</h3>
-        <form class="site-form" action="{% url 'recipes:add_ingredient' recipe_pk=recipe.pk %}" method="post">
-            {% csrf_token %}
-            {{ ingred_form.as_p }}
-            <br>
-            <button type="submit" class="btn btn-info btn-lg">{% trans "Add Ingredient" %}</button>
-        </form>
-        <br><br>
-        <h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
-            {% trans "Add Step" %}</h3>
-        <form class="site-form" action="{% url 'recipes:add_step' recipe_pk=recipe.pk %}" method="post">
-            {% csrf_token %}
-            {{ step_form.as_p }}
-            <br>
-            <button type="submit" class="btn btn-info btn-lg">{% trans "Add Step" %}</button>
-        </form>
 
+        {% include 'recipes/_show_edit_image.html' with recipe=recipe image_form=image_form %}
+
+        {% include 'recipes/_show_edit_ingredient.html' with recipe=recipe ingred_form=ingred_form %}
+
+        {% include 'recipes/_show_edit_step.html' with recipe=recipe step_form=step_form %}
     </div>
 {% endblock %}

@@ -1,0 +1,51 @@
+{% load i18n %}
+
+<h1>{% trans "Images" %}</h1>
+<br>
+<button class="btn btn-default btn-lg" data-toggle="collapse"
+        data-target="#div_images">{% trans "Show/Edit Current Images" %}</button>
+<div id="div_images" class="collapse">
+    {% if recipe.images.count > 0 %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{% trans "Title" %}</th>
+                <th>{% trans "Image" %}</th>
+                <th>{% trans "Remove" %} ?</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for img in recipe.images.all %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ img.name }}</td>
+                    <td><img src="{{ img.image.url }}" class="img-responsive" style="width:35%;height:50%;" alt=""/>
+                    </td>
+                    <td><a class="btn btn-danger btn-md"
+                           href="{% url 'recipes:delete_image' image_pk=img.pk %}">{% trans "Delete" %}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <br>
+        <div class="alert alert-info">
+            <strong>{% trans "No additional photos for this recipe yet :(" %}</strong>
+        </div>
+    {% endif %}
+</div>
+<br><br>
+<h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms"
+    style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    {% trans "Add Image" %}</h3>
+<form class="site-form" action="{% url 'recipes:add_image' recipe_pk=recipe.pk %}" method="post"
+      enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ image_form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-info btn-lg">{% trans "Add Image" %}</button>
+</form>
+<br><br>

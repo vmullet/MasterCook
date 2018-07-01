@@ -83,11 +83,18 @@ class RecipeStep(models.Model):
     """
     name = models.CharField(max_length=100)
     description = models.TextField()
+    order = models.IntegerField(default=0)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='steps')
+
+    class Meta:
+        ordering = ['order']
 
     def __str__(self):
         return '%s in %s' % (self.name,
                              self.recipe.name)
+
+    def get_short_description(self):
+        return '%s...' % self.description[:50]
 
 
 class RecipeIngredient(models.Model):

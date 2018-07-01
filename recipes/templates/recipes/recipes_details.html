@@ -51,7 +51,7 @@
             {{ recipe.description }}
             </span>
         </p>
-    <br>
+        <br>
         <div class="col-lg-10 footer-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h3 style="color:black">{% trans "Other photos" %}</h3>
             {% for photo in recipe.images.all %}
@@ -115,91 +115,64 @@
         <a href="{% url 'accounts:login' %}">{% trans "You must be logged to post a comment." %}</a>
     {% endif %}
     {% if recipe.comments.count > 0 %}
-    <div class="three-com" id="block-comment">
-        <h3 class="wow fadeInUp" data-wow-duration="1000ms"
-            data-wow-delay="300ms">{{ number_comments }} {% trans "Comments" %}
-            <span>{% trans "on" %}</span>
-            <label>{{ recipe.name }}</label>
-        </h3>
-        {% for comment in comment_paginator.object_list %}
-            {% if comment.is_root %}
-                <div class="tom-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="tom">
-                        <img class="avatar" src="{{ comment.user.profile.avatar.url }}" alt=" "/>
-                    </div>
-                    <div class="tom-right">
-                        <div class="Hardy">
-                            <h4>
-                                <a href="{% url 'accounts:view_profile' username=comment.user.username %}">
-                                    {{ comment.user.first_name }} {{ comment.user.last_name }}
-                                </a>
-                            </h4>
-                            <p><label>{{ comment.created_at }}</label></p>
+        <div class="three-com" id="block-comment">
+            <h3 class="wow fadeInUp" data-wow-duration="1000ms"
+                data-wow-delay="300ms">{{ number_comments }} {% trans "Comments" %}
+                <span>{% trans "on" %}</span>
+                <label>{{ recipe.name }}</label>
+            </h3>
+            {% for comment in comment_paginator.object_list %}
+                {% if comment.is_root %}
+                    <div class="tom-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="tom">
+                            <img class="avatar" src="{{ comment.user.profile.avatar.url }}" alt=" "/>
                         </div>
-                        {% if user.is_authenticated %}
-                            <div class="reply">
-                                <a href="{% url 'recipes:reply_to_comment' comment_pk=comment.pk %}">Reply</a>
+                        <div class="tom-right">
+                            <div class="Hardy">
+                                <h4>
+                                    <a href="{% url 'accounts:view_profile' username=comment.user.username %}">
+                                        {{ comment.user.first_name }} {{ comment.user.last_name }}
+                                    </a>
+                                </h4>
+                                <p><label>{{ comment.created_at }}</label></p>
                             </div>
-                        {% endif %}
-                        <div class="clearfix"></div>
-                        <p class="lorem">{{ comment.comment }}</p>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            {% endif %}
-            {% for reply in comment.get_children %}
-                <div class="tom-grid humour wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="tom">
-                        <img class="avatar" src="{{ reply.user.profile.avatar.url }}" alt=" "/>
-                    </div>
-                    <div class="tom-right">
-                        <div class="Hardy">
-                            <h4>
-                                <a href="{% url 'accounts:view_profile' username=reply.user.username %}">
-                                    {{ reply.user.first_name }} {{ reply.user.last_name }}
-                                </a>
-                            </h4>
-                            <p><label>{{ reply.created_at }}</label></p>
+                            {% if user.is_authenticated %}
+                                <div class="reply">
+                                    <a href="{% url 'recipes:reply_to_comment' comment_pk=comment.pk %}">Reply</a>
+                                </div>
+                            {% endif %}
+                            <div class="clearfix"></div>
+                            <p class="lorem">{{ comment.comment }}</p>
                         </div>
                         <div class="clearfix"></div>
-                        <p class="lorem">{{ reply.comment }}</p>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
+                {% endif %}
+                {% for reply in comment.get_children %}
+                    <div class="tom-grid humour wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="tom">
+                            <img class="avatar" src="{{ reply.user.profile.avatar.url }}" alt=" "/>
+                        </div>
+                        <div class="tom-right">
+                            <div class="Hardy">
+                                <h4>
+                                    <a href="{% url 'accounts:view_profile' username=reply.user.username %}">
+                                        {{ reply.user.first_name }} {{ reply.user.last_name }}
+                                    </a>
+                                </h4>
+                                <p><label>{{ reply.created_at }}</label></p>
+                            </div>
+                            <div class="clearfix"></div>
+                            <p class="lorem">{{ reply.comment }}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    </div>
-    <ul class="pagination pagination-lg">
-        {% if comment_paginator.has_previous %}
-            <li>
-                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ comment_paginator.previous_page_number }}">
-                    <i class="fa fa-angle-left">«</i>
-                </a>
-            </li>
-        {% else %}
-            <li class="disabled">
-                <a href="#"><i class="fa fa-angle-left">«</i></a>
-            </li>
-        {% endif %}
-        {% for num_page in range_page %}
-            <li {% if num_page == current_page|add:"0" %}class="active"{% endif %}>
-                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ num_page }}">{{ num_page }}</a>
-            </li>
-        {% endfor %}
-        {% if comment_paginator.has_next %}
-            <li>
-                <a href="{% url 'recipes:details' recipe_slug=recipe.slug %}?num_page={{ comment_paginator.next_page_number }}">
-                    <i class=" fa fa-angle-right">»</i>
-                </a>
-            </li>
-        {% else %}
-            <li class="disabled">
-                <a href="#block-comment">
-                    <i class="fa fa-angle-right">»</i>
-                </a>
-            </li>
-        {% endif %}
-    </ul>
+        </div>
+
+        {% url 'recipes:details' recipe_slug=recipe.slug as detail_url %}
+        {% include 'utils/_pagination.html' with paginator=comment_paginator base_url=detail_url|add:'?' %}
+
     {% else %}
         <br>
         <div class="alert alert-info">

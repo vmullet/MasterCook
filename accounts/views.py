@@ -7,13 +7,17 @@ from .forms import CookerAuthenticationForm, CookerCreationForm, CookerProfileFo
 from .models import CookerProfile
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-from recipes.models import Recipe
 
 
 # Create your views here
 
 
 def signup_view(request):
+    """
+    View to allow a user to sign up on the website
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         form = CookerCreationForm(request.POST)
         if form.is_valid():
@@ -28,6 +32,11 @@ def signup_view(request):
 
 
 def login_view(request):
+    """
+    View to allow a user to login on the website
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         form = CookerAuthenticationForm(data=request.POST)
         if form.is_valid():
@@ -44,11 +53,22 @@ def login_view(request):
 
 
 def logout_view(request):
+    """
+    View to allow a user to logout
+    :param request:
+    :return:
+    """
     logout(request)
     return redirect('recipes:homepage')
 
 
 def profile_view(request, username):
+    """
+    View to consult a user profile
+    :param request:
+    :param username: The username of the user with this profile
+    :return:
+    """
     user = get_object_or_404(User, username=username)
     if hasattr(user, 'profile') is False:
         user.profile = CookerProfile.objects.create(user=user)
@@ -58,6 +78,11 @@ def profile_view(request, username):
 
 @login_required(login_url='accounts:login')
 def update_profile_view(request):
+    """
+    View to update profile informations for the current user
+    :param request:
+    :return:
+    """
     if hasattr(request.user, 'profile') is False:
         request.user.profile = CookerProfile.objects.create(user=request.user)
         request.user.save()
@@ -82,6 +107,11 @@ def update_profile_view(request):
 
 @login_required(login_url='accounts:login')
 def update_password_view(request):
+    """
+    View to update the password of the current user
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         password_form = CookerChangePasswordForm(request.user, request.POST)
         if password_form.is_valid():
@@ -100,6 +130,11 @@ def update_password_view(request):
 
 @login_required(login_url='accounts:login')
 def user_dashboard_view(request):
+    """
+    View to consult the dashboard of the current user
+    :param request:
+    :return:
+    """
     recipes = request.user.recipes.all()
     rates = request.user.rates.all()
     return render(request, 'accounts/accounts_user_dashboard.html', {

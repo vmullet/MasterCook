@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Avg
 from django.contrib.auth.models import User
+from django.conf import settings
 from utils.models import Country, UnitMeasure, Currency
 from ingredients.models import Ingredient
 
@@ -75,6 +76,9 @@ class Recipe(models.Model):
     def get_median_rate(self):
         avg = self.rates.aggregate(Avg('rate')).get('rate__avg')
         return '0' if avg is None else str(avg).replace(',', '.')
+
+    def can_add_images(self):
+        return self.images.count() < settings.MAX_RECIPE_IMAGES
 
 
 class RecipeStep(models.Model):
@@ -168,9 +172,6 @@ class RecipeRate(models.Model):
         return 'Rate of %d by %s for recipe %s' % (self.rate,
                                                    self.user.username,
                                                    self.recipe.name)
-
-    def clean_str_rate(self):
-        return str(self.rate).replace(',', '.')
 
     def get_form_rate(self):
         from .forms import RecipeRateForm

@@ -34,7 +34,13 @@
 
         {% include 'recipes/parts/_show_edit_image.html' with recipe=recipe %}
 
-        {% include 'recipes/forms/_form_add_image.html' with image_form=image_form %}
+        {% if recipe.can_add_images %}
+            {% include 'recipes/forms/_form_add_image.html' with image_form=image_form %}
+        {% else %}
+            <div class="alert alert-warning">
+                <strong>{% trans "Sorry, you can't add more photos to this recipe :(" %}</strong>
+            </div>
+        {% endif %}
 
         {% include 'recipes/parts/_show_edit_ingredient.html' with recipe=recipe %}
 

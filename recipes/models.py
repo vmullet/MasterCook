@@ -156,7 +156,7 @@ class RecipeRate(models.Model):
     Model to represent a rate done by a user to a recipe
     """
     rate = models.FloatField(default=-1)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rates')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='rates')
@@ -168,3 +168,10 @@ class RecipeRate(models.Model):
         return 'Rate of %d by %s for recipe %s' % (self.rate,
                                                    self.user.username,
                                                    self.recipe.name)
+
+    def clean_str_rate(self):
+        return str(self.rate).replace(',', '.')
+
+    def get_form_rate(self):
+        from .forms import RecipeRateForm
+        return RecipeRateForm(instance=self)

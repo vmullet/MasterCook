@@ -100,7 +100,9 @@ def update_password_view(request):
 
 @login_required(login_url='accounts:login')
 def user_dashboard_view(request):
-    recipes = request.user.recipes.all
+    recipes = request.user.recipes.all()
+    rates = request.user.rates.all()
     return render(request, 'accounts/accounts_user_dashboard.html', {
         'recipes': recipes,
+        'rates': rates,
     })

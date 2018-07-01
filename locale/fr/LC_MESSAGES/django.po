@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-01 19:30+0200\n"
+"POT-Creation-Date: 2018-07-01 20:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,13 +85,13 @@ msgstr "MasterCook - S'inscrire"
 msgid "MasterCook - My DashBoard"
 msgstr "MasterCook - Mon Dashboard"
 
-#: .\accounts\templates\accounts\accounts_user_dashboard.html:19
+#: .\accounts\templates\accounts\accounts_user_dashboard.html:20
 msgid "My DashBoard"
 msgstr "Mon Dashboard"
 
 #: .\accounts\templates\accounts\forms\_form_login.html:5
 #: .\accounts\templates\accounts\forms\_form_login.html:34
-#: .\templates\base_layout.html:94
+#: .\templates\parts\_header.html:56
 msgid "Login"
 msgstr "Se Connecter"
 
@@ -115,9 +115,58 @@ msgstr "Profil de"
 
 #: .\accounts\templates\accounts\forms\_form_signup.html:5
 #: .\accounts\templates\accounts\forms\_form_signup.html:57
-#: .\templates\base_layout.html:95
+#: .\templates\parts\_header.html:57
 msgid "Signup"
 msgstr "S'inscrire"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:5
+msgid "My Latest Ratings"
+msgstr "Mes dernières Notations"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:7
+msgid "Show My Latest Rates"
+msgstr "Afficher Mes Dernières Notations"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:14
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:14
+msgid "Thumbnail"
+msgstr "Image Principale"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:15
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:15
+#: .\recipes\forms.py:258
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:14
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:13
+msgid "Title"
+msgstr "Titre"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:16
+msgid "Rates"
+msgstr "Notes"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:17
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:16
+msgid "Median Rate"
+msgstr "Note Moyenne"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:18
+msgid "My Rate"
+msgstr "Ma Note"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:19
+msgid "Rated On"
+msgstr "Notée Le"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:43
+#: .\recipes\templates\recipes\forms\_form_rate.html:9
+msgid "Rate"
+msgstr "Noter"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:56
+#, fuzzy
+#| msgid "Sorry but you have no recipes yet :("
+msgid "Sorry but you have not rated any recipes yet :("
+msgstr "Désolé, mais vous n'avez créé aucune recette :("
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:5
 msgid "My Recipes"
@@ -126,21 +175,6 @@ msgstr "Mes Recettes"
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:7
 msgid "Show My Recipes"
 msgstr "Afficher Mes Recettes"
-
-#: .\accounts\templates\accounts\parts\_view_user_recipes.html:14
-msgid "Thumbnail"
-msgstr "Image Principale"
-
-#: .\accounts\templates\accounts\parts\_view_user_recipes.html:15
-#: .\recipes\forms.py:258
-#: .\recipes\templates\recipes\parts\_show_edit_image.html:14
-#: .\recipes\templates\recipes\parts\_show_edit_step.html:13
-msgid "Title"
-msgstr "Titre"
-
-#: .\accounts\templates\accounts\parts\_view_user_recipes.html:16
-msgid "Median Rate"
-msgstr "Note Moyenne"
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:17
 #: .\recipes\templates\recipes\parts\_comments_list.html:5
@@ -318,10 +352,6 @@ msgstr "Laisser un commentaire"
 #: .\recipes\templates\recipes\forms\_form_leave_comment.html:8
 msgid "Comment"
 msgstr "Commenter"
-
-#: .\recipes\templates\recipes\forms\_form_rate.html:9
-msgid "Rate"
-msgstr "Noter"
 
 #: .\recipes\templates\recipes\parts\_comments_list.html:6
 msgid "on"
@@ -540,7 +570,7 @@ msgid "This recipe has no comments yet :("
 msgstr "Cette recette n'a pas encore de commentaires :("
 
 #: .\recipes\templates\recipes\recipes_homepage.html:7
-#: .\templates\base_layout.html:64
+#: .\templates\parts\_header.html:26
 msgid "Home"
 msgstr "Accueil"
 
@@ -551,6 +581,7 @@ msgid "Welcome on MasterCook"
 msgstr "MasterCook"
 
 #: .\recipes\templates\recipes\recipes_homepage.html:16
+#: .\templates\parts\_footer.html:15
 msgid "The community to share recipes across the world"
 msgstr "La communauté pour partager des recettes à travers le monde"
 
@@ -640,53 +671,55 @@ msgstr "L'image a été supprimée avec succès"
 msgid "The ingredient was deleted successfully"
 msgstr "L'ingrédient a été supprimé avec succès"
 
-#: .\templates\base_layout.html:56
+#: .\templates\parts\_footer.html:10 .\templates\parts\_header.html:18
 msgid "MasterCook"
 msgstr "MasterCook"
 
-#: .\templates\base_layout.html:68
-msgid "Browse"
-msgstr "Parcourir"
-
-#: .\templates\base_layout.html:77
-msgid "My Profile"
-msgstr "Mon Profil"
-
-#: .\templates\base_layout.html:81
-msgid "Edit Profile"
-msgstr "Editer mon profil"
-
-#: .\templates\base_layout.html:83
-msgid "Modify Password"
-msgstr "Modifier mot de passe"
-
-#: .\templates\base_layout.html:85
-msgid "My Dashboard"
-msgstr "Mon Dashboard"
-
-#: .\templates\base_layout.html:87
-msgid "New Recipe"
-msgstr "Nouvelle recette"
-
-#: .\templates\base_layout.html:90
-msgid "Logout"
-msgstr "Se déconnecter"
-
-#: .\templates\base_layout.html:100
-msgid "Languages"
-msgstr "Langues"
-
-#: .\templates\base_layout.html:118
-msgid "Search"
-msgstr "Rechercher"
-
+#: .\templates\parts\_footer.html:20
 #: .\utils\templates\utils\_browse_menu.html:4
 msgid "By Types"
 msgstr "Par Types"
 
+#: .\templates\parts\_footer.html:24
 #: .\utils\templates\utils\_browse_menu.html:8
 msgid "By Skills"
 msgstr "Par Difficulté"
+
+#: .\templates\parts\_header.html:30
+msgid "Browse"
+msgstr "Parcourir"
+
+#: .\templates\parts\_header.html:39
+msgid "My Profile"
+msgstr "Mon Profil"
+
+#: .\templates\parts\_header.html:43
+msgid "Edit Profile"
+msgstr "Editer mon profil"
+
+#: .\templates\parts\_header.html:45
+msgid "Modify Password"
+msgstr "Modifier mot de passe"
+
+#: .\templates\parts\_header.html:47
+msgid "My Dashboard"
+msgstr "Mon Dashboard"
+
+#: .\templates\parts\_header.html:49
+msgid "New Recipe"
+msgstr "Nouvelle recette"
+
+#: .\templates\parts\_header.html:52
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: .\templates\parts\_header.html:62
+msgid "Languages"
+msgstr "Langues"
+
+#: .\templates\parts\_header.html:80
+msgid "Search"
+msgstr "Rechercher"
 
 #: .\utils\templates\utils\_modal_confirmation.html:14
 msgid "Yes"

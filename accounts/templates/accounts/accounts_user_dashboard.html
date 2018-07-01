@@ -16,12 +16,15 @@
 
 {% block content %}
 
-    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'My DashBoard' %}</h1>
+    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms"
+        data-wow-delay="300ms">{% trans 'My DashBoard' %}</h1>
     <br>
 
     <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
 
         {% include 'accounts/parts/_view_user_recipes.html' with recipes=recipes %}
+
+        {% include 'accounts/parts/_view_user_rates.html' with rates=rates %}
 
     </div>
 

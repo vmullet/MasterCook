@@ -19,7 +19,7 @@ def signup_view(request):
             user.profile = CookerProfile.objects.create(user=user)
             # log the user in
             login(request, user)
-            return redirect('recipes:list')
+            return redirect('recipes:homepage')
     else:
         form = CookerCreationForm()
     return render(request, 'accounts/accounts_signup.html', {'form': form})
@@ -35,7 +35,7 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('recipes:list')
+                return redirect('recipes:homepage')
     else:
         form = CookerAuthenticationForm()
     return render(request, 'accounts/accounts_login.html', {'form': form})
@@ -43,7 +43,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('recipes:list')
+    return redirect('recipes:homepage')
 
 
 def profile_view(request, username):

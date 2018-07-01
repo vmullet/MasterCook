@@ -47,85 +47,39 @@ def recipe_details(request, recipe_slug):
 
 
 def recipe_search(request):
-    if 'keyword' in request.GET:
-        keyword = request.GET['keyword']
-        recipes = Recipe.objects.filter(published=True)
-        recipes = recipes.filter(
-            Q(name__contains=keyword) | Q(ingredients__ingredient__name__contains=keyword)).distinct()
-        if 'filter' in request.GET and 'order' in request.GET:
-            filt = request.GET['filter']
-            order = request.GET['order']
-            if filt == 'recipe_rate':
-                results = recipes.annotate(avg_rate=Avg('rates__rate')).order_by(order + 'avg_rate')
-            else:
-                results = recipes.order_by(order + filt)
-        else:
-            filt = 'name'
-            order = ''
-            results = recipes.order_by('name')
-        filterform = recipeforms.RecipeFilterForm(keyword, filt, order)
-        num_page = 1
-        if 'num_page' in request.GET:
-            num_page = request.GET['num_page']
-        paginator = Paginator(results, settings.MAX_SEARCH_RESULTS)
-        return render(request, 'recipes/recipe_search.html', {
-            'results_paginator': paginator.page(num_page),
-            'current_page': num_page,
-            'range_page': range(1, paginator.num_pages + 1),
-            'number_results': results.count,
-            'keyword': keyword,
-            'filter': filt,
-            'order': order,
-            'filterform': filterform
-        })
-    return redirect('recipes:list')
+    return handle_search(request, Recipe.objects.filter(published=True), 'recipes/recipe_search.html', True)
 
 
 def recipe_browse_category(request, category_name):
     category = get_object_or_404(RecipeType, name=category_name)
-    recipes = Recipe.objects.filter(recipe_type=category, published=True)
-    keyword = ''
-    if 'keyword' in request.GET:
-        keyword = request.GET['keyword']
-        recipes = recipes.filter(
-            Q(name__contains=keyword) | Q(ingredients__ingredient__name__contains=keyword)).distinct()
-    if 'filter' in request.GET and 'order' in request.GET:
-        filt = request.GET['filter']
-        order = request.GET['order']
-        if filt == 'recipe_rate':
-            results = recipes.annotate(avg_rate=Avg('rates__rate')).order_by(order + 'avg_rate')
-        else:
-            results = recipes.order_by(order + filt)
-    else:
-        filt = 'name'
-        order = ''
-        results = recipes.order_by('name')
-    filterform = recipeforms.RecipeFilterForm(keyword, filt, order)
-    num_page = 1
-    if 'num_page' in request.GET:
-        num_page = request.GET['num_page']
-    paginator = Paginator(results, settings.MAX_SEARCH_RESULTS)
-    return render(request, 'recipes/recipe_browse.html', {
-        'mode': 'category',
-        'category_name': category_name,
-        'results_paginator': paginator.page(num_page),
-        'range_page': range(1, paginator.num_pages + 1),
-        'number_results': results.count,
-        'keyword': keyword,
-        'filter': filt,
-        'order': order,
-        'filterform': filterform
-    })
+    return handle_search(request, Recipe.objects.filter(recipe_type=category, published=True),
+                         'recipes/recipe_browse.html', False,
+                         {'mode': 'category', 'category_name': category_name})
 
 
 def recipe_browse_skill(request, skill_name):
     skill = get_object_or_404(RecipeSkill, name=skill_name)
-    recipes = Recipe.objects.filter(recipe_skill=skill, published=True)
-    keyword = ''
+    return handle_search(request, Recipe.objects.filter(recipe_skill=skill, published=True),
+                         'recipes/recipe_browse.html', False,
+                         {'mode': 'skill', 'skill_name': skill_name})
+
+
+def handle_search(request, base_recipes, template, require_keyword, other_args={}):
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
-        recipes = recipes.filter(
+        if require_keyword and keyword == '':
+            return redirect('recipes:homepage')
+        recipes = base_recipes.filter(
             Q(name__contains=keyword) | Q(ingredients__ingredient__name__contains=keyword)).distinct()
+    else:
+        if require_keyword:
+            return redirect('recipes:homepage')
+        keyword = ''
+        recipes = base_recipes
+    return handle_filters(request, recipes, keyword, template, other_args)
+
+
+def handle_filters(request, recipes, keyword, template, other_args={}):
     if 'filter' in request.GET and 'order' in request.GET:
         filt = request.GET['filter']
         order = request.GET['order']
@@ -142,9 +96,7 @@ def recipe_browse_skill(request, skill_name):
     if 'num_page' in request.GET:
         num_page = request.GET['num_page']
     paginator = Paginator(results, settings.MAX_SEARCH_RESULTS)
-    return render(request, 'recipes/recipe_browse.html', {
-        'mode': 'skill',
-        'skill_name': skill_name,
+    args = {
         'results_paginator': paginator.page(num_page),
         'range_page': range(1, paginator.num_pages + 1),
         'number_results': results.count,
@@ -152,7 +104,8 @@ def recipe_browse_skill(request, skill_name):
         'filter': filt,
         'order': order,
         'filterform': filterform
-    })
+    }
+    return render(request, template, {**args, **other_args})
 
 
 @login_required(login_url="accounts:login")
@@ -415,9 +368,6 @@ def recipe_delete_image(request, image_pk):
     else:
         messages.error(request, _("You're not the author of this recipe"))
     return redirect('recipes:edit', recipe_slug=image.recipe.slug)
-
-
-
 
 
 @login_required(login_url="accounts:login")

@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<form class="site-form" action="{% url 'recipes:edit' recipe_slug=recipe.slug %}" method="post"
+      enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ edit_recipe_form.as_p }}
+    {{ cost_form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-default btn-lg">{% trans "Edit" %}</button>
+</form>
+<br><br>

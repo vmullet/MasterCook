@@ -29,20 +29,23 @@
     <img src="{{ recipe.thumbnail.url }}"/>
     <br><br>
     <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-        <form class="site-form" action="{% url 'recipes:edit' recipe_slug=recipe.slug %}" method="post"
-              enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ edit_recipe_form.as_p }}
-            {{ cost_form.as_p }}
-            <br>
-            <button type="submit" class="btn btn-default btn-lg">{% trans "Edit" %}</button>
-        </form>
-        <br><br>
 
-        {% include 'recipes/_show_edit_image.html' with recipe=recipe image_form=image_form %}
+        {% include 'recipes/forms/_form_edit_recipe.html' with recipe=recipe edit_recipe_form=edit_recipe_form cost_form=cost_form %}
 
-        {% include 'recipes/_show_edit_ingredient.html' with recipe=recipe ingred_form=ingred_form %}
+        {% include 'recipes/parts/_show_edit_image.html' with recipe=recipe %}
 
-        {% include 'recipes/_show_edit_step.html' with recipe=recipe step_form=step_form %}
+        {% include 'recipes/forms/_form_add_image.html' with image_form=image_form %}
+
+        {% include 'recipes/parts/_show_edit_ingredient.html' with recipe=recipe %}
+
+        {% include 'recipes/forms/_form_add_ingredient.html' with ingred_form=ingred_form %}
+
+        {% include 'recipes/parts/_show_edit_step.html' with recipe=recipe %}
+
+        {% include 'recipes/forms/_form_add_step.html' with step_form=step_form %}
+
     </div>
+
+    {% include 'utils/_modal_confirmation.html' %}
+
 {% endblock %}

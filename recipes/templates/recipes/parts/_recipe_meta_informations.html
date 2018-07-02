@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<div class="single-right wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+    <h2>{% trans "Level" %} : {{ recipe.recipe_skill.name }} - {% trans "Origin" %}
+        : {{ recipe.recipe_origin.name }}</h2>
+    <p> {% trans "Description" %} :
+        <span>
+            {{ recipe.description }}
+            </span>
+    </p>
+    <br>
+    <div class="col-lg-10 footer-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h3 style="color:black">{% trans "Other photos" %}</h3>
+        {% if recipe.images.count > 0 %}
+            {% for photo in recipe.images.all %}
+                <div class="footer-grd">
+                    <a href="{{ photo.image.url }}"><img src="{{ photo.image.url }}" class="img-responsive" alt=""/></a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                <strong>{% trans "No additional photos for this recipe yet :(" %}</strong>
+            </div>
+        {% endif %}
+        <div class="clearfix"></div>
+    </div>
+</div>

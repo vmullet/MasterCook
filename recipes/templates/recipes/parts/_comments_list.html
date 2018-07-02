@@ -1,0 +1,57 @@
+{% load i18n %}
+
+<div class="three-com" id="block-comment">
+    <h3 class="wow fadeInUp" data-wow-duration="1000ms"
+        data-wow-delay="300ms">{{ recipe.comments.count }} {% trans "Comments" %}
+        <span>{% trans "on" %}</span>
+        <label>{{ recipe.name }}</label>
+    </h3>
+    {% for comment in comment_paginator.object_list %}
+        {% if comment.is_root %}
+            <div class="tom-grid wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="tom">
+                    <img class="avatar" src="{{ comment.user.profile.avatar.url }}" alt=" "/>
+                </div>
+                <div class="tom-right">
+                    <div class="Hardy">
+                        <h4>
+                            <a href="{% url 'accounts:view_profile' username=comment.user.username %}">
+                                {{ comment.user.first_name }} {{ comment.user.last_name }}
+                            </a>
+                        </h4>
+                        <p><label>{{ comment.created_at }}</label></p>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="reply">
+                            <a href="{% url 'recipes:reply_to_comment' comment_pk=comment.pk %}">Reply</a>
+                        </div>
+                    {% endif %}
+                    <div class="clearfix"></div>
+                    <p class="lorem">{{ comment.comment }}</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        {% endif %}
+        {% for reply in comment.get_children %}
+            <div class="tom-grid humour wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="tom">
+                    <img class="avatar" src="{{ reply.user.profile.avatar.url }}" alt=" "/>
+                </div>
+                <div class="tom-right">
+                    <div class="Hardy">
+                        <h4>
+                            <a href="{% url 'accounts:view_profile' username=reply.user.username %}">
+                                {{ reply.user.first_name }} {{ reply.user.last_name }}
+                            </a>
+                        </h4>
+                        <p><label>{{ reply.created_at }}</label></p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="lorem">{{ reply.comment }}</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+

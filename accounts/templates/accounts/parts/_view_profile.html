@@ -1,0 +1,44 @@
+{% load i18n %}
+
+<h1 class="title wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="300ms"
+    style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInLeftBig;">
+    {% trans "Profile of" %} : {{ user.username }}
+</h1>
+<img class="avatar" src="{{ user.profile.avatar.url }}" alt=""/>
+<br><br>
+<div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+     data-wow-delay="300ms"
+     style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    <span class="input-group-addon" id="basic-addon1"><i class="fas fa-user-circle"></i></span>
+    <input class="form-control" type="text" value="{{ user.first_name }}" disabled>
+</div>
+<div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+     data-wow-delay="300ms"
+     style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    <span class="input-group-addon" id="basic-addon1"><i class="fas fa-user-circle"></i></span>
+    <input class="form-control" type="text" value="{{ user.last_name }}" disabled>
+</div>
+<div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+     data-wow-delay="300ms"
+     style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    <span class="input-group-addon" id="basic-addon1"><i class="fas fa-at"></i></span>
+    <input class="form-control" type="text" value="{{ user.email }}" disabled>
+</div>
+<div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+     data-wow-delay="300ms"
+     style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    <span class="input-group-addon" id="basic-addon1"><i class="fas fa-birthday-cake"></i></span>
+    <input class="form-control" type="text" value="{{ user.profile.date_of_birth }}" disabled>
+</div>
+<div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+     data-wow-delay="300ms"
+     style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    <span class="input-group-addon" id="basic-addon1"><i class="fas fa-address-book"></i></span>
+    <textarea class="form-control" rows="4" cols="50" disabled>{{ user.profile.bio }}</textarea>
+</div>
+<div class="input-group input-group-lg wow fadeInUp animated" data-wow-duration="1000ms"
+     data-wow-delay="300ms"
+     style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    <span class="input-group-addon" id="basic-addon1"><i class="fas fa-globe-americas"></i></span>
+    <input class="form-control" type="text" value="{{ user.profile.country }}" disabled>
+</div>

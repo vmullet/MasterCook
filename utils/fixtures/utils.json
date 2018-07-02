@@ -1,0 +1,72 @@
+[
+{
+    "model": "utils.country",
+    "pk": 1,
+    "fields": {
+        "name": "France",
+        "name_en": "France",
+        "name_fr": "France",
+        "css_class": "fr"
+    }
+},
+{
+    "model": "utils.country",
+    "pk": 2,
+    "fields": {
+        "name": "United Kingdom",
+        "name_en": "United Kingdom",
+        "name_fr": "Royaume-Uni",
+        "css_class": "en"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 1,
+    "fields": {
+        "name": "Gramm",
+        "name_en": "Gramm",
+        "name_fr": "Gramme",
+        "symbol": "g"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 2,
+    "fields": {
+        "name": "Kilogramm",
+        "name_en": "Kilogramm",
+        "name_fr": "Kilogramme",
+        "symbol": "kg"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 3,
+    "fields": {
+        "name": "Milligramm",
+        "name_en": "Milligramm",
+        "name_fr": "Milligramme",
+        "symbol": "mg"
+    }
+},
+{
+    "model": "utils.currency",
+    "pk": 1,
+    "fields": {
+        "name": "",
+        "name_en": null,
+        "name_fr": null,
+        "symbol": "\u20ac"
+    }
+},
+{
+    "model": "utils.currency",
+    "pk": 2,
+    "fields": {
+        "name": "",
+        "name_en": null,
+        "name_fr": null,
+        "symbol": "\u00a3"
+    }
+}
+]

@@ -2,15 +2,17 @@
 
 # Setup environment
 
-mkvirtualenv mastercook-env
-workon mastercook-env
+virtualenv mastercook-env
+cd mastercook-env
+. /bin/activate
 
-# Install pip dependencies
-pip install django
-pip install Pillow
-pip install python-slugify
+# Install Requirements
+pip install -r requirements.txt
 
-# Generate Database
+# Return to project root directory
+cd ..
+
+# Generate Database structure
 python manage.py migrate
 
 # Load Initial data

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 from .models import RecipeType, \
     RecipeSkill, \
     RecipeStep, \
@@ -8,12 +9,20 @@ from .models import RecipeType, \
     RecipeComment, \
     Recipe
 
+
 # Register your models here.
 
-admin.site.register(Recipe)
+class RecipeTypeAdmin(TranslationAdmin):
+    pass
 
-admin.site.register(RecipeType)
-admin.site.register(RecipeSkill)
+
+class RecipeSkillAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(Recipe)
+admin.site.register(RecipeType, RecipeTypeAdmin)
+admin.site.register(RecipeSkill, RecipeSkillAdmin)
 admin.site.register(RecipeStep)
 admin.site.register(RecipeIngredient)
 admin.site.register(RecipeImage)

@@ -2,6 +2,6 @@
 
 <ul>
     {% for skill in skills %}
-        <li><a href="{% url 'recipes:browse_skill' skill_name=skill.name %}">{{ skill.name }}</a></li>
+        <li><a href="{% url 'recipes:browse_skill' skill_slug=skill.slug %}">{{ skill.name }}</a></li>
     {% endfor %}
 </ul>

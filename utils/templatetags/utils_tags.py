@@ -6,12 +6,12 @@ register = template.Library()
 
 @register.inclusion_tag('utils/_browse_menu.html')
 def advanced_search_menu():
-    return {'types': RecipeType.objects.all(), 'skills': RecipeSkill.objects.all()}
+    return {'categories': RecipeType.objects.all(), 'skills': RecipeSkill.objects.all()}
 
 
-@register.inclusion_tag('utils/_footer_menu_type.html')
+@register.inclusion_tag('utils/_footer_menu_category.html')
 def footer_category_menu():
-    return {'types': RecipeType.objects.all()}
+    return {'categories': RecipeType.objects.all()}
 
 
 @register.inclusion_tag('utils/_footer_menu_skill.html')

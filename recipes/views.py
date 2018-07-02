@@ -65,30 +65,30 @@ def recipe_search(request):
     return handle_search(request, Recipe.objects.filter(published=True), 'recipes/recipe_search.html', True)
 
 
-def recipe_browse_category(request, category_name):
+def recipe_browse_category(request, category_slug):
     """
     View to browse recipes by categories (see handle_search method at the bottom of this file)
     :param request:
-    :param category_name: The name of the category
+    :param category_slug: The name of the category
     :return:
     """
-    category = get_object_or_404(RecipeType, name=category_name)
+    category = get_object_or_404(RecipeType, slug=category_slug)
     return handle_search(request, Recipe.objects.filter(recipe_type=category, published=True),
                          'recipes/recipe_browse.html', False,
-                         {'mode': 'category', 'category_name': category_name})
+                         {'mode': 'category', 'category_slug': category_slug, 'category_name': category.name})
 
 
-def recipe_browse_skill(request, skill_name):
+def recipe_browse_skill(request, skill_slug):
     """
     View to browse recipes by skill needed / difficulty (see handle_search method at the bottom of this file)
     :param request:
-    :param skill_name: The name of the skill
+    :param skill_slug: The name of the skill
     :return:
     """
-    skill = get_object_or_404(RecipeSkill, name=skill_name)
+    skill = get_object_or_404(RecipeSkill, slug=skill_slug)
     return handle_search(request, Recipe.objects.filter(recipe_skill=skill, published=True),
                          'recipes/recipe_browse.html', False,
-                         {'mode': 'skill', 'skill_name': skill_name})
+                         {'mode': 'skill', 'skill_slug': skill_slug, 'skill_name': skill.name})
 
 
 @login_required(login_url="accounts:login")
@@ -192,7 +192,7 @@ def recipe_add_image(request, recipe_pk):
     if request.method == 'POST':
         recipe = get_object_or_404(Recipe, pk=recipe_pk)
         if recipe.author == request.user:
-            if recipe.images.count < settings.MAX_RECIPE_IMAGES:
+            if recipe.images.count() < settings.MAX_RECIPE_IMAGES:
                 image_form = recipeforms.RecipeImageForm(request.POST, request.FILES)
                 if image_form.is_valid():
                     recipe_image = image_form.save(commit=False)

@@ -105,10 +105,9 @@ setup.bat
 
 These scripts will do the following actions :
 
-* create a virtualenv called mastercook-env and activate it
-* install pip dependencies (django, pillow, python-slugify)
+* create a virtualenv called env and activate it
+* install pip dependencies (django, pillow, python-slugify, django-modeltranslation)
 * migrate
 * load fixtures
 * compile translations
 * runserver
-* open web browser

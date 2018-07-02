@@ -6,11 +6,12 @@ virtualenv mastercook-env
 cd mastercook-env
 . /bin/activate
 
+# Return to project root directory
+cd ..
+
 # Install Requirements
 pip install -r requirements.txt
 
-# Return to project root directory
-cd ..
 
 # Generate Database structure
 python manage.py migrate

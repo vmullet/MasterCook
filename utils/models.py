@@ -12,7 +12,7 @@ class Country(models.Model):
 
 
 class UnitMeasure(models.Model):
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=15)
     symbol = models.CharField(max_length=10)
 
     def __str__(self):

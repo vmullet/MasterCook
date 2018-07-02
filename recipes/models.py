@@ -14,7 +14,11 @@ class RecipeType(models.Model):
     Model to represent a recipe type
     """
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, null=True)
     description = models.TextField()
+
+    class Meta:
+        ordering = ['pk', ]
 
     def __str__(self):
         return self.name
@@ -25,8 +29,12 @@ class RecipeSkill(models.Model):
     Model to represent the skill needed to cook this recipe
     """
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, null=True)
     description = models.TextField()
     value = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['value', ]
 
     def __str__(self):
         return '%s' % self.name

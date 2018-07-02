@@ -1,8 +1,22 @@
 from django.contrib import admin
 from .models import Country, UnitMeasure, Currency
+from modeltranslation.admin import TranslationAdmin
 
 # Register your models here.
 
-admin.site.register(Country)
-admin.site.register(UnitMeasure)
-admin.site.register(Currency)
+
+class CountryAdmin(TranslationAdmin):
+    pass
+
+
+class CurrencyAdmin(TranslationAdmin):
+    pass
+
+
+class UnitMeasureAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(Country, CountryAdmin)
+admin.site.register(UnitMeasure, UnitMeasureAdmin)
+admin.site.register(Currency, CurrencyAdmin)

@@ -2,16 +2,13 @@
 
 # Setup environment
 
-virtualenv mastercook-env
-cd mastercook-env
-. /bin/activate
+pip install virtualenvwrapper
 
-# Return to project root directory
-cd ..
+mkvirtualenv mastercook-env
+workon mastercook-env
 
 # Install Requirements
 pip install -r requirements.txt
-
 
 # Generate Database structure
 python manage.py migrate

@@ -4,32 +4,28 @@ REM ######################################################
 
 @echo off
 
-REM Setup environment
+REM Setup Environment...
 
-REM mkvirtualenv mastercook-env
-REM workon mastercook-env
+pip install virtualenvwrapper-win
+mkvirtualenv mastercook-env
+workon mastercook-env
 
-REM Migrations for generic app
+REM Generate Database...
 
-echo Start Migrations...
+python manage.py migrate
 
-REM Generate Database
+REM Load Fixtures...
 
-REM python manage.py migrate
+python manage.py loaddata
 
-REM Load Initial data
-REM python manage.py loaddata
+REM Compile Translations
 
-REM Compile messages for translations (getText must be installed)
+django-admin compilemessages
 
-REM django-admin compilemessages
+REM Server Starting...
 
-REM Run the server
-
-echo Server Starting...
-
-REM python manage.py runserver
+python manage.py runserver
 
 REM Open web browser
 
-REM start "" http://127.0.0.1:8000/
+start "" http://127.0.0.1:8000/

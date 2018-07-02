@@ -192,7 +192,7 @@ def recipe_add_image(request, recipe_pk):
     if request.method == 'POST':
         recipe = get_object_or_404(Recipe, pk=recipe_pk)
         if recipe.author == request.user:
-            if recipe.images.count < settings.MAX_RECIPE_IMAGES:
+            if recipe.images.count() < settings.MAX_RECIPE_IMAGES:
                 image_form = recipeforms.RecipeImageForm(request.POST, request.FILES)
                 if image_form.is_valid():
                     recipe_image = image_form.save(commit=False)

@@ -2,10 +2,9 @@
 
 # Setup environment
 
-pip install virtualenvwrapper
-
-mkvirtualenv mastercook-env
-workon mastercook-env
+pip install virtualenv
+virtualenv env
+source env/bin/activate
 
 # Install Requirements
 pip install -r requirements.txt

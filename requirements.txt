@@ -1,3 +1,4 @@
 django
 pillow
 python-slugify
+django-modeltranslation==0.13-beta1

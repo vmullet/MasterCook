@@ -6,9 +6,11 @@ REM ######################################################
 
 REM Setup Environment...
 
-pip install virtualenvwrapper-win
-mkvirtualenv mastercook-env
-workon mastercook-env
+pip install virtualenv
+virtualenv env
+.\env\activate
+
+pip install -r requirements.txt
 
 REM Generate Database...
 

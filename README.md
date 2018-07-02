@@ -39,6 +39,7 @@ Actually, the website supports the following features :
 * General :
     * Two languages supported : **French and English** (main language set to English)
     * **Language switcher** in the main menu (see Languages section)
+    * Models translation
 
 * Users :
     * **login** / **signup** / **logout**
@@ -68,10 +69,12 @@ As any website, this django project has some dependencies on the two sides: fron
 Indeed, they are managed internally so they wont't cause you any problems.
 
 * Back-End :
-    * **[gettext](https://www.gnu.org/software/gettext/)** : Needed to make / compile translations ([windows version](https://mlocati.github.io/articles/gettext-iconv-windows.html) -> Download the latest binary)
     * **[Django](https://www.djangoproject.com/)** : No joke :p
     * **[Pillow](https://pillow.readthedocs.io/en/5.2.x/)** : A python library To handle image field in Django Models
-    * **[python-slugify](https://github.com/un33k/python-slugify)** : A very useful package to slugify any string (UTF8 compatible)
+    * **[Python-Slugify](https://github.com/un33k/python-slugify)** : A very useful package to slugify any string (UTF8 compatible)
+    * **[Django-Modeltranslation](http://django-modeltranslation.readthedocs.io/en/latest/index.html) : A package to translate models**
+    * **[Gettext](https://www.gnu.org/software/gettext/)** : Needed to make / compile translations ([windows version](https://mlocati.github.io/articles/gettext-iconv-windows.html) -> Download the latest binary)
+    
 
 * Front-End :
     * **[Bootstrap](https://getbootstrap.com/)**

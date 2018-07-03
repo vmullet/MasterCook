@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<ul>
+    {% for category in categories %}
+        <li><a href="{% url 'recipes:browse_category' category_slug=category.slug %}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>

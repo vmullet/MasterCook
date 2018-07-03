@@ -1,0 +1,45 @@
+{% load i18n %}
+
+<h1>{% trans "Ingredients" %}</h1>
+<br>
+<button class="btn btn-default btn-lg" data-toggle="collapse"
+        data-target="#div_ingredients">{% trans "Show/Edit Current Ingredients" %}</button>
+<div id="div_ingredients" class="collapse">
+    {% if recipe.ingredients.count > 0 %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{% trans "Type" %}</th>
+                <th>{% trans "Name" %}</th>
+                <th>{% trans "Quantity" %} ?</th>
+                <th>{% trans "Remove" %} ?</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ingred in recipe.ingredients.all %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ ingred.ingredient.ingredient_type.name }}</td>
+                    <td>{{ ingred.ingredient.name }}</td>
+                    <td>{{ ingred.quantity }} {{ ingred.unit_measure.symbol }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-md btn-confirm"
+                                data-title="{% trans "Delete Ingredient ?" %}"
+                                data-message="{% trans "Are you sure that you want to delete this Ingredient ?" %}"
+                                data-action="{% url 'recipes:delete_ingredient' ingredient_pk=ingred.pk %}?next={% url 'recipes:edit' recipe_slug=recipe.slug %}">
+                            {% trans "Delete" %}
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <br>
+        <div class="alert alert-info">
+            <strong>{% trans "No ingredients for this recipe yet :(" %}</strong>
+        </div>
+    {% endif %}
+</div>
+<br><br>

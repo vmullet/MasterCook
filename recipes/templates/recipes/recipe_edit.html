@@ -1,0 +1,57 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Edit Recipe" %}
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+        <div class="container">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1 class="title wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans 'Edit Recipe' %}
+        "{{ recipe.name }}"</h1>
+    <br>
+    {% if not recipe.published %}
+        <div class="alert alert-warning">
+            <strong>{% trans "This recipe is not published yet. To make it visible by other cookers, please click on this button" %}
+                <a class="btn btn-warning btn-md"
+                   href="{% url 'recipes:publish_toogle' recipe_pk=recipe.pk %}">Publish</a></strong>
+        </div>
+    {% endif %}
+
+    <img src="{{ recipe.thumbnail.url }}"/>
+    <br><br>
+    <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+
+        {% include 'recipes/forms/_form_edit_recipe.html' with recipe=recipe edit_recipe_form=edit_recipe_form cost_form=cost_form %}
+
+        {% include 'recipes/parts/_show_edit_image.html' with recipe=recipe %}
+
+        {% if recipe.can_add_images %}
+            {% include 'recipes/forms/_form_add_image.html' with image_form=image_form %}
+        {% else %}
+            <div class="alert alert-warning">
+                <strong>{% trans "Sorry, you can't add more photos to this recipe :(" %}</strong>
+            </div>
+        {% endif %}
+
+        {% include 'recipes/parts/_show_edit_ingredient.html' with recipe=recipe %}
+
+        {% include 'recipes/forms/_form_add_ingredient.html' with ingred_form=ingred_form %}
+
+        {% include 'recipes/parts/_show_edit_step.html' with recipe=recipe %}
+
+        {% include 'recipes/forms/_form_add_step.html' with step_form=step_form %}
+
+    </div>
+
+    {% include 'utils/_modal_confirmation.html' %}
+
+{% endblock %}

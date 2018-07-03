@@ -1,0 +1,321 @@
+[
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 7,
+    "fields": {
+        "name": "Drinks",
+        "name_en": "Drinks",
+        "name_fr": "Boissons",
+        "description": "Drinks",
+        "description_en": "Drinks",
+        "description_fr": "Boissons"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 8,
+    "fields": {
+        "name": "Fruits / Vegetables",
+        "name_en": "Fruits / Vegetables",
+        "name_fr": "Fruits / Legumes",
+        "description": "Fruits / Vegetables",
+        "description_en": "Fruits / Vegetables",
+        "description_fr": "Fruits / Legumes"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 9,
+    "fields": {
+        "name": "Cereals",
+        "name_en": "Cereals",
+        "name_fr": "C\u00e9r\u00e9ales",
+        "description": "Cereals",
+        "description_en": "Cereals",
+        "description_fr": "C\u00e9r\u00e9ales"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 10,
+    "fields": {
+        "name": "Milky Products",
+        "name_en": "Milky Products",
+        "name_fr": "Produits Laitiers",
+        "description": "Milky Products",
+        "description_en": "Milky Products",
+        "description_fr": "Produits Laitiers"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 11,
+    "fields": {
+        "name": "Meat",
+        "name_en": "Meat",
+        "name_fr": "Viande",
+        "description": "Meat",
+        "description_en": "Meat",
+        "description_fr": "Viande"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 12,
+    "fields": {
+        "name": "Starchy",
+        "name_en": "Starchy",
+        "name_fr": "F\u00e9culents",
+        "description": "Starchy",
+        "description_en": "Starchy",
+        "description_fr": "F\u00e9culents"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 13,
+    "fields": {
+        "name": "Fish",
+        "name_en": "Fish",
+        "name_fr": "Poisson",
+        "description": "Fish",
+        "description_en": "Fish",
+        "description_fr": "Poisson"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 14,
+    "fields": {
+        "name": "Egg",
+        "name_en": "Egg",
+        "name_fr": "Oeuf",
+        "description": "Egg",
+        "description_en": "Egg",
+        "description_fr": "Oeuf"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 15,
+    "fields": {
+        "name": "Sugar",
+        "name_en": "Sugar",
+        "name_fr": "Sucre",
+        "description": "Sugar",
+        "description_en": "Sugar",
+        "description_fr": "Sucre"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 16,
+    "fields": {
+        "name": "Brewing",
+        "name_en": "Brewing",
+        "name_fr": "Corps Gras",
+        "description": "Brewing",
+        "description_en": "Brewing",
+        "description_fr": "Corps Gras"
+    }
+},
+{
+    "model": "ingredients.ingredienttype",
+    "pk": 17,
+    "fields": {
+        "name": "Salt / Pepper",
+        "name_en": "Salt / Pepper",
+        "name_fr": "Sel / Poivre",
+        "description": "Salt / Pepper",
+        "description_en": "Salt / Pepper",
+        "description_fr": "Sel / Poivre"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 1,
+    "fields": {
+        "name": "Flour",
+        "name_en": "Flour",
+        "name_fr": "Farine",
+        "ingredient_type": 9,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 2,
+    "fields": {
+        "name": "Salt",
+        "name_en": "Salt",
+        "name_fr": "Sel",
+        "ingredient_type": 17,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 3,
+    "fields": {
+        "name": "Chocolate",
+        "name_en": "Chocolate",
+        "name_fr": "Chocolat",
+        "ingredient_type": 16,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 4,
+    "fields": {
+        "name": "Egg beaten",
+        "name_en": "Egg beaten",
+        "name_fr": "Oeuf battu",
+        "ingredient_type": 14,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 5,
+    "fields": {
+        "name": "Butter",
+        "name_en": "Butter",
+        "name_fr": "Beurre",
+        "ingredient_type": 16,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 6,
+    "fields": {
+        "name": "Pepper",
+        "name_en": "Pepper",
+        "name_fr": "Poivre",
+        "ingredient_type": 17,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 7,
+    "fields": {
+        "name": "Hallibut",
+        "name_en": "Hallibut",
+        "name_fr": "Fl\u00e9tan",
+        "ingredient_type": 11,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 8,
+    "fields": {
+        "name": "Tomatoe",
+        "name_en": "Tomatoe",
+        "name_fr": "Tomate",
+        "ingredient_type": 8,
+        "description": "lorem ipsum lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 9,
+    "fields": {
+        "name": "Chicken",
+        "name_en": "Chicken",
+        "name_fr": "Poulet",
+        "ingredient_type": 11,
+        "description": "lorem ipsum lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 10,
+    "fields": {
+        "name": "Kielbasa sausage",
+        "name_en": "Kielbasa sausage",
+        "name_fr": "Saucisse kielbasa",
+        "ingredient_type": 11,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 11,
+    "fields": {
+        "name": "Sugar",
+        "name_en": "Sugar",
+        "name_fr": "Sucre",
+        "ingredient_type": 15,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 12,
+    "fields": {
+        "name": "Ketchup",
+        "name_en": "Ketchup",
+        "name_fr": "Ketchup",
+        "ingredient_type": 16,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 13,
+    "fields": {
+        "name": "Water",
+        "name_en": "Water",
+        "name_fr": "Eau",
+        "ingredient_type": 7,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 14,
+    "fields": {
+        "name": "Apricots",
+        "name_en": "Apricots",
+        "name_fr": "Abricots",
+        "ingredient_type": 8,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 15,
+    "fields": {
+        "name": "Cherry",
+        "name_en": "Cherry",
+        "name_fr": "Cerise",
+        "ingredient_type": 8,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 16,
+    "fields": {
+        "name": "Strawberry",
+        "name_en": "Strawberry",
+        "name_fr": "Fraise",
+        "ingredient_type": 8,
+        "description": "lorem ipsum"
+    }
+},
+{
+    "model": "ingredients.ingredient",
+    "pk": 17,
+    "fields": {
+        "name": "Caramel",
+        "name_en": "Caramel",
+        "name_fr": "Caramel",
+        "ingredient_type": 16,
+        "description": "lorem ipsum"
+    }
+}
+]

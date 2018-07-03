@@ -1,0 +1,28 @@
+{% extends 'base_layout.html' %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Reply to comment of" %} {{ comment.user.username }}
+{% endblock %}
+
+{% block banner %}
+    <div class="banner1">
+        <div class="container">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="leave-comment wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h3>{% trans "Reply to comment of" %} {{ comment.user.username }}</h3>
+        <form class="site-form" action="{% url 'recipes:reply_to_comment' comment_pk=comment.pk %}" method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-default btn-lg">{% trans "Reply" %}</button>
+        </form>
+    </div>
+
+{% endblock %}

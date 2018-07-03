@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'generic.apps.GenericConfig',
+    'utils.apps.GenericConfig',
     'accounts.apps.AccountsConfig',
     'ingredients.apps.IngredientsConfig',
     'recipes.apps.RecipesConfig',
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = 'en-US'
 
 LANGUAGES = [
     ('en', 'English'),
@@ -128,9 +129,7 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
@@ -141,3 +140,15 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, 'fixtures')
+]
+
+
+# Custom settings
+
+MAX_COMMENT_PAGE = 5
+MAX_RECIPE_IMAGES = 2
+MAX_LATEST_RECIPES = 5
+MAX_SEARCH_RESULTS = 3

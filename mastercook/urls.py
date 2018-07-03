@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
@@ -20,9 +21,10 @@ urlpatterns += i18n_patterns(
 """
 
 urlpatterns += [
-    path('generic/', include('generic.urls')),
-    path('', include('recipes.urls')),
-    path('accounts/', include('accounts.urls'))
+    path('', views.root_redirect),
+    path('utils/', include('utils.urls')),
+    path('recipes/', include('recipes.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 
 

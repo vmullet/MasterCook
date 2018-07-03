@@ -1,0 +1,132 @@
+[
+{
+    "model": "utils.country",
+    "pk": 1,
+    "fields": {
+        "name": "France",
+        "name_en": "France",
+        "name_fr": "France",
+        "css_class": "fr"
+    }
+},
+{
+    "model": "utils.country",
+    "pk": 2,
+    "fields": {
+        "name": "United Kingdom",
+        "name_en": "United Kingdom",
+        "name_fr": "Royaume-Uni",
+        "css_class": "en"
+    }
+},
+{
+    "model": "utils.country",
+    "pk": 3,
+    "fields": {
+        "name": "Spain",
+        "name_en": "Spain",
+        "name_fr": "Espagne",
+        "css_class": "es"
+    }
+},
+{
+    "model": "utils.country",
+    "pk": 4,
+    "fields": {
+        "name": "Germany",
+        "name_en": "Germany",
+        "name_fr": "Allemagne",
+        "css_class": "de"
+    }
+},
+{
+    "model": "utils.country",
+    "pk": 5,
+    "fields": {
+        "name": "Italy",
+        "name_en": "Italy",
+        "name_fr": "Italie",
+        "css_class": "it"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 1,
+    "fields": {
+        "name": "Gramm",
+        "name_en": "Gramm",
+        "name_fr": "Gramme",
+        "symbol": "g"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 2,
+    "fields": {
+        "name": "Kilogramm",
+        "name_en": "Kilogramm",
+        "name_fr": "Kilogramme",
+        "symbol": "kg"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 3,
+    "fields": {
+        "name": "Milligramm",
+        "name_en": "Milligramm",
+        "name_fr": "Milligramme",
+        "symbol": "mg"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 4,
+    "fields": {
+        "name": "Milliliter",
+        "name_en": "Milliliter",
+        "name_fr": "Millilitre",
+        "symbol": "ml"
+    }
+},
+{
+    "model": "utils.unitmeasure",
+    "pk": 5,
+    "fields": {
+        "name": "Liter",
+        "name_en": "Liter",
+        "name_fr": "Litre",
+        "symbol": "l"
+    }
+},
+{
+    "model": "utils.currency",
+    "pk": 1,
+    "fields": {
+        "name": "Euros",
+        "name_en": "Euros",
+        "name_fr": "Euros",
+        "symbol": "\u20ac"
+    }
+},
+{
+    "model": "utils.currency",
+    "pk": 2,
+    "fields": {
+        "name": "Pounds",
+        "name_en": "Pounds",
+        "name_fr": "Livres",
+        "symbol": "\u00a3"
+    }
+},
+{
+    "model": "utils.currency",
+    "pk": 3,
+    "fields": {
+        "name": "Dollars",
+        "name_en": "Dollars",
+        "name_fr": "Dollars",
+        "symbol": "$"
+    }
+}
+]

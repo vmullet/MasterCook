@@ -4,17 +4,84 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "page.title.details_recipe" %}
+    {% trans "Details of Recipe" %} {{ recipe.name }}
 {% endblock %}
 
 {% block banner %}
     <div class="banner1">
-		<div class="container">
-		</div>
-	</div>
+        <div class="container">
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
-    <h1>Recipe {{ recipe_id }}</h1>
-    <a href="{% url 'recipes:details' recipe_id=recipe_id %}">Recipe {{ recipe_id }}</a>
+
+    <h1 class="animated fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+        {{ recipe.name }}
+        <div class="flag flag--{{ recipe.recipe_origin.css_class }}" style="width:1em;height:0.7em;"></div>
+        - {{ recipe.recipe_type.name }}
+    </h1>
+
+    <div class="single-left wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+        {% if user.is_authenticated and user == recipe.author %}
+            <button type="button" class="btn btn-danger btn-md btn-confirm"
+                    data-title="{% trans "Delete Recipe ?" %}"
+                    data-message="{% trans "Are you sure that you want to delete this recipe ?" %}"
+                    data-action="{% url 'recipes:delete' recipe_pk=recipe.pk %}">{% trans "Delete" %} <i
+                    class="fas fa-trash-alt fa-lg"></i></button>
+            <a href="{% url 'recipes:edit' recipe_slug=recipe.slug %}"
+               class="btn btn-warning btn-md">{% trans "Edit" %} <i class="fas fa-edit fa-lg"></i></a>
+        {% endif %}
+        <p>{% trans "Created On" %} <span>{{ recipe.created_at }} {% trans "By" %} <a
+                href="{% url 'accounts:view_profile' username=recipe.author.username %}">{{ recipe.author.username }}</a></span>
+            <input type="text"
+                   value="{{ recipe.get_median_rate }}"
+                   data-size="xs"
+                   class="rating-disabled">
+            {% if recipe.rates.count > 0 %}
+                {% trans "Median rate based on" %} {{ recipe.rates.count }} ratings
+            {% else %}
+                {% trans "Not yet rated" %}
+            {% endif %}
+        </p>
+
+        <!-- Rate Form !-->
+        {% if user.is_authenticated %}
+            {% include 'recipes/forms/_form_rate.html' with recipe=recipe rate_form=rate_form %}
+        {% else %}
+            <a href="{% url 'accounts:login' %}">{% trans "You must be logged to rate a recipe" %}</a>
+        {% endif %}
+
+        <img src="{{ recipe.thumbnail.url }}" alt=" " class="img-responsive"/>
+    </div>
+
+    <!-- General informations -->
+    {% include 'recipes/parts/_recipe_meta_informations.html' with recipe=recipe %}
+
+    <div class="clearfix"></div>
+
+    <!-- Preparation informations -->
+    {% include 'recipes/parts/_recipes_prep_informations.html' with recipe=recipe %}
+
+    <!-- Leave Comment !-->
+    {% if user.is_authenticated %}
+        {% include 'recipes/forms/_form_leave_comment.html' with recipe=recipe comment_form=comment_form %}
+    {% else %}
+        <a href="{% url 'accounts:login' %}">{% trans "You must be logged to post a comment." %}</a>
+    {% endif %}
+
+    <!-- Comment List -->
+    {% if recipe.comments.count > 0 %}
+        {% include 'recipes/parts/_comments_list.html' with recipe=recipe comment_paginator=comment_paginator %}
+        {% url 'recipes:details' recipe_slug=recipe.slug as detail_url %}
+        {% include 'utils/_pagination.html' with paginator=comment_paginator base_url=detail_url|add:'?' %}
+    {% else %}
+        <br>
+        <div class="alert alert-info">
+            <strong>{% trans "This recipe has no comments yet :(" %}</strong>
+        </div>
+    {% endif %}
+
+    {% include 'utils/_modal_confirmation.html' %}
+
 {% endblock %}

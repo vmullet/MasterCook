@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<ul class="dropdown-menu">
+    <li><a href="{% url 'recipes:browse_all' %}">{% trans "All" %}</a></li>
+    <li><a href="#">{% trans "By Types" %}</a></li>
+    {% for category in categories %}
+        <li><a href="{% url 'recipes:browse_category' category_slug=category.slug %}"><i class="fa fa-utensils"></i> {{ category.name }}</a></li>
+    {% endfor %}
+    <li><a href="#">{% trans "By Skills" %}</a></li>
+    {% for skill in skills %}
+        <li><a href="{% url 'recipes:browse_skill' skill_slug=skill.slug %}"><i class="fas fa-skull"></i> {{ skill.name }}</a></li>
+    {% endfor %}
+</ul>

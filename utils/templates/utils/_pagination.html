@@ -1,0 +1,31 @@
+<ul class="pagination pagination-lg">
+    {% if paginator.has_previous %}
+        <li>
+            <a href="{{ base_url }}&num_page={{ paginator.previous_page_number }}">
+                <i class="fa fa-angle-left">«</i>
+            </a>
+        </li>
+    {% else %}
+        <li class="disabled">
+            <a href="#"><i class="fa fa-angle-left">«</i></a>
+        </li>
+    {% endif %}
+    {% for num_page in range_page %}
+        <li {% if num_page == paginator.number|add:"0" %}class="active"{% endif %}>
+            <a href="{{ base_url }}&num_page={{ num_page }}">{{ num_page }}</a>
+        </li>
+    {% endfor %}
+    {% if paginator.has_next %}
+        <li>
+            <a href="{{ base_url }}&num_page={{ paginator.next_page_number }}">
+                <i class="fa fa-angle-right">»</i>
+            </a>
+        </li>
+    {% else %}
+        <li class="disabled">
+            <a href="#">
+                <i class="fa fa-angle-right">»</i>
+            </a>
+        </li>
+    {% endif %}
+</ul>

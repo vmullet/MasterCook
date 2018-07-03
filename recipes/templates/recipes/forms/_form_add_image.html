@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms"
+    style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    {% trans "Add Image" %}</h3>
+<form class="site-form" action="{% url 'recipes:add_image' recipe_pk=recipe.pk %}" method="post"
+      enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ image_form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-info btn-lg">{% trans "Add Image" %}</button>
+</form>
+<br><br>

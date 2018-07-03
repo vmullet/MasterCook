@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<h3 class="bars wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms"
+    style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+    {% trans "Add Ingredient" %}</h3>
+
+<form class="site-form" action="{% url 'recipes:add_ingredient' recipe_pk=recipe.pk %}" method="post">
+    {% csrf_token %}
+    {{ ingred_form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-info btn-lg">{% trans "Add Ingredient" %}</button>
+</form>
+<br><br>

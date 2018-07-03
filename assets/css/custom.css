@@ -2,3 +2,16 @@
     width:6em;
     height:6em;
 }
+
+.recipe-thumbnail {
+    width : 350px;
+    height: 250px;
+}
+
+.recipe-list {
+    margin-top: 5px;
+}
+
+.flag-small {
+
+}

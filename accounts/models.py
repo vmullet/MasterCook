@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from generic.models import Country
+from utils.models import Country
 
 # Create your models here.
 

@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="tags-cate">
+    <div class="cat-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h4><span>T</span>ime <i class="fa fa-clock fa-lg"></i></h4>
+        <ul>
+            <li class="list-group-item">{% trans "Preparation time" %} {{ recipe.preparation_time }}</li>
+            <li class="list-group-item">{% trans "Cooking time" %} {{ recipe.cooking_time }}</li>
+            <li class="list-group-item">{% trans "Cooling time" %} {{ recipe.cooling_time }}</li>
+        </ul>
+    </div>
+    <div class="cat-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h4><span>I</span>ngredients <i class="fas fa-utensils fa-lg"></i></h4>
+        <ul class="list-group wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms"
+            style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+            {% if recipe.steps.count > 0 %}
+                {% for ingredient in recipe.ingredients.all %}
+                    <li class="list-group-item">
+                        {{ ingredient.quantity }}{{ ingredient.unit_measure.symbol }}
+                        - {{ ingredient.ingredient.name }}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li><a href="#">{% trans "No Ingredients yet" %}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="cat-grid wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h4><span>S</span>teps <i class="fas fa-step-forward fa-lg"></i></h4>
+        <ul>
+            {% if recipe.steps.count > 0 %}
+                {% for step in recipe.steps.all %}
+                    <li class="list-group-item">{{ step.name }} - {{ step.description }}</li>
+                {% endfor %}
+            {% else %}
+                <li><a href="#">{% trans "No steps yet" %}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+</div>

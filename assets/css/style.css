@@ -39,13 +39,14 @@ body a:hover{
     float: left;
     height: 80px;
     padding: 31px 0 0;
+    width: 100%;
     font-size: 3.5em;
     line-height: 20px;
     color: #fff !important;
 	font-family: 'Alex Brush', cursive;
 }
 .navbar-nav {
-    margin: 0 0 0 10em;
+    margin: 0 0 0 2em;
 }
 .navbar-default .navbar-nav > li > a {
     color: #fff;

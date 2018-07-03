@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-24 17:23+0200\n"
+"POT-Creation-Date: 2018-07-03 20:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,145 +18,734 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: .\accounts\forms.py:14 .\accounts\forms.py:38
-msgid "form.username.placeholder"
+msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: .\accounts\forms.py:21 .\accounts\forms.py:66 .\accounts\forms.py:133
-msgid "form.password.placeholder"
-msgstr "Mot de passe"
+#: .\accounts\forms.py:21 .\accounts\forms.py:66
+msgid "Password"
+msgstr "Modifier mon mot de passe"
 
 #: .\accounts\forms.py:45 .\accounts\forms.py:94
-msgid "form.firstname.placeholder"
+msgid "First Name"
 msgstr "Prénom"
 
 #: .\accounts\forms.py:52 .\accounts\forms.py:101
-msgid "form.lastname.placeholder"
+msgid "Last Name"
 msgstr "Nom"
 
 #: .\accounts\forms.py:59 .\accounts\forms.py:108
-msgid "form.email.placeholder"
-msgstr "Adresse E-mail"
+msgid "Email"
+msgstr "Adresse mail"
 
-#: .\accounts\forms.py:73 .\accounts\forms.py:140
-msgid "form.password2.placeholder"
-msgstr "Entrez de nouveau le mot de passe"
+#: .\accounts\forms.py:73
+msgid "Re-enter your password"
+msgstr "Ressaisissez votre mot de passe"
 
 #: .\accounts\forms.py:126
-msgid "form.old_password.placeholder"
-msgstr "Ancien Mot de passe"
+msgid "Old Password"
+msgstr "Ancien mot de passe"
 
-#: .\accounts\forms.py:150
-msgid "form.date_birth.placeholder"
-msgstr "Date d'anniversaire"
+#: .\accounts\forms.py:133
+msgid "New Password"
+msgstr "Nouveau mot de passe"
 
-#: .\accounts\forms.py:157
-msgid "form.bio.placeholder"
+#: .\accounts\forms.py:140
+msgid "Re-enter the new password"
+msgstr "Ressaisissez le nouveau mot de passe"
+
+#: .\accounts\forms.py:151
+msgid "Date of birth"
+msgstr "Date de naissance"
+
+#: .\accounts\forms.py:158
+msgid "Biography"
 msgstr "Biographie"
 
 #: .\accounts\templates\accounts\accounts_login.html:7
-msgid "page.title.login"
+msgid "MasterCook - Login"
 msgstr "MasterCook - Se Connecter"
-
-#: .\accounts\templates\accounts\accounts_login.html:21
-#: .\accounts\templates\accounts\accounts_login.html:52
-#: .\templates\base_layout.html:86
-msgid "account.login"
-msgstr "Se Connecter"
-
-#: .\accounts\templates\accounts\accounts_login.html:46
-msgid "account.not_member_message"
-msgstr "Pas encore un Cooker ? Inscrivez-vous dès maintenant :)"
 
 #: .\accounts\templates\accounts\accounts_password_edit.html:7
-#, fuzzy
-#| msgid "page.title.home_recipes"
-msgid "page.title.change_password"
-msgstr "Modifier mon mot de passe"
-
-#: .\accounts\templates\accounts\accounts_password_edit.html:21
-msgid "account.change_password"
-msgstr "Modifier mon mot de passe"
-
-#: .\accounts\templates\accounts\accounts_password_edit.html:54
-#: .\accounts\templates\accounts\accounts_profile_edit.html:85
-msgid "form.save"
-msgstr "Sauvegarder"
+msgid "MasterCook - Change Password"
+msgstr "MasterCook - Changer mot de passe"
 
 #: .\accounts\templates\accounts\accounts_profile_edit.html:7
-msgid "page.title.my_profile"
-msgstr "Mon Profil"
-
-#: .\accounts\templates\accounts\accounts_profile_edit.html:21
-#: .\accounts\templates\accounts\accounts_profile_view.html:20
-msgid "account.profile"
-msgstr "Profil de"
+msgid "MasterCook - My Profile"
+msgstr "MasterCook - Mon Profil"
 
 #: .\accounts\templates\accounts\accounts_profile_view.html:7
-msgid "page.title.profile_view"
-msgstr "Profil de"
+msgid "MasterCook - Profile of"
+msgstr "MasterCook - Profil de"
 
 #: .\accounts\templates\accounts\accounts_signup.html:7
-msgid "page.title.signup"
+msgid "MasterCook - Signup"
 msgstr "MasterCook - S'inscrire"
 
-#: .\accounts\templates\accounts\accounts_signup.html:21
-#: .\accounts\templates\accounts\accounts_signup.html:79
-#: .\templates\base_layout.html:87
-msgid "account.signup"
+#: .\accounts\templates\accounts\accounts_user_dashboard.html:7
+msgid "MasterCook - My DashBoard"
+msgstr "MasterCook - Mon Dashboard"
+
+#: .\accounts\templates\accounts\accounts_user_dashboard.html:20
+msgid "My DashBoard"
+msgstr "Mon Dashboard"
+
+#: .\accounts\templates\accounts\forms\_form_login.html:5
+#: .\accounts\templates\accounts\forms\_form_login.html:34
+#: .\templates\parts\_header.html:56
+msgid "Login"
+msgstr "Se Connecter"
+
+#: .\accounts\templates\accounts\forms\_form_login.html:28
+msgid "Not a Cooker yet ? Please sign up :)"
+msgstr "Pas encore un cooker ? Inscrivez-vous dès maintenant :)"
+
+#: .\accounts\templates\accounts\forms\_form_password_edit.html:5
+msgid "Change Password"
+msgstr "Modifier mon mot de passe"
+
+#: .\accounts\templates\accounts\forms\_form_password_edit.html:35
+#: .\accounts\templates\accounts\forms\_form_profile_edit.html:61
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: .\accounts\templates\accounts\forms\_form_profile_edit.html:5
+#: .\accounts\templates\accounts\parts\_view_profile.html:5
+msgid "Profile of"
+msgstr "Profil de"
+
+#: .\accounts\templates\accounts\forms\_form_signup.html:5
+#: .\accounts\templates\accounts\forms\_form_signup.html:57
+#: .\templates\parts\_header.html:57
+msgid "Signup"
 msgstr "S'inscrire"
 
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:5
+msgid "My Latest Ratings"
+msgstr "Mes dernières Notations"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:7
+msgid "Show My Latest Rates"
+msgstr "Afficher Mes Dernières Notations"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:14
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:14
+msgid "Thumbnail"
+msgstr "Image Principale"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:15
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:15
+#: .\recipes\forms.py:258
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:14
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:13
+msgid "Title"
+msgstr "Titre"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:16
+msgid "Rates"
+msgstr "Notes"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:17
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:16
+msgid "Median Rate"
+msgstr "Note Moyenne"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:18
+msgid "My Rate"
+msgstr "Ma Note"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:19
+msgid "Rated On"
+msgstr "Notée Le"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:44
+#: .\recipes\templates\recipes\forms\_form_rate.html:9
+msgid "Rate"
+msgstr "Noter"
+
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:57
+#, fuzzy
+#| msgid "Sorry but you have no recipes yet :("
+msgid "Sorry but you have not rated any recipes yet :("
+msgstr "Désolé, mais vous n'avez créé aucune recette :("
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:5
+msgid "My Recipes"
+msgstr "Mes Recettes"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:7
+msgid "Show My Recipes"
+msgstr "Afficher Mes Recettes"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:17
+#: .\recipes\templates\recipes\parts\_comments_list.html:5
+#: .\recipes\templates\recipes\recipe_browse.html:63
+msgid "Comments"
+msgstr "Commentaire(s)"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:18
+msgid "Published"
+msgstr "Publiée"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:19
+#: .\recipes\templates\recipes\recipes_details.html:35
+msgid "Created On"
+msgstr "Créée le"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:20
+msgid "Updated On"
+msgstr "Mise à jour le"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:21
+msgid "Actions"
+msgstr "Actions"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:49
+#: .\recipes\templates\recipes\forms\_form_edit_recipe.html:9
+#: .\recipes\templates\recipes\recipes_details.html:33
+msgid "Edit"
+msgstr "Editer"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:51
+#: .\recipes\templates\recipes\recipes_details.html:28
+msgid "Delete Recipe ?"
+msgstr "Supprimer la recette ?"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:52
+#: .\recipes\templates\recipes\recipes_details.html:29
+msgid "Are you sure that you want to delete this recipe ?"
+msgstr "Etes-vous sûr de vouloir supprimer cette recette ?"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:53
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:31
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:31
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:34
+#: .\recipes\templates\recipes\recipes_details.html:30
+msgid "Delete"
+msgstr "Supprimer"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:59
+msgid "Unpublish"
+msgstr "Désactiver"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:64
+msgid "Publish"
+msgstr "Publier"
+
+#: .\accounts\templates\accounts\parts\_view_user_recipes.html:75
+msgid "Sorry but you have no recipes yet :("
+msgstr "Désolé, mais vous n'avez créé aucune recette :("
+
+#: .\recipes\forms.py:15
+msgid "Recipe name"
+msgstr "Recettes"
+
+#: .\recipes\forms.py:18
+msgid "Please enter the recipe name"
+msgstr "Veuillez saisir le nom de la recette"
+
+#: .\recipes\forms.py:21
+msgid "Type of the recipe"
+msgstr "Type de la recette"
+
+#: .\recipes\forms.py:26
+msgid "Recipe origin country"
+msgstr "Pays d'origine de la recette"
+
+#: .\recipes\forms.py:31
+msgid "Recipe skill needed"
+msgstr "Niveau de Compétence nécessaire"
+
+#: .\recipes\forms.py:36
+msgid "Description of the recipe"
+msgstr "Description de la recette"
+
+#: .\recipes\forms.py:39
+msgid "Please enter the description of the recipe"
+msgstr "Veuillez entrer la description de la recette"
+
+#: .\recipes\forms.py:42 .\recipes\forms.py:83
+msgid "Main picture of the recipe"
+msgstr "Image principale de la recette"
+
+#: .\recipes\forms.py:47
+msgid "Preparation time (in minutes)"
+msgstr "Temps de préparation (en minutes)"
+
+#: .\recipes\forms.py:52
+msgid "Cooking time (in minutes)"
+msgstr "Temps de cuisson (en minutes)"
+
+#: .\recipes\forms.py:57
+msgid "Cooling time (in minutes), if needed"
+msgstr "Temps de repos (en minutes), si nécessaire"
+
+#: .\recipes\forms.py:110
+msgid "Cost of the recipe"
+msgstr "Coût de la recette"
+
+#: .\recipes\forms.py:113
+msgid "Please enter the cost of the recipe"
+msgstr "Veuillez entrer un coût pour la recette"
+
+#: .\recipes\forms.py:116
+msgid "Currency (for the cost)"
+msgstr "Monnaie"
+
+#: .\recipes\forms.py:137
+msgid "Title / Description of the picture"
+msgstr "Titre / Description de l'image"
+
+#: .\recipes\forms.py:249
+msgid "Keyword"
+msgstr "Mot-Clé"
+
+#: .\recipes\forms.py:253
+msgid "Filter By"
+msgstr "Filtrer par"
+
+#: .\recipes\forms.py:259
+msgid "Average Rate"
+msgstr "Note Moyenne"
+
+#: .\recipes\forms.py:260
+msgid "Skill needed"
+msgstr "Niveau de Compétence requis"
+
+#: .\recipes\forms.py:261
+msgid "Preparation Time"
+msgstr "Temps de préparation"
+
+#: .\recipes\forms.py:262
+msgid "Publication Date"
+msgstr "Date de publication"
+
+#: .\recipes\forms.py:264
+msgid "Order By"
+msgstr "Classer par"
+
+#: .\recipes\forms.py:269
+msgid "Ascending"
+msgstr "Ordre croissant"
+
+#: .\recipes\forms.py:270
+msgid "Descending"
+msgstr "Ordre décroissant"
+
+#: .\recipes\templates\recipes\forms\_form_add_image.html:5
+#: .\recipes\templates\recipes\forms\_form_add_image.html:11
+msgid "Add Image"
+msgstr "Ajouter une image"
+
+#: .\recipes\templates\recipes\forms\_form_add_ingredient.html:5
+#: .\recipes\templates\recipes\forms\_form_add_ingredient.html:11
+msgid "Add Ingredient"
+msgstr "Ajouter un ingrédient"
+
+#: .\recipes\templates\recipes\forms\_form_add_step.html:5
+#: .\recipes\templates\recipes\forms\_form_add_step.html:10
+msgid "Add Step"
+msgstr "Ajouter une étape"
+
+#: .\recipes\templates\recipes\forms\_form_leave_comment.html:4
+msgid "Leave your comment"
+msgstr "Laisser un commentaire"
+
+#: .\recipes\templates\recipes\forms\_form_leave_comment.html:8
+msgid "Comment"
+msgstr "Commenter"
+
+#: .\recipes\templates\recipes\parts\_comments_list.html:6
+msgid "on"
+msgstr "sur"
+
+#: .\recipes\templates\recipes\parts\_recipe_meta_informations.html:4
+msgid "Level"
+msgstr "Niveau"
+
+#: .\recipes\templates\recipes\parts\_recipe_meta_informations.html:4
+msgid "Origin"
+msgstr "Origine"
+
+#: .\recipes\templates\recipes\parts\_recipe_meta_informations.html:6
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:14
+msgid "Description"
+msgstr "Description"
+
+#: .\recipes\templates\recipes\parts\_recipe_meta_informations.html:13
+msgid "Other photos"
+msgstr "Autre Photos"
+
+#: .\recipes\templates\recipes\parts\_recipe_meta_informations.html:22
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:41
+msgid "No additional photos for this recipe yet :("
+msgstr "Aucune autre photo disponible pour cette recette :("
+
+#: .\recipes\templates\recipes\parts\_recipes_prep_informations.html:7
+msgid "Preparation time"
+msgstr "Temps de préparation"
+
+#: .\recipes\templates\recipes\parts\_recipes_prep_informations.html:8
+msgid "Cooking time"
+msgstr "Temps de cuisson"
+
+#: .\recipes\templates\recipes\parts\_recipes_prep_informations.html:9
+msgid "Cooling time"
+msgstr "Temps de repos"
+
+#: .\recipes\templates\recipes\parts\_recipes_prep_informations.html:24
+msgid "No Ingredients yet"
+msgstr "Aucun ingrédient pour l'instant"
+
+#: .\recipes\templates\recipes\parts\_recipes_prep_informations.html:36
+msgid "No steps yet"
+msgstr "Aucune étape pour l'instant"
+
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:3
+msgid "Images"
+msgstr "Images"
+
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:6
+msgid "Show/Edit Current Images"
+msgstr "Afficher/Editer Images"
+
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:15
+msgid "Image"
+msgstr "Image"
+
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:16
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:16
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:16
+msgid "Remove"
+msgstr "Supprimer"
+
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:28
+msgid "Delete Image ?"
+msgstr "Supprimer l'image ?"
+
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:29
+msgid "Are you sure that you want to delete this image ?"
+msgstr "Etes-vous sûr de vouloir supprimer cette image ?"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:3
+msgid "Ingredients"
+msgstr "Ingredients"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:6
+msgid "Show/Edit Current Ingredients"
+msgstr "Afficher/Editer Ingrédients"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:13
+msgid "Type"
+msgstr "Type"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:14
+msgid "Name"
+msgstr "Nom"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:15
+msgid "Quantity"
+msgstr "Quantité"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:28
+msgid "Delete Ingredient ?"
+msgstr "Supprimer l'ingrédient ?"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:29
+msgid "Are you sure that you want to delete this Ingredient ?"
+msgstr "Etes-vous sûr de vouloir supprimer cet ingrédient ?"
+
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:41
+msgid "No ingredients for this recipe yet :("
+msgstr "Aucun ingrédient pour cette recette pour l'instant :("
+
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:3
+msgid "Steps"
+msgstr "Etapes"
+
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:6
+msgid "Show/Edit Current Steps"
+msgstr "Afficher/Editer Etapes"
+
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:15
+msgid "Reorder"
+msgstr "Réordonner"
+
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:31
+msgid "Delete Step ?"
+msgstr "Supprimer l'étape ?"
+
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:32
+msgid "Are you sure that you want to delete this step ?"
+msgstr "Etes-vous sûr de vouloir supprimer cette étape ?"
+
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:44
+msgid "No steps for this recipe yet :("
+msgstr "Aucune étape pour cette recette pour l'instant :("
+
+#: .\recipes\templates\recipes\recipe_browse.html:7
+msgid "Browse Recipes"
+msgstr "Parcourir les Recettes"
+
+#: .\recipes\templates\recipes\recipe_browse.html:19
+msgid "Browse Category"
+msgstr "Parcourir par catégorie"
+
+#: .\recipes\templates\recipes\recipe_browse.html:21
+#: .\recipes\templates\recipes\recipe_browse.html:25
+#: .\recipes\templates\recipes\recipe_browse.html:28
+#: .\recipes\templates\recipes\recipe_search.html:19
+msgid "Results"
+msgstr "Résultats"
+
+#: .\recipes\templates\recipes\recipe_browse.html:23
+msgid "Browse Skill"
+msgstr "Parcourir par difficulté"
+
+#: .\recipes\templates\recipes\recipe_browse.html:27
+msgid "Browse All"
+msgstr "Parcourir tout"
+
+#: .\recipes\templates\recipes\recipe_browse.html:61
+#: .\recipes\templates\recipes\recipe_search.html:51
+#: .\recipes\templates\recipes\recipes_details.html:44
+msgid "Not yet rated"
+msgstr "Pas encore notée"
+
+#: .\recipes\templates\recipes\recipe_browse.html:67
+#: .\recipes\templates\recipes\recipe_search.html:56
+#: .\recipes\templates\recipes\recipes_details.html:35
+msgid "By"
+msgstr "Par"
+
+#: .\recipes\templates\recipes\recipe_browse.html:72
+#: .\recipes\templates\recipes\recipe_search.html:61
+msgid "Read More..."
+msgstr "Lire..."
+
+#: .\recipes\templates\recipes\recipe_browse.html:91
+#: .\recipes\templates\recipes\recipe_search.html:74
+msgid "Sorry, we have no results for this research :("
+msgstr "Désolé, nous n'avons aucun résultat pour cette recherche"
+
+#: .\recipes\templates\recipes\recipe_edit.html:7
+#: .\recipes\templates\recipes\recipe_edit.html:18
+msgid "Edit Recipe"
+msgstr "Editer la recette"
+
+#: .\recipes\templates\recipes\recipe_edit.html:23
+msgid ""
+"This recipe is not published yet. To make it visible by other cookers, "
+"please click on this button"
+msgstr ""
+"Cette recette n'est pas encore publiée. Pour la rendre visible aux autres "
+"cookers, cliquez sur ce bouton"
+
+#: .\recipes\templates\recipes\recipe_edit.html:41
+#, fuzzy
+#| msgid "No additional photos for this recipe yet :("
+msgid "Sorry, you can't add more photos to this recipe :("
+msgstr "Aucune autre photo disponible pour cette recette :("
+
+#: .\recipes\templates\recipes\recipe_search.html:7
+msgid "Search Recipe"
+msgstr "Rechercher une recette"
+
+#: .\recipes\templates\recipes\recipe_search.html:18
+msgid "Search results"
+msgstr "Résultats de la recherche"
+
 #: .\recipes\templates\recipes\recipes_create.html:7
-msgid "page.title.create_recipe"
-msgstr "MasterCook - Créer une recette"
+msgid "Create Recipe"
+msgstr "Créer une recette"
+
+#: .\recipes\templates\recipes\recipes_create.html:19
+msgid "Create New Recipe"
+msgstr "Créer une nouvelle recette"
 
 #: .\recipes\templates\recipes\recipes_details.html:7
-msgid "page.title.details_recipe"
-msgstr "MasterCook - Se Connecter"
+msgid "Details of Recipe"
+msgstr "Détails de la recette"
+
+#: .\recipes\templates\recipes\recipes_details.html:42
+msgid "Median rate based on"
+msgstr "Note moyenne basée sur"
+
+#: .\recipes\templates\recipes\recipes_details.html:52
+msgid "You must be logged to rate a recipe"
+msgstr "Vous devez être connecté pour noter une recette"
+
+#: .\recipes\templates\recipes\recipes_details.html:70
+msgid "You must be logged to post a comment."
+msgstr "Vous devez être connecté pour poster un commentaire"
+
+#: .\recipes\templates\recipes\recipes_details.html:81
+msgid "This recipe has no comments yet :("
+msgstr "Cette recette n'a pas encore de commentaires :("
 
 #: .\recipes\templates\recipes\recipes_homepage.html:7
-msgid "page.title.home_recipes"
-msgstr "MasterCook - Accueil"
-
-#: .\recipes\templates\recipes\recipes_list.html:7
-msgid "page.title.list_recipes"
-msgstr "MasterCook - Liste des recettes"
-
-#: .\templates\base_layout.html:65
-msgid "home"
+#: .\templates\parts\_header.html:26
+msgid "Home"
 msgstr "Accueil"
 
-#: .\templates\base_layout.html:66
-msgid "recipe.recipe_list"
-msgstr "Liste des Recettes"
+#: .\recipes\templates\recipes\recipes_homepage.html:16
+#, fuzzy
+#| msgid "MasterCook"
+msgid "Welcome on MasterCook"
+msgstr "MasterCook"
 
-#: .\templates\base_layout.html:71
-msgid "page.my_profile_menu"
+#: .\recipes\templates\recipes\recipes_homepage.html:16
+#: .\templates\parts\_footer.html:15
+msgid "The community to share recipes across the world"
+msgstr "La communauté pour partager des recettes à travers le monde"
+
+#: .\recipes\templates\recipes\recipes_homepage.html:18
+msgid "Latest Recipes"
+msgstr "Dernières recettes"
+
+#: .\recipes\templates\recipes\recipes_homepage.html:31
+#, fuzzy
+#| msgid "Read More..."
+msgid "Read More"
+msgstr "Lire..."
+
+#: .\recipes\templates\recipes\recipes_reply_to_comment.html:7
+#: .\recipes\templates\recipes\recipes_reply_to_comment.html:20
+msgid "Reply to comment of"
+msgstr "Répondre au commentaire de"
+
+#: .\recipes\templates\recipes\recipes_reply_to_comment.html:24
+msgid "Reply"
+msgstr "Répondre"
+
+#: .\recipes\views.py:157
+msgid "Recipe updated successfully"
+msgstr "Recette mise à jour avec succès"
+
+#: .\recipes\views.py:163 .\recipes\views.py:190 .\recipes\views.py:219
+#: .\recipes\views.py:245 .\recipes\views.py:266 .\recipes\views.py:290
+#: .\recipes\views.py:315 .\recipes\views.py:340 .\recipes\views.py:438
+#: .\recipes\views.py:455 .\recipes\views.py:472
+msgid "You're not the author of this recipe"
+msgstr "Vous n'êtes pas l'auteur de cette recette"
+
+#: .\recipes\views.py:188
+msgid "The recipe was deleted successfully"
+msgstr "La recette a été supprimée avec succès"
+
+#: .\recipes\views.py:214
+msgid "The image was added successfully"
+msgstr "L'image a été ajoutée avec succès"
+
+#: .\recipes\views.py:217
+msgid "The maximum number of images by recipes has been exceeded"
+msgstr ""
+
+#: .\recipes\views.py:242
+msgid "The step was added successfully"
+msgstr "L'étape a été ajoutée avec succès"
+
+#: .\recipes\views.py:264
+msgid "The step was deleted successfully"
+msgstr "L'étape a été supprimée avec succès"
+
+#: .\recipes\views.py:286 .\recipes\views.py:311
+msgid "The step was updated successfully"
+msgstr "L'étape a été mise à jour avec succès"
+
+#: .\recipes\views.py:288
+msgid "The step is already the first one"
+msgstr "L'étape est déjà en première place"
+
+#: .\recipes\views.py:313
+msgid "The step is already the last one"
+msgstr "L'étape est déjà en dernière place"
+
+#: .\recipes\views.py:337
+msgid "The ingredient was added successfully"
+msgstr "L'ingrédient a été ajouté avec succès"
+
+#: .\recipes\views.py:365
+msgid "The recipe was rated successfully"
+msgstr "La recette a été notée avec succès"
+
+#: .\recipes\views.py:386
+msgid "The comment was added successfully"
+msgstr "Le commentaire a été ajouté avec succès"
+
+#: .\recipes\views.py:433
+msgid "The recipe was published"
+msgstr "La recette a été publiée"
+
+#: .\recipes\views.py:435
+msgid "The recipe was unpublished"
+msgstr "La recette a été désactivée"
+
+#: .\recipes\views.py:453
+msgid "The picture was deleted successfully"
+msgstr "L'image a été supprimée avec succès"
+
+#: .\recipes\views.py:470
+msgid "The ingredient was deleted successfully"
+msgstr "L'ingrédient a été supprimé avec succès"
+
+#: .\templates\parts\_footer.html:10 .\templates\parts\_header.html:18
+msgid "MasterCook"
+msgstr "MasterCook"
+
+#: .\templates\parts\_footer.html:20
+#: .\utils\templates\utils\_browse_menu.html:5
+msgid "By Types"
+msgstr "Par Types"
+
+#: .\templates\parts\_footer.html:24
+#: .\utils\templates\utils\_browse_menu.html:9
+msgid "By Skills"
+msgstr "Par Difficulté"
+
+#: .\templates\parts\_header.html:30
+msgid "Browse"
+msgstr "Parcourir"
+
+#: .\templates\parts\_header.html:39
+msgid "My Profile"
 msgstr "Mon Profil"
 
-#: .\templates\base_layout.html:75
-msgid "account.see_profile"
-msgstr "Voir Mon Profil"
+#: .\templates\parts\_header.html:43
+msgid "Edit Profile"
+msgstr "Editer mon profil"
 
-#: .\templates\base_layout.html:77
-#, fuzzy
-#| msgid "account.see_profile"
-msgid "account.edit_password"
-msgstr "Voir Mon Profil"
+#: .\templates\parts\_header.html:45
+msgid "Modify Password"
+msgstr "Modifier mot de passe"
 
-#: .\templates\base_layout.html:79
-msgid "recipe.new_recipe"
-msgstr "Nouvelle Recette"
+#: .\templates\parts\_header.html:47
+msgid "My Dashboard"
+msgstr "Mon Dashboard"
 
-#: .\templates\base_layout.html:82
-msgid "account.logout"
-msgstr "Se Déconnecter"
+#: .\templates\parts\_header.html:49
+msgid "New Recipe"
+msgstr "Nouvelle recette"
 
-#: .\templates\base_layout.html:92
-msgid "page.languages_menu"
+#: .\templates\parts\_header.html:52
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: .\templates\parts\_header.html:62
+msgid "Languages"
 msgstr "Langues"
 
-#~ msgid "form.avatar.placeholder"
-#~ msgstr "Avatar"
+#: .\templates\parts\_header.html:80
+msgid "Search"
+msgstr "Rechercher"
 
-#~ msgid "form.country.placeholder"
-#~ msgstr "Nom d'utilisateur"
+#: .\utils\templates\utils\_browse_menu.html:4
+msgid "All"
+msgstr ""
+
+#: .\utils\templates\utils\_modal_confirmation.html:14
+msgid "Yes"
+msgstr "Oui"
+
+#: .\utils\templates\utils\_modal_confirmation.html:15
+msgid "No"
+msgstr "Non"

@@ -1,0 +1,57 @@
+[
+{
+    "model": "accounts.cookerprofile",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "date_of_birth": "1992-10-04",
+        "bio": "Coucou",
+        "avatar": "images/avatars/2181924c229553cb597f58b89d2644b1.jpg",
+        "country": 1
+    }
+},
+{
+    "model": "accounts.cookerprofile",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "date_of_birth": "1992-10-04",
+        "bio": "Coucou",
+        "avatar": "images/avatars/Copy_of_Weiss_2_2397.png",
+        "country": 1
+    }
+},
+{
+    "model": "accounts.cookerprofile",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "date_of_birth": "2018-07-12",
+        "bio": "Je m'appelle maxime lol",
+        "avatar": "images/avatars/8306843911a07e3941cf135a94e15649.jpg",
+        "country": 1
+    }
+},
+{
+    "model": "accounts.cookerprofile",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "date_of_birth": "1995-07-04",
+        "bio": "hello :)",
+        "avatar": "images/avatars/Copy_of_Nier_1G_3642.png",
+        "country": 4
+    }
+},
+{
+    "model": "accounts.cookerprofile",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "date_of_birth": "1994-01-10",
+        "bio": "hello",
+        "avatar": "images/avatars/emil.jpg",
+        "country": 1
+    }
+}
+]

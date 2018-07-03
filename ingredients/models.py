@@ -10,7 +10,6 @@ class IngredientType(models.Model):
     """
     name = models.CharField(max_length=50)
     description = models.TextField(default='')
-    thumbnail = models.ImageField(default='default/default_ingredient_type.png', blank=True)
 
     def __str__(self):
         return self.name

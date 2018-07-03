@@ -417,11 +417,12 @@ def recipe_toogle_publish(request, recipe_pk):
     if request.user == recipe.author:
         toogle = not recipe.published
         recipe.published = toogle
-        recipe.save()
         if toogle:
+            recipe.published_at = datetime.now()
             messages.success(request, _('The recipe was published'))
         else:
             messages.success(request, _('The recipe was unpublished'))
+        recipe.save()
     else:
         messages.error(request, _("You're not the author of this recipe"))
     return handle_next(request, redirect('recipes:edit', recipe_slug=recipe.slug))

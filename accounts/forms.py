@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, Pass
 from django.contrib.auth.models import User
 from .models import CookerProfile
 from utils.models import Country
+from datetime import datetime
 
 
 class CookerAuthenticationForm(AuthenticationForm):
@@ -170,6 +171,10 @@ class CookerProfileForm(forms.ModelForm):
             'aria-describedby': 'sizing-addon1',
         }
     ), localize=True, queryset=Country.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        super(CookerProfileForm, self).__init__(*args, **kwargs)
+        self.initial["date_of_birth"] = datetime.strftime(self.instance.date_of_birth, "%Y-%m-%d")
 
     class Meta:
         model = CookerProfile

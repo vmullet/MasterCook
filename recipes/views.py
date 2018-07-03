@@ -176,7 +176,7 @@ def recipe_edit(request, recipe_slug):
 @login_required(login_url="accounts:login")
 def recipe_delete(request, recipe_pk):
     """
-    View to delete a recipe
+    View to delete a recipe based on his primary key
     :param request:
     :param recipe_pk: The primary key of the recipe
     :return:

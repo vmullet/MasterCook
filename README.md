@@ -100,7 +100,9 @@ The installation of the project is very simple :
 
 **Be sure that you have [gettext installed](https://www.gnu.org/software/gettext/) (or [gettext for windows](https://mlocati.github.io/articles/gettext-iconv-windows.html)) before executing the following actions !**
 
-* For Mac / Linux Users **(just execute setup.sh)** :
+* 1.Prepare a virtualenvironment (mastercook-env for example) and activate it
+
+* 2.For Mac / Linux Users **(just execute setup.sh)** :
 ```
 git clone https://gitlab.com/LostArchives/MasterCook
 cd MasterCook
@@ -108,7 +110,7 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-* For Windows Users **(just execute setup.bat)** :
+* 2.For Windows Users **(just execute setup.bat)** :
 ```
 git clone https://gitlab.com/LostArchives/MasterCook
 cd MasterCook
@@ -117,10 +119,10 @@ setup.bat
 
 These scripts will do the following actions :
 
-* install virtualenvwrapper (if it isn't installed on your system)
-* create a virtualenv called mastercook-env and activate it
 * install pip requirements (see requirements.txt)
 * migrate
 * load fixtures
 * compile translations
 * runserver
+
+After that, open your prefered web browser on http://127.0.0.1:8000/ and have fun :)

@@ -48,7 +48,7 @@ Actually, the website supports the following features :
 * General :
     * Two languages supported : **French and English** (main language set to English)
     * **Language switcher** in the main menu (see Languages section)
-    * Models translation (Only some models)
+    * Models translation with django-modeltranslation
 
 * Users :
     * **login** / **signup** / **logout**
@@ -58,11 +58,14 @@ Actually, the website supports the following features :
     * **dashboard**
         * manage my recipes
         * manage my latest rates given to recipes
+    * **search recipes** + Filter / Order results
+    * **browse recipes (all / category / difficulty)** + Filter / Order results
 
 * Recipes :
     * **home page** with latest published recipes
     * **details page**
     * **rate recipes** (Float between 0 and 5)
+    * **comment recipes**
     * **create recipe**
     * **edit recipes** (only for the author)
         * edit main informations

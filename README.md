@@ -126,7 +126,7 @@ The installation of the project is very simple :
 
 **Be sure that you have [gettext installed](https://www.gnu.org/software/gettext/) (or [gettext for windows](https://mlocati.github.io/articles/gettext-iconv-windows.html)) before executing the following actions !**
 
-* 1.Prepare a virtualenvironment (mastercook-env for example) and activate it
+* 1.Prepare a virtual environment (mastercook-env for example) and activate it
 
 * 2.For Mac / Linux Users **(just execute setup.sh)** :
 ```

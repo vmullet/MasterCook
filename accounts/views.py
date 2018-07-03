@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -92,9 +93,9 @@ def update_profile_view(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Profile saved successfully')
+            messages.success(request, _('Profile saved successfully'))
         else:
-            messages.error(request, 'Please correct the error')
+            messages.error(request, _('Please correct the error'))
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = CookerProfileForm(instance=request.user.profile)
@@ -117,10 +118,10 @@ def update_password_view(request):
         if password_form.is_valid():
             user = password_form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
+            messages.success(request, _('Your password was successfully updated!'))
             return redirect('accounts:edit_password')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, _('Please correct the error below.'))
     else:
         password_form = CookerChangePasswordForm(request.user)
     return render(request, 'accounts/accounts_password_edit.html', {

@@ -50,7 +50,7 @@
                         <button type="button" class="btn btn-danger btn-sm btn-confirm"
                                 data-title="{% trans "Delete Recipe ?" %}"
                                 data-message="{% trans "Are you sure that you want to delete this recipe ?" %}"
-                                data-action="{% url 'recipes:delete' recipe_pk=recipe.pk %}">{% trans "Delete" %} <i
+                                data-action="{% url 'recipes:delete' recipe_pk=recipe.pk %}?next={% url 'accounts:my_dashboard' %}">{% trans "Delete" %} <i
                                 class="fas fa-trash-alt fa-lg"></i></button>
                         <br>
                         {% if recipe.published %}

@@ -181,14 +181,13 @@ def recipe_delete(request, recipe_pk):
     :param recipe_pk: The primary key of the recipe
     :return:
     """
-    if request.method == 'POST':
-        recipe = get_object_or_404(Recipe, pk=recipe_pk)
-        if recipe.author == request.user:
-            recipe.delete()
-            messages.success(request, _('The recipe was deleted successfully'))
-        else:
-            messages.error(request, _("You're not the author of this recipe"))
-    return redirect('recipes:homepage')
+    recipe = get_object_or_404(Recipe, pk=recipe_pk)
+    if recipe.author == request.user:
+        recipe.delete()
+        messages.success(request, _('The recipe was deleted successfully'))
+    else:
+        messages.error(request, _("You're not the author of this recipe"))
+    return handle_next(request, redirect('recipes:homepage'))
 
 
 @login_required(login_url="accounts:login")

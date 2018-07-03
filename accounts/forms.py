@@ -174,7 +174,8 @@ class CookerProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CookerProfileForm, self).__init__(*args, **kwargs)
-        self.initial["date_of_birth"] = datetime.strftime(self.instance.date_of_birth, "%Y-%m-%d")
+        if self.instance.date_of_birth is not None:
+            self.initial["date_of_birth"] = datetime.strftime(self.instance.date_of_birth, "%Y-%m-%d")
 
     class Meta:
         model = CookerProfile

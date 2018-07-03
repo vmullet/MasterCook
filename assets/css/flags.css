@@ -1,4 +1,4 @@
-.flag--spain, .flag--switzerland, .flag--en, .flag--japan, .flag--usa, .flag--ireland, .flag--italy, .flag--belgium, .flag--fr, .flag--romania, .flag--germany, .flag--russia, .flag--bulgaria, .flag--netherlands, .flag--lithuania, .flag--austria, .flag--hungary, .flag--estonia, .flag--bolivia, .flag--poland, .flag--enraine, .flag--denmark, .flag--iceland, .flag--norway, .flag--finland, .flag--sweden {
+.flag--es, .flag--switzerland, .flag--en, .flag--japan, .flag--usa, .flag--ireland, .flag--it, .flag--belgium, .flag--fr, .flag--romania, .flag--de, .flag--russia, .flag--bulgaria, .flag--netherlands, .flag--lithuania, .flag--austria, .flag--hungary, .flag--estonia, .flag--bolivia, .flag--poland, .flag--enraine, .flag--denmark, .flag--iceland, .flag--norway, .flag--finland, .flag--sweden {
   width: 5em;
   height: 3em;
   border: 1px solid #000;
@@ -6,7 +6,7 @@
   transition: all .5s;
 }
 
-.flag--spain {
+.flag--es {
   background: linear-gradient(red 25%, yellow 25%, yellow 75%, red 75%);
 }
 
@@ -47,7 +47,7 @@
   background: linear-gradient(90deg, #00ae00 33.3%, white 33.3%, white 66.6%, orange 66.6%);
 }
 
-.flag--italy {
+.flag--it {
   background: linear-gradient(90deg, #00ae00 33.3%, white 33.3%, white 66.6%, red 66.6%);
 }
 
@@ -63,7 +63,7 @@
   background: linear-gradient(90deg, mediumblue 33.3%, yellow 33.3%, yellow 66.6%, red 66.6%);
 }
 
-.flag--germany {
+.flag--de {
   background: linear-gradient(-180deg, black 33.3%, red 33.3%, red 66.6%, gold 66.6%);
 }
 

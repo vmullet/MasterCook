@@ -1,6 +1,7 @@
 {% load i18n %}
 
 <ul class="dropdown-menu">
+    <li><a href="{% url 'recipes:browse_all' %}">{% trans "All" %}</a></li>
     <li><a href="#">{% trans "By Types" %}</a></li>
     {% for category in categories %}
         <li><a href="{% url 'recipes:browse_category' category_slug=category.slug %}"><i class="fa fa-utensils"></i> {{ category.name }}</a></li>

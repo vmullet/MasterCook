@@ -65,6 +65,17 @@ def recipe_search(request):
     return handle_search(request, Recipe.objects.filter(published=True), 'recipes/recipe_search.html', True)
 
 
+def recipe_browse_all(request):
+    """
+    View to browse recipes globally
+    :param request:
+    :return:
+    """
+    return handle_search(request, Recipe.objects.filter(published=True),
+                         'recipes/recipe_browse.html', False,
+                         {'mode': 'all', })
+
+
 def recipe_browse_category(request, category_slug):
     """
     View to browse recipes by categories (see handle_search method at the bottom of this file)
@@ -479,7 +490,7 @@ def handle_search(request, base_recipes, template, require_keyword, other_args={
         keyword = request.GET['keyword']
         if require_keyword and keyword == '':  # We require keyword but it is empty
             return redirect('recipes:homepage')
-        recipes = base_recipes.filter(   # Search is based on contains in recipe name or ingredient name
+        recipes = base_recipes.filter(  # Search is based on contains in recipe name or ingredient name
             Q(name__contains=keyword) | Q(ingredients__ingredient__name__contains=keyword)).distinct()
     else:
         if require_keyword:  # There's no keyword and we require it
@@ -512,7 +523,7 @@ def handle_filters(request, recipes, keyword, template, other_args={}):
         results = recipes.order_by('name')  # By default, we order by name alphabetically
     filterform = recipeforms.RecipeFilterForm(keyword, filt, order)
     num_page = 1
-    if 'num_page' in request.GET:   # For results pagination
+    if 'num_page' in request.GET:  # For results pagination
         num_page = request.GET['num_page']
     paginator = Paginator(results, settings.MAX_SEARCH_RESULTS)
     args = {

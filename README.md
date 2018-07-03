@@ -30,7 +30,9 @@ Every apps has its own templates folder. For every templates folder, you will ha
 
 At the root of the project, you have also a templates folder to store base templates for the main design of the website (menu,header,footer,css/js imports...)
 
-The main template used everywhere in this website is **base_layout.html** in templates root folder
+The main template used everywhere in this website is **base_layout.html** in templates folder at project root
+
+Templates for modal confirmation and pagination are in utils apps' templates.
 
 ### Custom Settings
 
@@ -46,7 +48,7 @@ Actually, the website supports the following features :
 * General :
     * Two languages supported : **French and English** (main language set to English)
     * **Language switcher** in the main menu (see Languages section)
-    * Models translation
+    * Models translation (Only some models)
 
 * Users :
     * **login** / **signup** / **logout**
@@ -60,7 +62,7 @@ Actually, the website supports the following features :
 * Recipes :
     * **home page** with latest published recipes
     * **details page**
-    * **rate recipes**
+    * **rate recipes** (Float between 0 and 5)
     * **create recipe**
     * **edit recipes** (only for the author)
         * edit main informations
@@ -79,7 +81,7 @@ Indeed, they are managed internally so they wont't cause you any problems.
     * **[Django](https://www.djangoproject.com/)** : No joke :p
     * **[Pillow](https://pillow.readthedocs.io/en/5.2.x/)** : A python library To handle image field in Django Models
     * **[Python-Slugify](https://github.com/un33k/python-slugify)** : A very useful package to slugify any string (UTF8 compatible)
-    * **[Django-Modeltranslation](http://django-modeltranslation.readthedocs.io/en/latest/index.html) : A package to translate models**
+    * **[Django-Modeltranslation](http://django-modeltranslation.readthedocs.io/en/latest/index.html) : A package to translate models without rewriting them :)**
     * **[Gettext](https://www.gnu.org/software/gettext/)** : Needed to make / compile translations ([windows version](https://mlocati.github.io/articles/gettext-iconv-windows.html) -> Download the latest binary)
     
 
@@ -113,7 +115,7 @@ setup.bat
 These scripts will do the following actions :
 
 * install virtualenvwrapper (if it isn't installed on your system)
-* create a virtualenv called env and activate it
+* create a virtualenv called mastercook-env and activate it
 * install pip requirements (see requirements.txt)
 * migrate
 * load fixtures

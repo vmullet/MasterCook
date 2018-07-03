@@ -19,9 +19,12 @@
         <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Category" %}
             "{{ category_name }}"
             ({{ number_results }} {% trans "Results" %})</h1>
-    {% else %}
+    {% elif mode == 'skill' %}
         <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse Skill" %}
             "{{ skill_name }}"
+            ({{ number_results }} {% trans "Results" %})</h1>
+    {% elif mode == 'all' %}
+        <h1 class="wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">{% trans "Browse All" %}
             ({{ number_results }} {% trans "Results" %})</h1>
     {% endif %}
     <br>
@@ -57,6 +60,7 @@
                         {% else %}
                             {% trans "Not yet rated" %}
                         {% endif %}
+                        ({{ recipe.comments.count }} {% trans "Comments" %})
                     </p>
                     <img src="{{ recipe.thumbnail.url }}" alt=" " class="recipe-thumbnail"/>
                     <div class="nobis">
@@ -73,8 +77,10 @@
             <br>
             {% if mode == 'category' %}
                 {% url 'recipes:browse_category' category_slug=category_slug as base_url %}
-            {% else %}
+            {% elif mode == 'skill' %}
                 {% url 'recipes:browse_skill' skill_slug=skill_slug as base_url %}
+            {% elif mode == 'all' %}
+                {% url 'recipes:browse_all' as base_url %}
             {% endif %}
             {% with base_url|add:'?keyword='|add:keyword|add:'&filter='|add:filter|add:'&order='|add:order as full_url %}
                 {% include 'utils/_pagination.html' with paginator=results_paginator base_url=full_url %}

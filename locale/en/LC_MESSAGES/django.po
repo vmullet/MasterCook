@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-01 20:56+0200\n"
+"POT-Creation-Date: 2018-07-03 20:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,53 +18,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\forms.py:13 .\accounts\forms.py:37
+#: .\accounts\forms.py:14 .\accounts\forms.py:38
 msgid "Username"
 msgstr ""
 
-#: .\accounts\forms.py:20 .\accounts\forms.py:65
+#: .\accounts\forms.py:21 .\accounts\forms.py:66
 #, fuzzy
 #| msgid "account.change_password"
 msgid "Password"
 msgstr "Modify Password"
 
-#: .\accounts\forms.py:44 .\accounts\forms.py:93
+#: .\accounts\forms.py:45 .\accounts\forms.py:94
 msgid "First Name"
 msgstr ""
 
-#: .\accounts\forms.py:51 .\accounts\forms.py:100
+#: .\accounts\forms.py:52 .\accounts\forms.py:101
 msgid "Last Name"
 msgstr ""
 
-#: .\accounts\forms.py:58 .\accounts\forms.py:107
+#: .\accounts\forms.py:59 .\accounts\forms.py:108
 msgid "Email"
 msgstr ""
 
-#: .\accounts\forms.py:72
+#: .\accounts\forms.py:73
 msgid "Re-enter your password"
 msgstr ""
 
-#: .\accounts\forms.py:125
+#: .\accounts\forms.py:126
 #, fuzzy
 #| msgid "account.change_password"
 msgid "Old Password"
 msgstr "Modify Password"
 
-#: .\accounts\forms.py:132
+#: .\accounts\forms.py:133
 #, fuzzy
 #| msgid "account.change_password"
 msgid "New Password"
 msgstr "Modify Password"
 
-#: .\accounts\forms.py:139
+#: .\accounts\forms.py:140
 msgid "Re-enter the new password"
 msgstr ""
 
-#: .\accounts\forms.py:150
+#: .\accounts\forms.py:151
 msgid "Date of birth"
 msgstr ""
 
-#: .\accounts\forms.py:157
+#: .\accounts\forms.py:158
 msgid "Biography"
 msgstr ""
 
@@ -170,12 +170,12 @@ msgstr ""
 msgid "Rated On"
 msgstr ""
 
-#: .\accounts\templates\accounts\parts\_view_user_rates.html:43
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:44
 #: .\recipes\templates\recipes\forms\_form_rate.html:9
 msgid "Rate"
 msgstr ""
 
-#: .\accounts\templates\accounts\parts\_view_user_rates.html:56
+#: .\accounts\templates\accounts\parts\_view_user_rates.html:57
 msgid "Sorry but you have not rated any recipes yet :("
 msgstr ""
 
@@ -193,6 +193,7 @@ msgstr "Create New Recipe"
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:17
 #: .\recipes\templates\recipes\parts\_comments_list.html:5
+#: .\recipes\templates\recipes\recipe_browse.html:63
 msgid "Comments"
 msgstr ""
 
@@ -201,7 +202,7 @@ msgid "Published"
 msgstr ""
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:19
-#: .\recipes\templates\recipes\recipes_details.html:34
+#: .\recipes\templates\recipes\recipes_details.html:35
 msgid "Created On"
 msgstr ""
 
@@ -215,27 +216,27 @@ msgstr ""
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:49
 #: .\recipes\templates\recipes\forms\_form_edit_recipe.html:9
-#: .\recipes\templates\recipes\recipes_details.html:32
+#: .\recipes\templates\recipes\recipes_details.html:33
 msgid "Edit"
 msgstr ""
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:51
-#: .\recipes\templates\recipes\recipes_details.html:27
+#: .\recipes\templates\recipes\recipes_details.html:28
 #, fuzzy
 #| msgid "form.create_recipe"
 msgid "Delete Recipe ?"
 msgstr "Create New Recipe"
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:52
-#: .\recipes\templates\recipes\recipes_details.html:28
+#: .\recipes\templates\recipes\recipes_details.html:29
 msgid "Are you sure that you want to delete this recipe ?"
 msgstr ""
 
 #: .\accounts\templates\accounts\parts\_view_user_recipes.html:53
-#: .\recipes\templates\recipes\parts\_show_edit_image.html:30
-#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:30
-#: .\recipes\templates\recipes\parts\_show_edit_step.html:33
-#: .\recipes\templates\recipes\recipes_details.html:29
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:31
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:31
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:34
+#: .\recipes\templates\recipes\recipes_details.html:30
 msgid "Delete"
 msgstr ""
 
@@ -396,7 +397,7 @@ msgid "Other photos"
 msgstr ""
 
 #: .\recipes\templates\recipes\parts\_recipe_meta_informations.html:22
-#: .\recipes\templates\recipes\parts\_show_edit_image.html:39
+#: .\recipes\templates\recipes\parts\_show_edit_image.html:41
 msgid "No additional photos for this recipe yet :("
 msgstr ""
 
@@ -476,7 +477,7 @@ msgstr ""
 msgid "Are you sure that you want to delete this Ingredient ?"
 msgstr ""
 
-#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:39
+#: .\recipes\templates\recipes\parts\_show_edit_ingredient.html:41
 msgid "No ingredients for this recipe yet :("
 msgstr ""
 
@@ -500,7 +501,7 @@ msgstr ""
 msgid "Are you sure that you want to delete this step ?"
 msgstr ""
 
-#: .\recipes\templates\recipes\parts\_show_edit_step.html:42
+#: .\recipes\templates\recipes\parts\_show_edit_step.html:44
 msgid "No steps for this recipe yet :("
 msgstr ""
 
@@ -516,6 +517,7 @@ msgstr ""
 
 #: .\recipes\templates\recipes\recipe_browse.html:21
 #: .\recipes\templates\recipes\recipe_browse.html:25
+#: .\recipes\templates\recipes\recipe_browse.html:28
 #: .\recipes\templates\recipes\recipe_search.html:19
 msgid "Results"
 msgstr ""
@@ -524,23 +526,28 @@ msgstr ""
 msgid "Browse Skill"
 msgstr ""
 
-#: .\recipes\templates\recipes\recipe_browse.html:58
+#: .\recipes\templates\recipes\recipe_browse.html:27
+msgid "Browse All"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipe_browse.html:61
 #: .\recipes\templates\recipes\recipe_search.html:51
-#: .\recipes\templates\recipes\recipes_details.html:42
+#: .\recipes\templates\recipes\recipes_details.html:44
 msgid "Not yet rated"
 msgstr ""
 
-#: .\recipes\templates\recipes\recipe_browse.html:63
+#: .\recipes\templates\recipes\recipe_browse.html:67
 #: .\recipes\templates\recipes\recipe_search.html:56
+#: .\recipes\templates\recipes\recipes_details.html:35
 msgid "By"
 msgstr ""
 
-#: .\recipes\templates\recipes\recipe_browse.html:68
+#: .\recipes\templates\recipes\recipe_browse.html:72
 #: .\recipes\templates\recipes\recipe_search.html:61
 msgid "Read More..."
 msgstr ""
 
-#: .\recipes\templates\recipes\recipe_browse.html:85
+#: .\recipes\templates\recipes\recipe_browse.html:91
 #: .\recipes\templates\recipes\recipe_search.html:74
 msgid "Sorry, we have no results for this research :("
 msgstr ""
@@ -554,6 +561,10 @@ msgstr ""
 msgid ""
 "This recipe is not published yet. To make it visible by other cookers, "
 "please click on this button"
+msgstr ""
+
+#: .\recipes\templates\recipes\recipe_edit.html:41
+msgid "Sorry, you can't add more photos to this recipe :("
 msgstr ""
 
 #: .\recipes\templates\recipes\recipe_search.html:7
@@ -580,19 +591,19 @@ msgstr ""
 msgid "Details of Recipe"
 msgstr ""
 
-#: .\recipes\templates\recipes\recipes_details.html:40
+#: .\recipes\templates\recipes\recipes_details.html:42
 msgid "Median rate based on"
 msgstr ""
 
-#: .\recipes\templates\recipes\recipes_details.html:50
-msgid "You must be logged to create a recipe"
+#: .\recipes\templates\recipes\recipes_details.html:52
+msgid "You must be logged to rate a recipe"
 msgstr ""
 
-#: .\recipes\templates\recipes\recipes_details.html:68
+#: .\recipes\templates\recipes\recipes_details.html:70
 msgid "You must be logged to post a comment."
 msgstr ""
 
-#: .\recipes\templates\recipes\recipes_details.html:79
+#: .\recipes\templates\recipes\recipes_details.html:81
 msgid "This recipe has no comments yet :("
 msgstr ""
 
@@ -616,7 +627,7 @@ msgstr ""
 msgid "Latest Recipes"
 msgstr "Create New Recipe"
 
-#: .\recipes\templates\recipes\recipes_homepage.html:28
+#: .\recipes\templates\recipes\recipes_homepage.html:31
 msgid "Read More"
 msgstr ""
 
@@ -629,70 +640,74 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: .\recipes\views.py:151
+#: .\recipes\views.py:157
 msgid "Recipe updated successfully"
 msgstr ""
 
-#: .\recipes\views.py:157 .\recipes\views.py:178 .\recipes\views.py:197
-#: .\recipes\views.py:217 .\recipes\views.py:228 .\recipes\views.py:246
-#: .\recipes\views.py:265 .\recipes\views.py:284 .\recipes\views.py:357
-#: .\recipes\views.py:368 .\recipes\views.py:379
+#: .\recipes\views.py:163 .\recipes\views.py:190 .\recipes\views.py:219
+#: .\recipes\views.py:245 .\recipes\views.py:266 .\recipes\views.py:290
+#: .\recipes\views.py:315 .\recipes\views.py:340 .\recipes\views.py:438
+#: .\recipes\views.py:455 .\recipes\views.py:472
 msgid "You're not the author of this recipe"
 msgstr ""
 
-#: .\recipes\views.py:176
+#: .\recipes\views.py:188
 msgid "The recipe was deleted successfully"
 msgstr ""
 
-#: .\recipes\views.py:194
+#: .\recipes\views.py:214
 msgid "The image was added successfully"
 msgstr ""
 
-#: .\recipes\views.py:214
+#: .\recipes\views.py:217
+msgid "The maximum number of images by recipes has been exceeded"
+msgstr ""
+
+#: .\recipes\views.py:242
 msgid "The step was added successfully"
 msgstr ""
 
-#: .\recipes\views.py:226
+#: .\recipes\views.py:264
 msgid "The step was deleted successfully"
 msgstr ""
 
-#: .\recipes\views.py:242 .\recipes\views.py:261
+#: .\recipes\views.py:286 .\recipes\views.py:311
 msgid "The step was updated successfully"
 msgstr ""
 
-#: .\recipes\views.py:244
+#: .\recipes\views.py:288
 msgid "The step is already the first one"
 msgstr ""
 
-#: .\recipes\views.py:263
+#: .\recipes\views.py:313
 msgid "The step is already the last one"
 msgstr ""
 
-#: .\recipes\views.py:281
+#: .\recipes\views.py:337
 msgid "The ingredient was added successfully"
 msgstr ""
 
-#: .\recipes\views.py:302
+#: .\recipes\views.py:365
 msgid "The recipe was rated successfully"
 msgstr ""
 
-#: .\recipes\views.py:318
+#: .\recipes\views.py:386
 msgid "The comment was added successfully"
 msgstr ""
 
-#: .\recipes\views.py:353
+#: .\recipes\views.py:433
 msgid "The recipe was published"
 msgstr ""
 
-#: .\recipes\views.py:355
+#: .\recipes\views.py:435
 msgid "The recipe was unpublished"
 msgstr ""
 
-#: .\recipes\views.py:366
+#: .\recipes\views.py:453
 msgid "The picture was deleted successfully"
 msgstr ""
 
-#: .\recipes\views.py:377
+#: .\recipes\views.py:470
 msgid "The ingredient was deleted successfully"
 msgstr ""
 
@@ -701,12 +716,12 @@ msgid "MasterCook"
 msgstr ""
 
 #: .\templates\parts\_footer.html:20
-#: .\utils\templates\utils\_browse_menu.html:4
+#: .\utils\templates\utils\_browse_menu.html:5
 msgid "By Types"
 msgstr ""
 
 #: .\templates\parts\_footer.html:24
-#: .\utils\templates\utils\_browse_menu.html:8
+#: .\utils\templates\utils\_browse_menu.html:9
 msgid "By Skills"
 msgstr ""
 
@@ -744,6 +759,10 @@ msgstr ""
 
 #: .\templates\parts\_header.html:80
 msgid "Search"
+msgstr ""
+
+#: .\utils\templates\utils\_browse_menu.html:4
+msgid "All"
 msgstr ""
 
 #: .\utils\templates\utils\_modal_confirmation.html:14

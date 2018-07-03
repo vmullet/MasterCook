@@ -19,7 +19,7 @@
     <h1 class="animated fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">
         {{ recipe.name }}
         <div class="flag flag--{{ recipe.recipe_origin.css_class }}" style="width:1em;height:0.7em;"></div>
-    - {{ recipe.recipe_type.name }}
+        - {{ recipe.recipe_type.name }}
     </h1>
 
     <div class="single-left wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -32,7 +32,8 @@
             <a href="{% url 'recipes:edit' recipe_slug=recipe.slug %}"
                class="btn btn-warning btn-md">{% trans "Edit" %} <i class="fas fa-edit fa-lg"></i></a>
         {% endif %}
-        <p>{% trans "Created On" %} <span>{{ recipe.created_at }}</span>
+        <p>{% trans "Created On" %} <span>{{ recipe.created_at }} {% trans "By" %} <a
+                href="{% url 'accounts:view_profile' username=recipe.author.username %}">{{ recipe.author.username }}</a></span>
             <input type="text"
                    value="{{ recipe.get_median_rate }}"
                    data-size="xs"
@@ -48,7 +49,7 @@
         {% if user.is_authenticated %}
             {% include 'recipes/forms/_form_rate.html' with recipe=recipe rate_form=rate_form %}
         {% else %}
-            <a href="{% url 'accounts:login' %}">{% trans "You must be logged to create a recipe" %}</a>
+            <a href="{% url 'accounts:login' %}">{% trans "You must be logged to rate a recipe" %}</a>
         {% endif %}
 
         <img src="{{ recipe.thumbnail.url }}" alt=" " class="img-responsive"/>

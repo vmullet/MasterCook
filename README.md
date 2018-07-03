@@ -32,6 +32,13 @@ At the root of the project, you have also a templates folder to store base templ
 
 The main template used everywhere in this website is **base_layout.html** in templates root folder
 
+### Custom Settings
+
+Some settings specific to the website are stored in mastercook/settings.py such as :
+ - The maximum number of comments by page
+ - The maximum number of results by page
+ - ...
+
 ## Supported Features
 
 Actually, the website supports the following features :
@@ -105,8 +112,9 @@ setup.bat
 
 These scripts will do the following actions :
 
+* install virtualenvwrapper (if it isn't installed on your system)
 * create a virtualenv called env and activate it
-* install pip dependencies (django, pillow, python-slugify, django-modeltranslation)
+* install pip requirements (see requirements.txt)
 * migrate
 * load fixtures
 * compile translations

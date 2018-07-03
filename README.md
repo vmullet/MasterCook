@@ -118,6 +118,7 @@ Indeed, they are managed internally so they wont't cause you any problems.
     * **[Jquery](https://jquery.com/)**
     * **[Bootstrap-rating](https://github.com/kartik-v/bootstrap-star-rating)** : A very beautiful / simple library to represent star rating forms
 
+Specific Javascript / CSS code are stored in custom.css / custom.js in assets/css and assets/js respectively.
 
 ## Installation
 

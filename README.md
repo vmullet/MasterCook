@@ -32,14 +32,39 @@ At the root of the project, you have also a templates folder to store base templ
 
 The main template used everywhere in this website is **base_layout.html** in templates folder at project root
 
-Templates for modal confirmation and pagination are in utils apps' templates.
+N.B : Templates for modal confirmation and pagination are in utils apps' templates.
 
 ### Custom Settings
 
-Some settings specific to the website are stored in mastercook/settings.py such as :
+Some settings specific to the website are stored in mastercook/settings.py (bottom of the file) such as :
  - The maximum number of comments by page
  - The maximum number of results by page
  - ...
+ 
+ 
+ ### Fixtures
+ 
+ This project already includes some fixtures to test the website with initial data. They are located in **every apps' fixture folder**
+ The root fixtures folder is for django apps such as auth.user (User accounts)
+ This last fixture includes 4 users accounts and 1 super user (Django admin) :
+ 
+ * SuperUser :
+     * login : master
+     * password : test1234
+ 
+ * Normal users :
+     * User 1:
+         * login : valentin
+         * password : test1234
+     * User 2 :
+         * login : maxime62
+         * password : test1234
+     * User 3 :
+         * login : jerome91
+         * password : test1234
+     * User 4 :
+         * login : tom
+         * password : test1234
 
 ## Supported Features
 
